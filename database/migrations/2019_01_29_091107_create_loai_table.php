@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreataQuyenTable extends Migration
+class CreateLoaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreataQuyenTable extends Migration
      */
     public function up()
     {
-        Schema::create('quyen', function (Blueprint $table) {
+        Schema::create('loai', function (Blueprint $table) {
             $table->engine='InnoDB';
-            $table->increments('q_ma');
-            $table->string('q_ten',50);
-            $table->unique(['q_ten']);
+            $table->increments('l_ma');
+            $table->string('l_ten',200);
         });
     }
 
@@ -28,6 +27,6 @@ class CreataQuyenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quyen');
+        Schema::dropIfExists('loai');
     }
 }

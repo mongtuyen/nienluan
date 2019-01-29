@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
+use Session;
+use App\Loai;
 class LoaiController extends Controller
 {
     public function index()
@@ -19,11 +21,18 @@ class LoaiController extends Controller
     }
 
     public function create() {
-
+        return view('loai.create');
+ 
     }
 
-    public function store() {
-
+    public function store(Request $request) {
+        $loai=new Loai();
+        $loai->l_ma=$request->l_ma;
+        $loai->l_ten=$request->l_ten;
+        $loai->save();
+        Session::flash('alert-info','Thêm thành công!');
+        return redirect()->route('danhsachloai.index');
+   
     }
 
     /**
@@ -45,14 +54,11 @@ class LoaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LoaiRequest $request, $id)
+    public function update(Request $request, $id)
     {
         // $validator = Validator::make($request->all(), [
         //     'l_ten' => 'required|unique:cusc_loai|max:60',
-        //     'l_taoMoi' => 'required',
-        //     'l_capNhat' => 'required',
-        //     'l_trangThai' => 'required',
-        // ]);
+       // ]);
 
         // if ($validator->fails()) {
         //     return redirect(route('danhsachloai.edit', ['id' => $id]))
@@ -62,12 +68,9 @@ class LoaiController extends Controller
 
         $loai = Loai::where("l_ma", $id)->first();
         $loai->l_ten = $request->l_ten;
-        $loai->l_taoMoi = $request->l_taoMoi;
-        $loai->l_capNhat = $request->l_capNhat;
-        $loai->l_trangThai = $request->l_trangThai;
         $loai->save();
 
-        Session::flash('alert-info', 'Cap nhat thanh cong ^^~!!!');
+        Session::flash('alert-info', 'Cập nhật thành công!');
         return redirect()->route('danhsachloai.index');
     }
 
@@ -82,7 +85,7 @@ class LoaiController extends Controller
         $loai = Loai::where("l_ma",  $id)->first();
         $loai->delete();
 
-        Session::flash('alert-danger', 'Xoa du lieu thanh cong ^^~!!!');
+        Session::flash('alert-danger', 'Xoá dữ liệu thành công!');
         return redirect()->route('danhsachloai.index');
     }
 }

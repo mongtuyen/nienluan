@@ -1,12 +1,12 @@
 @extends('backend.layouts.index')
 
 @section('title')
-Danh sách loại
+Danh sách quyền
 @endsection
 
 
 @section('main-content')
-<h2>DANH SÁCH LOẠI</h2>
+<h2>DANH SÁCH QUYỀN</h2>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))
@@ -14,7 +14,7 @@ Danh sách loại
       @endif
     @endforeach
 </div>
-<a href="{{ route('danhsachloai.create') }}" class="btn btn-primary">Thêm</a>
+<a href="{{ route('danhsachquyen.create') }}" class="btn btn-primary">Thêm</a>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -25,13 +25,13 @@ Danh sách loại
         </tr>
     </thead>
     <tbody>
-        @foreach($danhsachloai as $loai)
+        @foreach($danhsachquyen as $quyen)
             <tr>
-                <td>{{ $loai->l_ma }}</td>
-                <td>{{ $loai->l_ten }}</td>
-                <td><a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}">Sửa</a></td>
+                <td>{{ $quyen->q_ma }}</td>
+                <td>{{ $quyen->q_ten }}</td>
+                <td><a href="{{ route('danhsachquyen.edit', ['id' => $quyen->q_ma]) }}">Sửa</a></td>
                 <td>
-                    <form method="post" action="{{ route('danhsachloai.destroy', ['id' => $loai->l_ma]) }}">
+                    <form method="post" action="{{ route('danhsachquyen.destroy', ['id' => $quyen->q_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger">Xóa</button>

@@ -1,7 +1,7 @@
 @extends('backend.layouts.index')
 
 @section('title')
-Hiệu chỉnh loại
+Hiệu chỉnh quyền
 @endsection
 
 @section('main-content')
@@ -15,12 +15,12 @@ Hiệu chỉnh loại
     </div>
 @endif
 
-<form method="post" action="{{ route('danhsachloai.update', ['id' => $loai->l_ma]) }}"> 
+<form method="post" action="{{ route('danhsachquyen.update', ['id' => $quyen->q_ma]) }}"> 
     <input type="hidden" name="_method" value="PUT" />
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="l_ten">Tên</label>
-        <input type="text" class="form-control" id="l_ten" name="l_ten" value="{{ $loai->l_ten }}" placeholder="Nhập tên">
+        <label for="q_ten">Tên</label>
+        <input type="text" class="form-control" id="q_ten" name="q_ten" value="{{ $quyen->q_ten }}" placeholder="Nhập tên">
     </div>
     
 

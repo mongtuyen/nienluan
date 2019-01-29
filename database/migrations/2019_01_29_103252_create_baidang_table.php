@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreataQuyenTable extends Migration
+class CreateBaidangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreataQuyenTable extends Migration
      */
     public function up()
     {
-        Schema::create('quyen', function (Blueprint $table) {
-            $table->engine='InnoDB';
-            $table->increments('q_ma');
-            $table->string('q_ten',50);
-            $table->unique(['q_ten']);
+        Schema::create('baidang', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +26,6 @@ class CreataQuyenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quyen');
+        Schema::dropIfExists('baidang');
     }
 }
