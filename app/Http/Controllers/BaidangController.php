@@ -17,7 +17,7 @@ class BaidangController extends Controller
     public function index()
     {
         $ds_baidang = Baidang::paginate(5);
-        return view('baidang.index')
+        return view('backend.baidang.index')
             ->with('danhsachbaidang', $ds_baidang);
        
     }
@@ -32,7 +32,7 @@ class BaidangController extends Controller
         //$ds_linhvuc=Linhvuc::all();
         $ds_sanpham = Sanpham::all();
         $ds_nguoidung = Nguoidung::all();
-        return view('baidang.create',['danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
+        return view('backend.baidang.create',['danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
     
     }
 
@@ -97,7 +97,7 @@ class BaidangController extends Controller
         $baidang = Baidang::where("bd_ma",  $id)->first();
         $ds_nguoidung = Nguoidung::all();
         $ds_sanpham=Sanpham::all();
-        return view('baidang.edit',['baidang'=>$baidang,'danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
+        return view('backend.baidang.edit',['baidang'=>$baidang,'danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
     
     }
 

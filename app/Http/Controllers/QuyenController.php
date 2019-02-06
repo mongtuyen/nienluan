@@ -17,7 +17,7 @@ class QuyenController extends Controller
     {
         $ds_quyen = DB::table('quyen')->get();
         
-        return view('quyen.index')
+        return view('backend.quyen.index')
             ->with('danhsachquyen', $ds_quyen);
    
     }
@@ -29,7 +29,7 @@ class QuyenController extends Controller
      */
     public function create()
     {
-        return view('quyen.create');
+        return view('backdend.quyen.create');
  
     }
 
@@ -70,7 +70,7 @@ class QuyenController extends Controller
     public function edit($id)
     {
         $quyen = Quyen::where("q_ma", $id)->first();
-        return view('quyen.edit')->with('quyen', $quyen);
+        return view('backdend.quyen.edit')->with('quyen', $quyen);
     
     }
 

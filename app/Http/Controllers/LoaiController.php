@@ -16,12 +16,12 @@ class LoaiController extends Controller
         // Query Builder
         $ds_loai = DB::table('loai')->get();
         
-        return view('loai.index')
+        return view('backend.loai.index')
             ->with('danhsachloai', $ds_loai);
     }
 
     public function create() {
-        return view('loai.create');
+        return view('backend.loai.create');
  
     }
 
@@ -44,7 +44,7 @@ class LoaiController extends Controller
     public function edit($id)
     {
         $loai = Loai::where("l_ma", $id)->first();
-        return view('loai.edit')->with('loai', $loai);
+        return view('backend.loai.edit')->with('loai', $loai);
     }
 
     /**

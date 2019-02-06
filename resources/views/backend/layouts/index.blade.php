@@ -261,14 +261,14 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Information</li>
 
-        <li class="active"><a href="{{route('danhsachloai.index')}}"><span>Loại<span></a></li>
+        <li class="active"><a href="{{route('danhsachloai.index')}}"><span>Loại nông sản<span></a></li>
         
-        <li class="active"><a href="{{route('danhsachsanpham.index')}}">Sản phẩm</a></li>
+        <li class="active"><a href="{{route('danhsachsanpham.index')}}">Nông sản</a></li>
         <li class="active"><a href="{{route('danhsachquyen.index')}}">Quyền</a></li>
         <li class="active"><a href="{{route('danhsachbaidang.index')}}">Bài đăng</a></li>
         <li class="active"><a href="{{route('danhsachnguoidung.index')}}">Người dùng</a></li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Facebook</span></a></li>
+        <!-- <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Facebook</span></a></li>
         <li><a href="#"><i class="fa fa-link"></i> <span>Gmail</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Google</span>
@@ -280,7 +280,7 @@ desired effect
             <li><a href="#">Link in level 2</a></li>
             <li><a href="#">Link in level 2</a></li>
           </ul>
-        </li>
+        </li> -->
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -291,10 +291,10 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      <!-- <h1>
         Nhiệt tình - Chu đáo - Thân thiện
         <small>Sunshine sẽ mang đến hạnh phúc cho mọi nhà</small>
-      </h1>
+      </h1> -->
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>

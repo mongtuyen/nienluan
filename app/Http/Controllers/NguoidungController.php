@@ -18,7 +18,7 @@ class NguoidungController extends Controller
     public function index()
     {
         $ds_nguoidung = Nguoidung::all(); 
-        return view('nguoidung.index')
+        return view('backend.nguoidung.index')
             ->with('danhsachnguoidung', $ds_nguoidung);
     
     }
@@ -31,7 +31,7 @@ class NguoidungController extends Controller
     public function create()
     {
         $ds_quyen = Quyen::all(); 
-        return view('nguoidung.create')
+        return view('backend.nguoidung.create')
             ->with('danhsachquyen', $ds_quyen);
     
     }
@@ -83,7 +83,7 @@ class NguoidungController extends Controller
         $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
         $ds_quyen = Quyen::all();
 
-        return view('nguoidung.edit')
+        return view('backend.nguoidung.edit')
             ->with('nguoidung', $nguoidung)
             ->with('danhsachquyen', $ds_quyen);
   

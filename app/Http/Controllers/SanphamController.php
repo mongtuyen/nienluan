@@ -17,7 +17,7 @@ class SanphamController extends Controller
     {
         $ds_sanpham = Sanpham::all(); 
        
-        return view('sanpham.index')
+        return view('backend.sanpham.index')
             ->with('danhsachsanpham', $ds_sanpham);
    
     }
@@ -30,7 +30,7 @@ class SanphamController extends Controller
     public function create()
     {
         $ds_loai = Loai::all(); 
-        return view('sanpham.create')
+        return view('backend.sanpham.create')
             ->with('danhsachloai', $ds_loai);
    
     }
@@ -73,7 +73,7 @@ class SanphamController extends Controller
     {
         $sanpham = Sanpham::where("sp_ma", $id)->first();
         $ds_loai=Loai::all();
-        return view('sanpham.edit')
+        return view('backend.sanpham.edit')
             ->with('sanpham', $sanpham)
             ->with('danhsachloai',$ds_loai);
     
