@@ -20,8 +20,7 @@ Danh sách nông sản
             <th>Mã</th>
             <th>Tên nông sản</th>
             <th>Thuộc loại</th>
-            <td>Sửa</td>
-            <td>Xoá</td>
+            <td>Tùy chọn</td>
         </tr>
     </thead>
     <tbody>
@@ -30,9 +29,8 @@ Danh sách nông sản
                 <td>{{ $sanpham->sp_ma }}</td>
                 <td>{{ $sanpham->sp_ten }}</td>
                 <td>{{$sanpham->loai->l_ten}}</td>
-                <td><a href="{{ route('danhsachsanpham.edit', ['id' => $sanpham->sp_ma]) }}">Sửa</a></td>
-                <td>
-                    <form method="post" action="{{ route('danhsachsanpham.destroy', ['id' => $sanpham->sp_ma]) }}">
+                <td><a href="{{ route('danhsachsanpham.edit', ['id' => $sanpham->sp_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
+                <form method="post" action="{{ route('danhsachsanpham.destroy', ['id' => $sanpham->sp_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger">Xóa</button>

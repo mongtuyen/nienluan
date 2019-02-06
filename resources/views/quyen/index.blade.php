@@ -20,8 +20,8 @@ Danh sách quyền
         <tr>
             <th>Mã</th>
             <th>Tên</th>
-            <td>Sửa</td>
-            <td>Xoá</td>
+            <td>Tùy chọn</td>
+           
         </tr>
     </thead>
     <tbody>
@@ -29,9 +29,8 @@ Danh sách quyền
             <tr>
                 <td>{{ $quyen->q_ma }}</td>
                 <td>{{ $quyen->q_ten }}</td>
-                <td><a href="{{ route('danhsachquyen.edit', ['id' => $quyen->q_ma]) }}">Sửa</a></td>
-                <td>
-                    <form method="post" action="{{ route('danhsachquyen.destroy', ['id' => $quyen->q_ma]) }}">
+                <td><a href="{{ route('danhsachquyen.edit', ['id' => $quyen->q_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
+                <form method="post" action="{{ route('danhsachquyen.destroy', ['id' => $quyen->q_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger">Xóa</button>

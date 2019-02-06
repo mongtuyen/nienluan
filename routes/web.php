@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/danhsachloai','LoaiController');
-//Route::resource('/danhsachbaidang','BaidangController');
+Route::resource('/danhsachbaidang','BaidangController');
 //Route::resource('/danhsachnguoidung','NguoidungController');
 Route::resource('/danhsachsanpham','SanphamController');
 Route::resource('/danhsachquyen','QuyenController');

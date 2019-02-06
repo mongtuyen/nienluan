@@ -20,8 +20,8 @@ Danh sách loại
         <tr>
             <th>Mã</th>
             <th>Tên</th>
-            <td>Sửa</td>
-            <td>Xoá</td>
+            <td>Sửa</td>   
+            <td>Xóa</td>  
         </tr>
     </thead>
     <tbody>
@@ -29,13 +29,16 @@ Danh sách loại
             <tr>
                 <td>{{ $loai->l_ma }}</td>
                 <td>{{ $loai->l_ten }}</td>
-                <td><a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}">Sửa</a></td>
                 <td>
-                    <form method="post" action="{{ route('danhsachloai.destroy', ['id' => $loai->l_ma]) }}">
+                <a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}"><button class='btn btn-lg ' style='background-color:transparent;'>
+								<i class="fa fa-pencil"></i></button></a>
+                </td>
+                <td>
+                <form method="post" action="{{ route('danhsachloai.destroy', ['id' => $loai->l_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger">Xóa</button>
-                    </form>
+                        <button class='btn btn-lg ' style='background-color:transparent;'><i class="fa fa-trash"></i></button>
+                </form>
                 </td>
             </tr>
         @endforeach

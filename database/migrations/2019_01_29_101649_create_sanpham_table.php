@@ -18,7 +18,7 @@ class CreateSanphamTable extends Migration
             $table->increments('sp_ma');
             $table->string('sp_ten',255);
             $table->unsignedInteger('l_ma');
-            $table->foreign('l_ma')->references('l_ma')->on('l')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('l_ma')->references('l_ma')->on('loai')->onDelete('cascade')->onUpdate('cascade');
          });
     }
 

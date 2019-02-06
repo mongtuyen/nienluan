@@ -25,8 +25,7 @@ Danh sách người dùng
             <th>Ngày sinh</th>
             <th>Địa chỉ</th>
             <th>Điện thoại</th>
-            <td>Sửa</td>
-            <td>Xoá</td>
+            <td>Tùy chọn</td>
         </tr>
     </thead>
     <tbody>
@@ -42,9 +41,8 @@ Danh sách người dùng
                 <td>{{ $nguoidung->nd_diaChi }}</td>
                 <td>{{ $nguoidung->nd_dienThoai }}</td>
                
-                <td><a href="{{ route('danhsachnguoidung.edit', ['id' => $nguoidung->nd_ma]) }}">Sửa</a></td>
-                <td>
-                    <form method="post" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
+                <td><a href="{{ route('danhsachnguoidung.edit', ['id' => $nguoidung->nd_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
+                <form method="post" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger">Xóa</button>
