@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use DB;
 use App\Baidang;
 use App\Sanpham;
+use Session;
+use Storage;
 use App\Nguoidung;
 class BaidangController extends Controller
 {

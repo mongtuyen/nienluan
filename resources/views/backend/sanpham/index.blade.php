@@ -20,7 +20,7 @@ Danh sách nông sản
             <th>Mã</th>
             <th>Tên nông sản</th>
             <th>Thuộc loại</th>
-            <td>Tùy chọn</td>
+            <th>Tùy chọn</th>
         </tr>
     </thead>
     <tbody>

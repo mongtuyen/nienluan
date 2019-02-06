@@ -6,7 +6,7 @@ Danh sách loại
 
 
 @section('main-content')
-<h2>DANH SÁCH LOẠI</h2>
+<h3>DANH SÁCH LOẠI NÔNG SẢN</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))
@@ -20,8 +20,8 @@ Danh sách loại
         <tr>
             <th>Mã</th>
             <th>Tên</th>
-            <td>Sửa</td>   
-            <td>Xóa</td>  
+            <th>Sửa</th>   
+            <th>Xóa</th>  
         </tr>
     </thead>
     <tbody>

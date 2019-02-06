@@ -22,15 +22,14 @@ Danh sách bài viết
             <th>Loại tin</th>
             <th>Thuộc sản phẩm</th>           
             <th>Tiêu đề</th>
-            <th>Trạng thái sản phẩm</th>
-            
+            <th>Trạng thái sản phẩm</th>           
             <th>Ngày đăng</th>
             <th>Ngày hết hạn</th> 
             <th>Hình</th>           
             <th>Khối lượng</th>
             <th>Giá</th>
             <th>Người viết</th>            
-            <td>Tùy chọn</td>
+            <th>Tùy chọn</th>
             
         </tr>
     </thead>
