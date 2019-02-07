@@ -27,7 +27,7 @@ class LoaiController extends Controller
 
     public function store(Request $request) {
         $loai=new Loai();
-        $loai->l_ma=$request->l_ma;
+        // $loai->l_ma=$request->l_ma;
         $loai->l_ten=$request->l_ten;
         $loai->save();
         Session::flash('alert-info','Thêm thành công!');

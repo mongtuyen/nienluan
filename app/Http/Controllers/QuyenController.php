@@ -29,7 +29,7 @@ class QuyenController extends Controller
      */
     public function create()
     {
-        return view('backdend.quyen.create');
+        return view('backend.quyen.create');
  
     }
 
@@ -70,7 +70,7 @@ class QuyenController extends Controller
     public function edit($id)
     {
         $quyen = Quyen::where("q_ma", $id)->first();
-        return view('backdend.quyen.edit')->with('quyen', $quyen);
+        return view('backend.quyen.edit')->with('quyen', $quyen);
     
     }
 

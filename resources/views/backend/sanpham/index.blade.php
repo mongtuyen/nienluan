@@ -33,11 +33,39 @@ Danh sách nông sản
                 <form method="post" action="{{ route('danhsachsanpham.destroy', ['id' => $sanpham->sp_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger">Xóa</button>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
+                      <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+
+                      <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Cảnh báo</h4>
+              </div>
+              <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+                      
+                      <!-- <button type="submit" class="btn btn-danger">Xóa</button>  -->
                     </form>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+
+
+
 @endsection

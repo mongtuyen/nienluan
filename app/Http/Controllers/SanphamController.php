@@ -30,9 +30,12 @@ class SanphamController extends Controller
     public function create()
     {
         $ds_loai = Loai::all(); 
-        return view('backend.sanpham.create')
-            ->with('danhsachloai', $ds_loai);
-   
+        return view('backend.sanpham.create',['danhsachloai'=>$ds_loai]);
+         
+       // return view('backend.sanpham.create')
+         //   ->with('danhsachloai', $ds_loai);
+        //return view('backend.baidang.create',['danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
+    
     }
 
     /**
@@ -73,9 +76,10 @@ class SanphamController extends Controller
     {
         $sanpham = Sanpham::where("sp_ma", $id)->first();
         $ds_loai=Loai::all();
-        return view('backend.sanpham.edit')
-            ->with('sanpham', $sanpham)
-            ->with('danhsachloai',$ds_loai);
+        //return view('backend.sanpham.edit')
+          //  ->with('sanpham', $sanpham)
+            //->with('danhsachloai',$ds_loai);
+            return view('backend.sanpham.edit',['sanpham'=>$sanpham,'danhsachloai'=>$ds_loai]);
     
     }
 

@@ -14,8 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/danhsachloai','LoaiController');
-Route::resource('/danhsachbaidang','BaidangController');
-Route::resource('/danhsachsanpham','SanphamController');
-Route::resource('/danhsachquyen','QuyenController');
-Route::resource('/danhsachnguoidung','NguoidungController');
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+    Route::resource('/danhsachloai','LoaiController');
+    Route::resource('/danhsachbaidang','BaidangController');
+    Route::resource('/danhsachsanpham','SanphamController');
+    Route::resource('/danhsachquyen','QuyenController');
+    Route::resource('/danhsachnguoidung','NguoidungController');
+    
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

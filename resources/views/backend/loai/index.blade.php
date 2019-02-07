@@ -20,8 +20,8 @@ Danh sách loại
         <tr>
             <th>Mã</th>
             <th>Tên</th>
-            <th>Sửa</th>   
-            <th>Xóa</th>  
+            <th>Tùy chọn</th>   
+             
         </tr>
     </thead>
     <tbody>
@@ -30,16 +30,34 @@ Danh sách loại
                 <td>{{ $loai->l_ma }}</td>
                 <td>{{ $loai->l_ten }}</td>
                 <td>
-                <a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}"><button class='btn btn-lg ' style='background-color:transparent;'>
-								<i class="fa fa-pencil"></i></button></a>
-                </td>
-                <td>
+                <a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}" class="btn btn-primary pull-left">Sửa</a></a>
                 <form method="post" action="{{ route('danhsachloai.destroy', ['id' => $loai->l_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        <button class='btn btn-lg ' style='background-color:transparent;'><i class="fa fa-trash"></i></button>
-                </form>
-                </td>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
+                      <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+
+                      <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Cảnh báo</h4>
+              </div>
+              <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+
+                      
             </tr>
         @endforeach
     </tbody>
