@@ -5,6 +5,7 @@ Hiệu chỉnh thông tin người dùng
 @endsection
 
 @section('main-content')
+<h3 align="center">HIỆU CHỈNH NÔNG SẢN</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

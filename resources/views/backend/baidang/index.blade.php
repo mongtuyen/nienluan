@@ -5,7 +5,7 @@ Danh sách bài viết
 @endsection
 
 @section('main-content')
-<h2>DANH SÁCH BÀI VIẾT</h2>
+<h3 align="center">DANH SÁCH BÀI VIẾT</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))
@@ -44,7 +44,7 @@ Danh sách bài viết
                     {{'Tin mua'}}
                     @endif
                 </td>
-                <td>{{$baidang->thocSanPham->sp_ten}}</td>
+                <td>{{$baidang->thuocSanPham->sp_ten}}</td>
                 <td>{{ $baidang->bd_tieuDe }}</td>  
                 <td>{{ $baidang->bd_trangThaisp }}</td>
                 <td>
@@ -98,3 +98,23 @@ Danh sách bài viết
 </table>
 {{$danhsachbaidang->links()}}
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               

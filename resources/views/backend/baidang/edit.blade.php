@@ -12,6 +12,7 @@ Hiệu chỉnh bài viết
 @endsection
 
 @section('main-content')
+<h3 align="center">HIỆU CHỈNH BÀI ĐĂNG</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

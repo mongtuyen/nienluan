@@ -6,7 +6,7 @@ Danh sách loại
 
 
 @section('main-content')
-<h3>DANH SÁCH LOẠI NÔNG SẢN</h3>
+<h3 align="center">DANH SÁCH LOẠI NÔNG SẢN</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))

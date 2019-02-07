@@ -12,6 +12,7 @@ Thêm mới bài viết
 @endsection
 
 @section('main-content')
+<h3 align="center">THÊM BÀI ĐĂNG</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -22,7 +23,7 @@ Thêm mới bài viết
     </div>
 @endif
 
-<form method="post" action="{{ route('danhsachbaidang.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('danhsachtin.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="bd_ma">Mã</label>

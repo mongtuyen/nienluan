@@ -5,6 +5,7 @@ Hiệu chỉnh quyền
 @endsection
 
 @section('main-content')
+<h3 align="center">HIỆU CHỈNH QUYỀN</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

@@ -6,7 +6,7 @@ Danh sách quyền
 
 
 @section('main-content')
-<h2>DANH SÁCH QUYỀN</h2>
+<h3 align="center">DANH SÁCH QUYỀN</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))

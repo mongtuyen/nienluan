@@ -5,6 +5,7 @@ Thêm mới quyền
 @endsection
 
 @section('main-content')
+<h3 align="center">THÊM VAI TRÒ</h3>
 <form id="frmThemQ" method="post" action="{{route('danhsachquyen.store')}}">
     {{csrf_field()}}
     <div class="form-group">

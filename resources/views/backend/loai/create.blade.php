@@ -5,6 +5,7 @@ Thêm mới loại nông sản
 @endsection
 
 @section('main-content')
+<h3 align="center">THÊM LOẠI NÔNG SẢN</h3>
 <form id="frmThemloai" method="post" action="{{route('danhsachloai.store')}}">
 {{csrf_field()}}
     <div class="form-group">

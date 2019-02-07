@@ -5,6 +5,7 @@ Thêm mới mặt hàng nông sản
 @endsection
 
 @section('main-content')
+<h3 align="center">THÊM NÔNG SẢN</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

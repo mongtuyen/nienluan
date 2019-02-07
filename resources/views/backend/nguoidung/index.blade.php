@@ -5,7 +5,7 @@ Danh sách người dùng
 @endsection
 
 @section('main-content')
-<h3>DANH SÁCH NGƯỜI DÙNG</h3>
+<h3 align="center">DANH SÁCH NGƯỜI DÙNG</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
       @if(Session::has('alert-' . $msg))
