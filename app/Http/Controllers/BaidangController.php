@@ -18,9 +18,13 @@ class BaidangController extends Controller
      */
     public function index()
     {
+        $ds_sanpham=Sanpham::all();
+        $ds_nguoidung=Nguoidung::all();
         $ds_baidang = Baidang::paginate(5);
         return view('backend.baidang.index')
-            ->with('danhsachbaidang', $ds_baidang);
+            ->with('danhsachbaidang', $ds_baidang)
+            ->with('danhsachsanpham',$ds_sanpham)
+            ->with('danhsachnguoidung',$ds_nguoidung);
        
     }
 
@@ -34,7 +38,9 @@ class BaidangController extends Controller
         //$ds_linhvuc=Linhvuc::all();
         $ds_sanpham = Sanpham::all();
         $ds_nguoidung = Nguoidung::all();
-        return view('backend.baidang.create',['danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
+        return view('backend.baidang.create')
+        ->with('danhsachsanpham',$ds_sanpham)
+        ->with('danhsachnguoidung',$ds_nguoidung);
     
     }
 
@@ -46,18 +52,17 @@ class BaidangController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $request->validate([
+            'bd_hinh' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
+            // Cú pháp dùng upload nhiều file
+            //'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
+        ]);
+        try{
         $baidang=new Baidang();
         $baidang->bd_ma=$request->bd_ma;
         $baidang->bd_tieuDe=$request->bd_tieuDe;
         $baidang->bd_ngayDang=$request->bd_ngayDang;
-        $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
-        $baidang->bd_trangThaisp=$request->bd_trangThaisp;
         $baidang->bd_noiDung=$request->bd_noiDung;
-        $baidang->bd_gia=$request->bd_gia;
-        $baidang->bd_khoiLuong=$request->bd_khoiLuong;
-        $baidang->bd_loai=$request->bd_loai;
-        $baidang->nd_ma=$request->nd_ma;
-        $baidang->sp_ma=$request->sp_ma;
         if($request->hasFile('bd_hinh'))
         {
             $file = $request->bd_hinh;
@@ -71,9 +76,22 @@ class BaidangController extends Controller
         else{
             $baidang->bd_hinh="";
         }
+        $baidang->bd_khoiLuong=$request->bd_khoiLuong;
+        $baidang->bd_gia=$request->bd_gia;
+        $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
+        $baidang->bd_trangThaisp=$request->bd_trangThaisp;
+        $baidang->bd_loai=$request->bd_loai;
+        $baidang->nd_ma=$request->nd_ma;
+        $baidang->sp_ma=$request->sp_ma;
         $baidang->save();
         Session::flash('alert-info','Thêm thành công!');
         return redirect()->route('danhsachbaidang.index');
+    }catch(QueryException $ex)
+    {
+        return response([
+            'error' => true, 'message' => $ex->getMessage()
+        ], 500);
+    }
     
     }
 
@@ -99,8 +117,10 @@ class BaidangController extends Controller
         $baidang = Baidang::where("bd_ma",  $id)->first();
         $ds_nguoidung = Nguoidung::all();
         $ds_sanpham=Sanpham::all();
-        return view('backend.baidang.edit',['baidang'=>$baidang,'danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
-    
+        return view('backend.baidang.edit')
+            ->with('baidang', $baidang)
+            ->with('danhsachsanpham',$ds_sanpham)
+            ->with('danhsachnguoidung',$ds_nguoidung);
     }
 
     /**

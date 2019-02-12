@@ -20,6 +20,14 @@ Thêm mới mặt hàng nông sản
     {{ csrf_field() }}
     <div class="form-group">
         <label for="l_ma">Loại nông sản</label>
+        <!-- <div class="col-md-5">
+			@foreach ($danhsachloai as $loai)
+            	<label class="fancy-radio">
+					<input name="l_ma" id="l_ma" value="{{ $loai->l_ma }}" type="radio">
+						<span><i></i>{{ $loai->l_ten }}</span>
+				</label>
+            @endforeach
+		</div> -->
         <select name="l_ma" class="form-control">
             @foreach($danhsachloai as $loai)
                 @if(old('l_ma') == $loai->l_ma)

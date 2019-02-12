@@ -10,7 +10,7 @@ class Baidang extends Model
     protected $table        = 'baidang';
     protected $fillable     = ['bd_tieuDe','bd_ngayDang','bd_ngayHetHan','bd_hinh','bd_noiDung','bd_khoiLuong','bd_gia','bd_trangThaisp','bd_loai','nd_ma','sp_ma'];
     protected $guarded      = ['bd_ma'];
-    protected $primaryKey   = ['bd_ma'];
+    protected $primaryKey   = 'bd_ma';
     protected $dates        = ['bd_ngayDang','bd_ngayHetHan'];
     protected $dateFormat   = 'Y-m-d H:i:s';
 
@@ -21,5 +21,9 @@ class Baidang extends Model
     }
     public function thuocSanPham(){
         return $this->belongsTo('App\Sanpham', 'sp_ma','sp_ma');
+    }
+    public function hinhAnh()
+    {
+        return $this->hasMany('App\Hinhanh', 'bd_ma', 'bd_ma');
     }
 }

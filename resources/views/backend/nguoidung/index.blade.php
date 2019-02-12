@@ -14,6 +14,7 @@ Danh sách người dùng
     @endforeach
 </div>
 <a href="{{ route('danhsachnguoidung.create') }}" class="btn btn-primary">Thêm</a>
+<div class="box">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -42,36 +43,65 @@ Danh sách người dùng
                 <td>{{ $nguoidung->nd_dienThoai }}</td>
                
                 <td><a href="{{ route('danhsachnguoidung.edit', ['id' => $nguoidung->nd_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
-                <form method="post" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
-                        <input type="hidden" name="_method" value="DELETE" />
-                        {{ csrf_field() }}
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
-                      <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+                <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
+                -->
+                <button class="btn btn-danger" data-nd_ma="{{$nguoidung->nd_ma}}" data-toggle="modal" data-target="#delete">Xóa</button>
 
-                      <div class="modal-dialog">
+                <!-- <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title">Cảnh báo</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title">Cảnh báo</h4>
                             </div>
                             <div class="modal-body">
-                       <p>Bạn có chắc chắn muốn xóa?</p>
-                     </div>
-                     <div class="modal-footer">
-                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
-                </div>
-                </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
+                                <p>Bạn có chắc chắn muốn xóa?</p>
+                      
+                            </div>
+                            <div class="modal-footer">
+                                <form method="post" id="delete" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                {{ csrf_field() }}
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
+                                <button type="submit"  class="btn btn-outline">Có, hãy xóa</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
 
-                      </form>
+                     
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+</div>
+
+<div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
+      </div>
+      <form action="{{route('danhsachnguoidung.destroy','test')}}" method="post">
+      		{{method_field('delete')}}
+      		{{csrf_field()}}
+	      <div class="modal-body">
+				<p class="text-center">
+					Are you sure you want to delete this?
+				</p>
+	      		<input type="hidden" name="nd_ma" id="nd_ma" value="">
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-outline" data-dismiss="modal">No, Cancel</button>
+	        <button type="submit" class="btn btn-outline">Yes, Delete</button>
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection

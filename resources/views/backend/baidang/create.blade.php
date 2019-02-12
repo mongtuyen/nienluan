@@ -23,21 +23,29 @@ Thêm mới bài viết
     </div>
 @endif
 
-<form method="post" action="{{ route('danhsachtin.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('danhsachbaidang.store') }}" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="bd_ma">Mã</label>
         <input type="text" class="form-control" id="bd_ma" name="bd_ma">
     </div>
 
+   
+    <label for="bd_loai">Loại tin</label>
     <div class="form-group">
-        <label for="bd_loaiTin">Loại tin</label>
-        <label class ="radio-inline">
-            <input name="Tinmua" value="1" checked="" type="radio">Tin mua  
+        <label class="fancy-radio">
+            <input name="bd_loai" value="1" type="radio" id="bd_loai" checked>
+                <span><i></i>Tin mua</span>
         </label>
-        <label class ="radio-inline">
-            <input name="Tinban" value="2" checked="" type="radio">Tin bán
+        <label class="fancy-radio">
+            <input name="bd_loai" value="2" type="radio" id="bd_loai">
+            <span><i></i>Tin bán</span>
         </label>
+    
+    <!-- <select name="bd_loaiTin" class="form-control">
+        <option value="1" {{ old('bd_loaiTin') == 1 ? "selected" : "" }}>Tin mua</option>
+        <option value="2" {{ old('bd_loaiTin') == 2 ? "selected" : "" }}>Tin bán</option>
+    </select> -->
     </div>
     <div class="form-group">
         <label for="sp_ma">Thuộc sản phẩm</label>
@@ -53,9 +61,9 @@ Thêm mới bài viết
     </div>
     <div class="form-group">
         <label for="bd_tieuDe">Tiêu đề</label>
-        <input type="text" class="form-control" id="bd_tieuDe" name="bd_tieuDe">
+        <input type="text" class="form-control" id="bd_tieuDe" name="bd_tieuDe" required>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="bd_trangThaisp">Trạng thái sản phẩm</label>
         <label class ="radio-inline">
             <input name="thuhoach" value="1" checked="" type="radio">Đã thu hoạch  
@@ -63,6 +71,25 @@ Thêm mới bài viết
         <label class ="radio-inline">
             <input name="chuathuhoach" value="2" checked="" type="radio">Chưa thu hoạchs
         </label>
+    </div> -->
+    <label for="bd_trangThaisp">Trạng thái sản phẩm</label>
+    <div class="form-group">
+        
+    <!-- <select name="bd_trangThaisp" class="form-control">
+        <option value="1" {{ old('bd_trangThaisp') == 1 ? "selected" : "" }}>Đã thu hoạch</option>
+        <option value="2" {{ old('bd_trangThaisp') == 2 ? "selected" : "" }}>Chưa thu hoạch</option>
+    </select> -->
+    
+		<label class="fancy-radio">
+            <input name="bd_trangThaisp" value="1" type="radio" id="bd_trangThaisp" checked>
+                <span><i></i>Đã thu hoạch</span>
+        </label>
+        <label class="fancy-radio">
+            <input name="bd_trangThaisp" value="2" type="radio" id="bd_trangThaisp">
+            <span><i></i>Chưa thu hoạch</span>
+        </label>
+   
+
     </div>
     <div class="form-group">
         <label for="bd_noiDung">Nội dung</label>
@@ -74,6 +101,14 @@ Thêm mới bài viết
     
     <div class="form-group">
         <label for="nd_ma">Người đăng</label>
+        <!-- <div class="col-md-5">
+			@foreach ($danhsachnguoidung as $nguoidung)
+            	<label class="fancy-radio">
+					<input name="nd_ma" id="nd_ma" value="{{ $nguoidung->nd_ma }}" type="radio">
+					<span><i></i>{{ $nguoidung->nd_ten }}</span>
+				</label>
+            @endforeach
+		</div> -->
         <select name="nd_ma" class="form-control">
             @foreach($danhsachnguoidung as $nguoidung)
                 @if(old('nd_ma') == $nguoidung->nd_ma)
@@ -131,7 +166,7 @@ Thêm mới bài viết
 
 <script>
     $(document).ready(function() {
-        $("#bv_hinh").fileinput({
+        $("#bd_hinh").fileinput({
             theme: 'fas',
             showUpload: false,
             showCaption: false,
@@ -140,7 +175,8 @@ Thêm mới bài viết
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             overwriteInitial: false
         });
-        $("#bv_hinhanhlienquan").fileinput({
+        
+        $("#bd_hinhanhlienquan").fileinput({
             theme: 'fas',
             showUpload: false,
             showCaption: false,
@@ -150,14 +186,6 @@ Thêm mới bài viết
             overwriteInitial: false,
             allowedFileExtensions: ["jpg", "gif", "png", "txt"]
         });
-           $("#lv_ma").change(function(){
-                var lv_ma=$(this).val();
-                $.get("/admin/ajax/chude/"+lv_ma,function(data){
-                   //alert(data);
-                   $("#cd_ma").html(data);
-                });
-            });
-        
     });
 </script>
 
@@ -166,25 +194,10 @@ Thêm mới bài viết
 <script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
 
-<!-- <script>
+<script>
 $(document).ready(function(){
     
 });
-</script> -->
+</script>
 
-@endsection
-<!--AJAX-->
-@section('script')
-    <script>
-        $(document).ready(function(){
-            //alert("chvb");
-            $("lv_ma").change(function(){
-                var lv_ma=$(this).val();
-                $.get("admin/ajax/chude/"+lv_ma,function(data){
-                   //alert(data);
-                   $("#cd_ma").html(data);
-                });
-            });
-        });
-    </script>
 @endsection

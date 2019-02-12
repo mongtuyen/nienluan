@@ -26,11 +26,13 @@ Hiệu chỉnh bài viết
 <form method="post" action="{{ route('danhsachbaidang.update', ['id' => $baidang->bd_ma]) }}"> 
     <input type="hidden" name="_method" value="PUT" />
     {{ csrf_field() }}
+    <div class="form-group">
     <label for="bd_loaiTin">Loại tin</label>
     <select name="bd_loaiTin" class="form-control">
         <option value="1" {{ old('bd_loaiTin', $baidang->bd_loaiTin) == 1 ? "selected" : "" }}>Tin mua</option>
         <option value="2" {{ old('bd_loaiTin', $baidang->bd_loaiTin) == 2 ? "selected" : "" }}>Tin bán</option>
     </select>
+    </div>
     <div class="form-group">
         <label for="sp_ma">Thuộc sản phẩm</label>
         <select name="sp_ma" class="form-control">
@@ -48,24 +50,38 @@ Hiệu chỉnh bài viết
         <label for="bd_tieuDe">Tiêu đề</label>
         <input type="text" class="form-control" id="bd_tieuDe" name="bd_tieuDe" value="{{ $baidang->bd_tieuDe }}" placeholder="Nhập tiêu đề">
     </div>
+    <div class="form-group">
     <label for="bd_trangThaisp">Trạng thái sản phẩm</label>
     <select name="bd_trangThaisp" class="form-control">
         <option value="1" {{ old('bd_trangThaisp', $baidang->bd_trangThaisp) == 1 ? "selected" : "" }}>Đã thu hoạch</option>
         <option value="2" {{ old('bd_trangThaisp', $baidang->bd_trangThaisp) == 2 ? "selected" : "" }}>Gần thu hoạch</option>
     </select>
+    </div>
     <div class="form-group">
         <label for="nd_ma">Người đăng</label>
         <select name="nd_ma" class="form-control">
             @foreach($danhsachnguoidung as $nguoidung)
                 @if($nguoidung->nd_ma == $nguoidung->nd_ma)
-                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_ten }}</option>
+                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_hoTen }}</option>
                 @else
-                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_ten }}</option>
+                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_hoTten }}</option>
                 @endif
             @endforeach
         </select>
     </div>
 
+    <div class="form-group">
+        <label for="sp_ma">Thuộc sản phẩm</label>
+        <select name="sp_ma" class="form-control">
+            @foreach($danhsachsanpham as $sanpham)
+                @if($sanpham->sp_ma == $sanpham->sp_ma)
+                <option value="{{ $sanpham->sp_ma }}" selected>{{ $sanpham->sp_ten }}</option>
+                @else
+                <option value="{{ $sanpham->sp_ma }}">{{ $sanpham->sp_ten }}</option>
+                @endif
+            @endforeach
+        </select>
+    </div>
    
 
     <div class="form-group">
@@ -107,7 +123,7 @@ Hiệu chỉnh bài viết
 
 <script>
     $(document).ready(function() {
-        $("#bv_hinh").fileinput({
+        $("#bd_hinh").fileinput({
             theme: 'fas',
             showUpload: false,
             showCaption: false,
@@ -126,7 +142,7 @@ Hiệu chỉnh bài viết
             initialPreviewConfig: [
                 {
                     caption: "{{ $baidang->bd_hinh }}", 
-                    size: {{ Storage::exists('public/photos/' . $baidang->bv_hinh) ? Storage::size('public/photos/' . $baidang->bd_hinh) : 0 }}, 
+                    size: {{ Storage::exists('public/photos/' . $baidang->bd_hinh) ? Storage::size('public/photos/' . $baidang->bd_hinh) : 0 }}, 
                     width: "120px", 
                     url: "{$url}", 
                     key: 1

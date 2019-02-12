@@ -161,5 +161,27 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
      @yield('custom-scripts')
+<script src="{{asset('js/app.js')}}"></script>
+
+
+     <script>  
+  $('#edit').on('show.bs.modal', function (event) {
+    console.log('open')
+      var button = $(event.relatedTarget) 
+      var l_ten = button.data('l_ten') 
+      var l_ma = button.data('l_ma') 
+      var modal = $(this)
+      modal.find('.modal-body #l_ten').val(l_ten);
+      modal.find('.modal-body #l_ma').val(l_ma);
+})
+  $('#delete').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) 
+      var l_ma = button.data('l_ma') 
+      var nd_ma = button.data('nd_ma') 
+      var modal = $(this)
+      modal.find('.modal-body #l_ma').val(l_ma);
+      modal.find('.modal-body #nd_ma').val(nd_ma);
+})
+</script>
 </body>
 </html>

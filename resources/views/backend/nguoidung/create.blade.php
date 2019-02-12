@@ -4,7 +4,7 @@
 Thêm mới người dùng
 @endsection
 @section('custom-css')
-<h3 align="center">THÊM NGƯỜI DÙNG</h3>
+
 <!-- Các css dành cho thư viện bootstrap-fileinput -->
 <link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
@@ -12,6 +12,7 @@ Thêm mới người dùng
 @endsection
 
 @section('main-content')
+<h3 align="center">THÊM NGƯỜI DÙNG</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

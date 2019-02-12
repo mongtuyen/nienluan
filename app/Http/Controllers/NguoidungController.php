@@ -122,13 +122,16 @@ class NguoidungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
+        //dd($request->nd_ma);
+        $nguoidung = Nguoidung::findOrFail($request->nd_ma);
         $nguoidung->delete();
+        // $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
+        // $nguoidung->delete();
 
-        Session::flash('alert-danger', 'Xoá thành công!');
-        return redirect()->route('danhsachnguoidung.index');
+       // Session::flash('alert-danger', 'Xoá thành công!');
+       return redirect()->route('danhsachnguoidung.index');
    
     }
 }

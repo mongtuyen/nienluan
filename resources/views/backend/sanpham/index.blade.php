@@ -14,6 +14,10 @@ Danh sách nông sản
     @endforeach
 </div>
 <a href="{{ route('danhsachsanpham.create') }}" class="btn btn-primary">Thêm</a>
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+ 	Thêm
+</button> -->
+<div class="box">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -64,7 +68,7 @@ Danh sách nông sản
         @endforeach
     </tbody>
 </table>
-
+</div>
 
 
 

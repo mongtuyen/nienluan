@@ -13,7 +13,21 @@ Danh sách bài viết
       @endif
     @endforeach
 </div>
+<div>
 <a href="{{ route('danhsachbaidang.create') }}" class="btn btn-primary">Thêm</a>
+
+  <div class="col-sm-6">
+		<div class="input-group stylish-input-group">
+			<input type="text" name="country_name" id="country_name" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-search"></span>
+				</span>
+
+		</div>
+	</div>
+</div>
+
+<div class="box">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -36,28 +50,27 @@ Danh sách bài viết
         @foreach($danhsachbaidang as $baidang)
             <tr>
                 <td>{{ $baidang->bd_ma }}</td>
-                <td>{{ $baidang->bd_loaiTin }}</td>
+                <td><img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" class="img-list" /></td>
+                
                 <td>
-                    @if($baidang->bd_loaiTin==1)
-                    {{'Tin bán'}}
-                    @else
+                    @if($baidang->bd_loai==1)
                     {{'Tin mua'}}
+                    @else
+                    {{'Tin bán'}}
                     @endif
                 </td>
                 <td>{{$baidang->thuocSanPham->sp_ten}}</td>
                 <td>{{ $baidang->bd_tieuDe }}</td>  
-                <td>{{ $baidang->bd_trangThaisp }}</td>
                 <td>
                     @if($baidang->bd_trangThaisp==1)
                     {{'Đã thu hoạch'}}
                     @else
-                    {{'Gần thu hoạch'}}
+                    {{'Chưa thu hoạch'}}
                     @endif
                 </td>
                 <td>{{ $baidang->bd_ngayDang }}</td>
                 <td>{{ $baidang->bd_ngayHetHan }}</td>
                
-                <td><img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" class="img-list" /></td>
                 <td>{{ $baidang->bd_khoiLuong }}</td>
                 <td>{{ $baidang->bd_gia }}</td>
                 <td>{{$baidang->nguoidung->nd_hoTen}}</td>
@@ -66,7 +79,9 @@ Danh sách bài viết
                 <form method="post" action="{{ route('danhsachbaidang.destroy', ['id' => $baidang->bd_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
+                        <button onclick="return confirm('Bạn Chắc Chắn Muốn Xóa?')" class="btn btn-danger">Xóa</button></td>
+					      
+                        <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
                       <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
 
                       <div class="modal-dialog">
@@ -84,10 +99,10 @@ Danh sách bài viết
                 <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
               </div>
             </div>
-            <!-- /.modal-content -->
+          
           </div>
-          <!-- /.modal-dialog -->
-        </div>
+        
+        </div> -->
 
                       
                     </form>
@@ -96,6 +111,7 @@ Danh sách bài viết
         @endforeach
     </tbody>
 </table>
+</div>
 {{$danhsachbaidang->links()}}
 @endsection
 
