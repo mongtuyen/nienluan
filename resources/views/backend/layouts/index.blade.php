@@ -28,6 +28,7 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  
   <link rel="stylesheet" href="{{asset('css/custom-styles.css')}}">
   @yield('custom-css')
 </head>
@@ -59,7 +60,7 @@
         | Your Page Content Here |
         -------------------------->
         
-    @yield('main-content')
+      @yield('main-content')
     </section>
     <!-- /.content -->
     <!--<a href="{{route('danhsachloai.create')}}">Them loai</a>-->
@@ -156,6 +157,8 @@
 <script src="{{asset('theme/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('theme/adminlte/js/adminlte.min.js')}}"></script>
+
+<script type="text/javascript" language="javascript" src="{{asset('theme/adminlte/bower_components/ckeditor/ckeditor.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

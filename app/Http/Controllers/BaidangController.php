@@ -52,11 +52,11 @@ class BaidangController extends Controller
      */
     public function store(Request $request)
     {
-        $validation = $request->validate([
-            'bd_hinh' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
-            // Cú pháp dùng upload nhiều file
-            //'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
-        ]);
+        // $validation = $request->validate([
+        //     'bd_hinh' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
+        //     // Cú pháp dùng upload nhiều file
+        //     //'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
+        // ]);
         try{
         $baidang=new Baidang();
         $baidang->bd_ma=$request->bd_ma;
@@ -182,5 +182,48 @@ class BaidangController extends Controller
         Session::flash('alert-info', 'Xóa thành công!');
         return redirect()->route('danhsachbaidang.index');
     
+    }
+    public function printmua()
+    {
+        $ds_sanpham = Sanpham::all();
+        $ds_nguoidung    = Nguoidung::all();
+        $ds_baidang    = Baidang::where('bd_loai','like',"1")->paginate(5);
+        
+        $data = [
+            'danhsachsanpham' => $ds_sanpham,
+            'danhsachbaidang'    => $ds_baidang,
+            'danhsachnguoidung'    => $ds_nguoidung,
+        ];
+        return view('backend.baidang.printmua')
+            ->with('danhsachbaidang', $ds_baidang)
+            ->with('danhsachsanpham', $ds_sanpham)
+            ->with('danhsachnguoidung', $ds_nguoidung);
+    }
+    public function printban()
+    {
+        $ds_sanpham = Sanpham::all();
+        $ds_nguoidung    = Nguoidung::all();
+        $ds_baidang    = Baidang::where('bd_loai','like',"2")->paginate(5);
+        
+        $data = [
+            'danhsachsanpham' => $ds_sanpham,
+            'danhsachbaidang'    => $ds_baidang,
+            'danhsachnguoidung'    => $ds_nguoidung,
+        ];
+        return view('backend.baidang.printban')
+            ->with('danhsachbaidang', $ds_baidang)
+            ->with('danhsachsanpham', $ds_sanpham)
+            ->with('danhsachnguoidung', $ds_nguoidung);
+    }
+    function timkiem(Request $request){
+        $tukhoa=$request->tukhoa;
+        $ds_sanpham = Sanpham::all();
+        $ds_nguoidung    = Nguoidung::all();
+        $ds_baidang= Baidang::where('bd_tieuDe','like',"%tukhoa%")->orWhere('bd_noiDung','like',"%tukhoa%")->take(5)->paginate(5);
+        return view('backend.baidang.timkiem')
+        ->with('danhsachbaidang', $ds_baidang)
+        ->with('tukhoa',$tukhoa)
+        ->with('danhsachsanpham', $ds_sanpham)
+        ->with('danhsachnguoidung', $ds_nguoidung);
     }
 }

@@ -134,4 +134,17 @@ class NguoidungController extends Controller
        return redirect()->route('danhsachnguoidung.index');
    
     }
+    public function print()
+    {
+        $ds_nguoidung = Nguoidung::all();
+        $ds_quyen = Quyen::all();
+        $data = [
+            'danhsachnguoidung' => $ds_nguoidung,
+            'danhsachquyen'=>$ds_quyen,
+        ];
+    //$ds_loai    = Loai::all();
+        return view('backend.nguoidung.print')
+            ->with('danhsachnguoidung', $ds_nguoidung)
+            ->with('danhsachquyen', $ds_quyen);
+    }
 }

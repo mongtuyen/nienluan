@@ -14,6 +14,7 @@ Danh sách người dùng
     @endforeach
 </div>
 <a href="{{ route('danhsachnguoidung.create') }}" class="btn btn-primary">Thêm</a>
+<a href="{{ route('danhsachnguoidung.print') }}" class="btn btn-primary">In</a>
 <div class="box">
 <table class="table table-bordered">
     <thead>
@@ -34,6 +35,11 @@ Danh sách người dùng
             <tr>
                 <td>{{ $nguoidung->nd_ma }}</td>
                 <td>{{ $nguoidung->nd_hoTen }}</td>
+                <td>@if($nguoidung->nd_gioiTinh==1)
+                    {{'Nam'}}
+                    @elseif($nguoidung->nd_gioiTinh==2)
+                    {{'Nữ'}}
+                    @endif</td>
                 <td>{{ $nguoidung->nd_gioiTinh }}</td>
                 <td>{{ $nguoidung->quyen->q_ten }}</td>
                 <td>{{ $nguoidung->nd_email }}</td>
@@ -69,9 +75,7 @@ Danh sách người dùng
                             </div>
                         </div>
                     </div>
-                </div> -->
-
-                     
+                </div> -->                   
                 </td>
             </tr>
         @endforeach

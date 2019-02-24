@@ -16,11 +16,18 @@ Route::get('/', function () {
 });
 Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
     Route::resource('/danhsachloai','LoaiController');
+    Route::get('/danhsachbaidang/printmua', 'BaidangController@printmua')->name('danhsachbaidang.printmua');
+    Route::get('/danhsachbaidang/printban', 'BaidangController@printban')->name('danhsachbaidang.printban');
+    Route::post('timkiem', 'BaidangController@timkiem');
     Route::resource('/danhsachbaidang','BaidangController');
     Route::resource('/danhsachsanpham','SanphamController');
     Route::resource('/danhsachquyen','QuyenController');
+    Route::get('/danhsachnguoidung/print', 'NguoidungController@print')->name('danhsachnguoidung.print');
+   
     Route::resource('/danhsachnguoidung','NguoidungController');
-    
+    Route::get('/tongquan', 'BaocaoController@index')->name('tongquan');
+
+
 });
 
 

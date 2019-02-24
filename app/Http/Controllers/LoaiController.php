@@ -77,13 +77,25 @@ class LoaiController extends Controller
     // }
 
     public function update(Request $request){
+        $messages = [
+		    'required' => 'Bạn chưa nhập tên loại',
+		];
+		$validator = Validator::make($request->all(), [
+            'ten_lsp'     => 'required'
 
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->route('danhsachloai.create')
+                    ->withErrors($validator)
+                    ->withInput();
+        } else {
        $loai = Loai::findOrFail($request->l_ma);
        $loai->update($request->all());
         //return back();
         Session::flash('alert-info', 'Cập nhật thành công!');
         return redirect()->route('danhsachloai.index');
-        
+        }
     }
 
     /**

@@ -37,6 +37,9 @@ Danh sách nông sản
                 <form method="post" action="{{ route('danhsachsanpham.destroy', ['id' => $sanpham->sp_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
+                        <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
+                </form>
+<!-- 					      
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
                       <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
 
@@ -55,14 +58,11 @@ Danh sách nông sản
                 <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
               </div>
             </div>
-            <!-- /.modal-content -->
+          
           </div>
-          <!-- /.modal-dialog -->
+         
         </div>
-
-                      
-                      <!-- <button type="submit" class="btn btn-danger">Xóa</button>  -->
-                    </form>
+ </form> -->
                 </td>
             </tr>
         @endforeach
