@@ -15,8 +15,11 @@ Hiệu chỉnh thông tin người dùng
         </ul>
     </div>
 @endif
-
+<div  class="col-md-6">
+<div  class="box box-primary">
+  
 <form method="post" action="{{ route('danhsachnguoidung.update', ['id' => $nguoidung->nd_ma]) }}" > 
+    <div class="box-body">
     <input type="hidden" name="_method" value="PUT" />
     {{ csrf_field() }}
     <div class="form-group">
@@ -65,8 +68,8 @@ Hiệu chỉnh thông tin người dùng
         <label for="nd_dienThoai">Điện thoại</label>
         <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai" value="{{ old('nd_dienThoai', $nguoidung->nd_dienThoai) }}" placeholder="Nhập tên">
     </div>
-    
-
     <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
 </form>
+</div></div>
 @endsection

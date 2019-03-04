@@ -1,4 +1,3 @@
-
 @extends('backend.layouts.index')
 
 @section('title')
@@ -19,11 +18,11 @@ Danh sách bài viết
 <a href="{{ route('danhsachbaidang.create') }}" class="btn btn-primary">Thêm</a>
 
 <form action="timkiem" method="post" class="navbar-form navbar-left" role="search">
-<input type="hidden" name="_token" value="{{csrf_token()}}";>
-<div class="form-group">
-<input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
-</div>
-<button type="submit" class="btn btn-default">Tìm</button>
+  <input type="hidden" name="_token" value="{{csrf_token()}}";>
+  <div class="form-group">
+  <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
+  </div>
+  <button type="submit" class="btn btn-default">Tìm</button>
 </form>
   <!-- <div class="col-sm-6">
 		<div class="input-group stylish-input-group">
@@ -96,32 +95,7 @@ function doimau($str,$tukhoa){
                         {{ csrf_field() }}
                         
                         <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
-					      
-                        <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
-                      <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-
-                      <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Cảnh báo</h4>
-              </div>
-              <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa?</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
-              </div>
-            </div>
-          
-          </div>
-        
-        </div> -->
-
-                      
-                    </form>
+					      </form>
                 </td>
             </tr>
         @endforeach

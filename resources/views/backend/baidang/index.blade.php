@@ -6,6 +6,7 @@ Danh sách bài viết
 @endsection
 
 @section('main-content')
+
 <h3 align="center">DANH SÁCH BÀI VIẾT</h3>
 <div class="flash-message">
     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -21,7 +22,7 @@ Danh sách bài viết
 <a href="{{ route('danhsachbaidang.printban') }}" class="btn btn-primary">In tin bán</a>
 
 <form action="timkiem" method="post" class="navbar-form navbar-left" role="search">
-<input type="hidden" name="_token" value="{{csrf_token()}}";>
+<input type="hidden" name="_token" value="{{csrf_token()}}">
 <div class="form-group">
 <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
 </div>

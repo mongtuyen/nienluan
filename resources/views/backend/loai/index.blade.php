@@ -14,20 +14,18 @@ Danh sách loại
       @endif
     @endforeach
 </div>
-<!-- <a href="{{ route('danhsachloai.create') }}" class="btn btn-primary">Thêm</a>
-<table class="table table-bordered">
-     -->
+<a href="{{ route('danhsachloai.create') }}" class="btn btn-primary">Thêm</a>
+
+    
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
  	Thêm
-</button>
-<div class="">
-		<div class="box">
-			<div class="box-body">
-				<table class="table table-responsive">
-				
-    <thead>
+</button> -->
+
+<div class="box">
+	<table class="table table-bordered">
+		<thead>
         <tr>
             <th>Mã</th>
             <th>Tên</th>
@@ -40,21 +38,20 @@ Danh sách loại
             <tr>
                 <td>{{ $loai->l_ma }}</td>
                 <td>{{ $loai->l_ten }}</td>
-                <td>
+                <!-- <td>
                 <button class="btn btn-primary pull-left" data-l_ma="{{$loai->l_ma}}" data-l_ten="{{$loai->l_ten}}"
                  data-toggle="modal" data-target="#edit">Sửa</button>
-                 <button class="btn btn-danger" data-l_ma="{{$loai->l_ma}}" data-toggle="modal" data-target="#delete">Xóa</button>
-
-
-
-
-
-                <!-- <td>
+                 <button class="btn btn-danger" data-l_ma="{{$loai->l_ma}}" data-toggle="modal" data-target="#delete">Xóa</button> 
+                -->
+                <td>
                 <a href="{{ route('danhsachloai.edit', ['id' => $loai->l_ma]) }}" class="btn btn-primary pull-left">Sửa</a></a>
                 <form method="post" action="{{ route('danhsachloai.destroy', ['id' => $loai->l_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
-                        {{ csrf_field() }}                        
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
+                        {{ csrf_field() }}  
+                        <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
+					      </form></td>
+                    
+                        <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
                         
                         <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
                           <div class="modal-dialog">
@@ -81,16 +78,16 @@ Danh sách loại
                         </div>
 
 
-                </form> -->
-                </td>
+                </form> 
+                </td> -->
             </tr>
         @endforeach
     </tbody>
 </table>
 </div>
-</div>
 
 
+<!-- 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -160,8 +157,8 @@ Danh sách loại
 	        <button type="submit" class="btn btn-outline">Yes, Delete</button>
 	      </div>
       </form>
-    </div>
-  </div>
-</div>
+    </div> 
+  </div>-->
+
 {{$danhsachloai->links()}}
 @endsection

@@ -15,19 +15,15 @@ Thêm mới mặt hàng nông sản
         </ul>
     </div>
 @endif
-
-<form method="post" action="{{ route('danhsachsanpham.store') }}" enctype="multipart/form-data">
+<div  class="col-md-6">
+<div  class="box box-primary">
+  
+<form method="post" action="{{ route('danhsachsanpham.store') }}">
+    <div class="box-body">
     {{ csrf_field() }}
+    
     <div class="form-group">
         <label for="l_ma">Loại nông sản</label>
-        <!-- <div class="col-md-5">
-			@foreach ($danhsachloai as $loai)
-            	<label class="fancy-radio">
-					<input name="l_ma" id="l_ma" value="{{ $loai->l_ma }}" type="radio">
-						<span><i></i>{{ $loai->l_ten }}</span>
-				</label>
-            @endforeach
-		</div> -->
         <select name="l_ma" class="form-control">
             @foreach($danhsachloai as $loai)
                 @if(old('l_ma') == $loai->l_ma)
@@ -44,5 +40,7 @@ Thêm mới mặt hàng nông sản
     </div>
     
     <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
 </form>
+</div></div>
 @endsection

@@ -22,8 +22,11 @@ Thêm mới người dùng
         </ul>
     </div>
 @endif
-
+<div  class="col-md-6">
+<div  class="box box-primary">
+  
 <form method="post" action="{{ route('danhsachnguoidung.store') }}" enctype="multipart/form-data">
+    <div class="box-body">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="q_ma">Chức vụ</label>
@@ -75,5 +78,7 @@ Thêm mới người dùng
     </div>
     
     <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
 </form>
+</div></div>
 @endsection

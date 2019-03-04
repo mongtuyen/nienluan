@@ -6,6 +6,27 @@ Thêm mới bài viết
 
 
 @section('main-content')
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+$(function() {
+  $("#tinmua").change(function(){
+    var st= this.checked;
+    if(st){
+      $("#bd_gia").prop("disabled", false);
+      $("#da_thu_hoach").prop("disabled", true);
+      $("#chua_thu_hoach").prop("disabled", true);
+      
+    }
+    else{
+      $("#bd_gia").prop("disabled", false);
+      $("#da_thu_hoach").prop("disabled", false);
+      $("#chua_thu_hoach").prop("disabled", false);
+   }
+  });
+});
+</script> -->
+
 <h3 align="center">THÊM BÀI ĐĂNG</h3>
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -17,25 +38,24 @@ Thêm mới bài viết
     </div>
 @endif
 
-<form method="post" action="{{ route('danhsachbaidang.store') }}" enctype="multipart/form-data">
-    {{ csrf_field() }}
-    <div class="form-group">
-        <label for="bd_ma">Mã</label>
-        <input type="text" class="form-control" id="bd_ma" name="bd_ma">
-    </div>
 
-   
-  
+
+<div  class="col-md-12">
+<div  class="box box-primary">
+<form method="post" action="{{ route('danhsachbaidang.store') }}" enctype="multipart/form-data">
+    <div class="box-body">
+    {{ csrf_field() }}
     <div class="form-group">
         <label for="bd_loai">Loại tin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <label class="fancy-radio">
-            <input name="bd_loai" value="1" type="radio" id="bd_loai" value="{{ old('bd_loai') }}"checked>
-                <span><i></i>Tin mua</span>
-        </label>
-        <label class="fancy-radio">
-            <input name="bd_loai" value="2" type="radio" id="bd_loai" value="{{ old('bd_loai') }}">
+            <input name="bd_loai" value="2" type="radio" id="tinban" value="{{ old('bd_loai') }}" checked>
             <span><i></i>Tin bán</span>
         </label>
+        <label class="fancy-radio">
+            <input name="bd_loai" value="1" type="radio" id="tinmua" value="{{ old('bd_loai') }}">
+                <span><i></i>Tin mua</span>
+        </label>
+        
     </div>
     <!-- <select name="bd_loaiTin" class="form-control">
         <option value="1" {{ old('bd_loaiTin') == 1 ? "selected" : "" }}>Tin mua</option>
@@ -71,11 +91,11 @@ Thêm mới bài viết
     <div class="form-group">
     <label for="bd_trangThaisp">Trạng thái sản phẩm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>    
         <label class="fancy-radio">
-            <input name="bd_trangThaisp" value="1" type="radio" id="bd_trangThaisp" value="{{ old('bd_trangThaisp') }}" checked>
+            <input name="bd_trangThaisp" value="1" type="radio" id="da_thu_hoach" value="{{ old('bd_trangThaisp') }}" checked>
                 <span><i></i>Đã thu hoạch</span>
         </label>
         <label class="fancy-radio">
-            <input name="bd_trangThaisp" value="2" type="radio" id="bd_trangThaisp" value="{{ old('bd_trangThaisp') }}">
+            <input name="bd_trangThaisp" value="2" type="radio" id="chua_thu_hoach" value="{{ old('bd_trangThaisp') }}">
             <span><i></i>Chưa thu hoạch</span>
         </label>
     </div>
@@ -141,9 +161,8 @@ Thêm mới bài viết
         <label for="bd_gia">Giá</label>
         <input type="number" class="form-control" id="bd_gia" name="bd_gia" value="{{ old('bd_gia') }}">
     </div>
-    
-
-    
     <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
 </form>
+</div></div>
 @endsection

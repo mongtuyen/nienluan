@@ -15,8 +15,11 @@ Hiệu chỉnh thông tin người dùng
         </ul>
     </div>
 @endif
-
+<div  class="col-md-6">
+<div  class="box box-primary">
+  
 <form method="post" action="{{ route('danhsachsanpham.update', ['id' => $sanpham->sp_ma]) }}" > 
+    <div class="box-body">
     <input type="hidden" name="_method" value="PUT" />
     {{ csrf_field() }}
     <div class="form-group">
@@ -37,5 +40,7 @@ Hiệu chỉnh thông tin người dùng
     </div>
     
     <button type="submit" class="btn btn-primary">Lưu</button>
+</div>
 </form>
+</div></div>
 @endsection

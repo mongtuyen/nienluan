@@ -57,9 +57,12 @@ class BaidangController extends Controller
         //     // Cú pháp dùng upload nhiều file
         //     //'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
         // ]);
+        $this->validate($request,[
+            'bd_tieuDe' => ['required', 'string'],
+            'bd_noiDung' => ['required'],
+        ]);
         try{
         $baidang=new Baidang();
-        $baidang->bd_ma=$request->bd_ma;
         $baidang->bd_tieuDe=$request->bd_tieuDe;
         $baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_noiDung=$request->bd_noiDung;
@@ -132,8 +135,12 @@ class BaidangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'bd_tieuDe' => ['required', 'string'],
+            'bd_noiDung' => ['required'],
+        ]);
         $baidang = Baidang::where("bd_ma",  $id)->first();
-        $baidang->bd_ma=$request->bd_ma;
+        
         $baidang->bd_tieuDe=$request->bd_tieuDe;
         $baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;

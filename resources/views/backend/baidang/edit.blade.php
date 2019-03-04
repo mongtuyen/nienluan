@@ -17,9 +17,11 @@ Hiệu chỉnh bài viết
         </ul>
     </div>
 @endif
-
+<div  class="col-md-12">
+<div  class="box box-primary">
 <form method="post" action="{{ route('danhsachbaidang.update', ['id' => $baidang->bd_ma]) }}"> 
     <input type="hidden" name="_method" value="PUT" />
+    <div class="box-body">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="bd_Mã">Mã</label>
@@ -105,12 +107,12 @@ Hiệu chỉnh bài viết
         <input type="text" class="form-control" id="bd_ngayHetHan" name="bd_ngayHetHan" value="{{ old('bd_ngayHetHan',$baidang->bd_ngayHetHan) }}" data-mask-datetime>
     </div>
 
-    <!-- <div class="form-group">
+    <div class="form-group">
         <div class="file-loading">
             <label>Hình đại diện</label>
             <input id="sp_hinh" type="file" name="sp_hinh">
         </div>
-    </div> -->
+    </div>
 
     <div class="form-group">
         <label for="bd_khoiLuong">Khối lượng</label>
@@ -122,6 +124,7 @@ Hiệu chỉnh bài viết
     </div>
 
     <button type="submit" class="btn btn-primary">Lưu</button>
-</form>
+</div>
+</form></div></div>
 @endsection
 

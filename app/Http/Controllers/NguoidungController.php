@@ -44,6 +44,13 @@ class NguoidungController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nd_hoTen' => ['required', 'string'],
+            'nd_email' => ['required', 'string', 'email', 'max:255', 'unique:nguoidung'],
+            'nd_taiKhoan' => ['required','string', 'max:20','unique:nguoidung'],
+            'nd_matKhau' => ['required', 'string', 'min:6'],
+            'nd_dienThoai' => ['required', 'numeric', 'min:10'],
+        ]);
         $nguoidung = new Nguoidung();
         $nguoidung->nd_ma = $request->nd_ma;
         $nguoidung->nd_hoTen = $request->nd_hoTen;
@@ -98,6 +105,12 @@ class NguoidungController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nd_hoTen' => ['required', 'string'],
+            'nd_email' => ['required', 'string', 'email', 'max:255'],
+            'nd_matKhau' => ['required', 'string', 'min:6'],
+            'nd_dienThoai' => ['required', 'numeric', 'min:10'],
+        ]);
         $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
         $nguoidung->nd_hoTen = $request->nd_hoTen;
         $nguoidung->nd_taiKhoan = $request->nd_taiKhoan;
@@ -122,16 +135,15 @@ class NguoidungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
         //dd($request->nd_ma);
-        $nguoidung = Nguoidung::findOrFail($request->nd_ma);
+        //$nguoidung = Nguoidung::findOrFail($request->nd_ma);
+        
+        $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
         $nguoidung->delete();
-        // $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
-        // $nguoidung->delete();
-
-       // Session::flash('alert-danger', 'Xoá thành công!');
-       return redirect()->route('danhsachnguoidung.index');
+        Session::flash('alert-danger', 'Xoá thành công!');
+        return redirect()->route('danhsachnguoidung.index');
    
     }
     public function print()

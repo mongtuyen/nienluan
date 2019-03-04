@@ -49,40 +49,19 @@ Danh sách người dùng
                 <td>{{ $nguoidung->nd_dienThoai }}</td>
                
                 <td><a href="{{ route('danhsachnguoidung.edit', ['id' => $nguoidung->nd_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
-                <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
-                -->
-                <button class="btn btn-danger" data-nd_ma="{{$nguoidung->nd_ma}}" data-toggle="modal" data-target="#delete">Xóa</button>
-
-                <!-- <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span></button>
-                                <h4 class="modal-title">Cảnh báo</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Bạn có chắc chắn muốn xóa?</p>
-                      
-                            </div>
-                            <div class="modal-footer">
-                                <form method="post" id="delete" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
-                                <input type="hidden" name="_method" value="DELETE" />
-                                {{ csrf_field() }}
-                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
-                                <button type="submit"  class="btn btn-outline">Có, hãy xóa</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->                   
+                <form method="post" action="{{ route('danhsachnguoidung.destroy', ['id' => $nguoidung->nd_ma]) }}">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ csrf_field() }}  
+                        <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
+					      </form></td>
+                                  
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
 </div>
-
+<!-- 
 <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -107,5 +86,5 @@ Danh sách người dùng
       </form>
     </div>
   </div>
-</div>
+</div> -->
 @endsection

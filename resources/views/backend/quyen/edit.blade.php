@@ -15,8 +15,10 @@ Hiệu chỉnh quyền
         </ul>
     </div>
 @endif
-
+<div  class="col-md-6">
+<div  class="box box-primary">
 <form method="post" action="{{ route('danhsachquyen.update', ['id' => $quyen->q_ma]) }}"> 
+    <div class="box-body">
     <input type="hidden" name="_method" value="PUT" />
     {{ csrf_field() }}
     <div class="form-group">
@@ -26,5 +28,7 @@ Hiệu chỉnh quyền
     
 
     <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
 </form>
+</div></div>
 @endsection

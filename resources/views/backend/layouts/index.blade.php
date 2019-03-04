@@ -167,7 +167,7 @@
 <script src="{{asset('js/app.js')}}"></script>
 
 
-     <script>  
+     <!-- <script>  
   $('#edit').on('show.bs.modal', function (event) {
     console.log('open')
       var button = $(event.relatedTarget) 
@@ -185,6 +185,6 @@
       modal.find('.modal-body #l_ma').val(l_ma);
       modal.find('.modal-body #nd_ma').val(nd_ma);
 })
-</script>
+</script> -->
 </body>
 </html>

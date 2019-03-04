@@ -6,14 +6,11 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Loai;
+use Validator;
 class LoaiController extends Controller
 {
     public function index()
     {
-        // Eloquent Model de lay du lieu
-        //$ds_loai = Loai::all(); // SELECT * FROM cusc_loai
-
-        // Query Builder
         $ds_loai = Loai::paginate(5);
         
         return view('backend.loai.index')
@@ -26,14 +23,16 @@ class LoaiController extends Controller
     }
 
     public function store(Request $request) {
-        Loai::create($request->all());
-        return back();
-        // $loai=new Loai();
-        // // $loai->l_ma=$request->l_ma;
-        // $loai->l_ten=$request->l_ten;
-        // $loai->save();
-        // Session::flash('alert-info','Thêm thành công!');
-        // return redirect()->route('danhsachloai.index');
+        $this->validate($request,
+        ["l_ten"=>"required|unique:loai"],
+        ["l_ten.required"=>"Bạn chưa nhập tên loại"] 
+    );
+        $loai=new Loai();
+        // $loai->l_ma=$request->l_ma;
+        $loai->l_ten=$request->l_ten;
+        $loai->save();
+        Session::flash('alert-info','Thêm thành công!');
+        return redirect()->route('danhsachloai.index');
    
     }
 
@@ -56,47 +55,42 @@ class LoaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     // $validator = Validator::make($request->all(), [
-    //     //     'l_ten' => 'required|unique:cusc_loai|max:60',
-    //    // ]);
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,
+            ["l_ten"=>"required|unique:loai"],
+            ["l_ten.required"=>"Bạn chưa nhập tên loại"] 
+        );
 
-    //     // if ($validator->fails()) {
-    //     //     return redirect(route('danhsachloai.edit', ['id' => $id]))
-    //     //                 ->withErrors($validator)
-    //     //                 ->withInput();
-    //     // }
+        $loai = Loai::where("l_ma", $id)->first();
+        $loai->l_ten = $request->l_ten;
+        $loai->save();
 
-    //     $loai = Loai::where("l_ma", $id)->first();
-    //     $loai->l_ten = $request->l_ten;
-    //     $loai->save();
-
-    //     Session::flash('alert-info', 'Cập nhật thành công!');
-    //     return redirect()->route('danhsachloai.index');
-    // }
-
-    public function update(Request $request){
-        $messages = [
-		    'required' => 'Bạn chưa nhập tên loại',
-		];
-		$validator = Validator::make($request->all(), [
-            'ten_lsp'     => 'required'
-
-        ], $messages);
-
-        if ($validator->fails()) {
-            return redirect()->route('danhsachloai.create')
-                    ->withErrors($validator)
-                    ->withInput();
-        } else {
-       $loai = Loai::findOrFail($request->l_ma);
-       $loai->update($request->all());
-        //return back();
         Session::flash('alert-info', 'Cập nhật thành công!');
         return redirect()->route('danhsachloai.index');
-        }
     }
+
+    // public function update(Request $request){
+    //     $messages = [
+	// 	    'required' => 'Bạn chưa nhập tên loại',
+	// 	];
+	// 	$validator = Validator::make($request->all(), [
+    //         'ten_lsp'     => 'required'
+
+    //     ], $messages);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->route('danhsachloai.create')
+    //                 ->withErrors($validator)
+    //                 ->withInput();
+    //     } else {
+    //    $loai = Loai::findOrFail($request->l_ma);
+    //    $loai->update($request->all());
+    //     //return back();
+    //     Session::flash('alert-info', 'Cập nhật thành công!');
+    //     return redirect()->route('danhsachloai.index');
+    //     }
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -104,22 +98,22 @@ class LoaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     $loai = Loai::where("l_ma",  $id)->first();
-    //     $loai->delete();
-
-    //     Session::flash('alert-danger', 'Xoá dữ liệu thành công!');
-    //     return redirect()->route('danhsachloai.index');
-    // }
-
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-       //dd($request->l_ma);
-        $loai = Loai::findOrFail($request->l_ma);
+        $loai = Loai::where("l_ma",  $id)->first();
         $loai->delete();
-        Session::flash('alert-info', 'Xóa thành công!');
+
+        Session::flash('alert-danger', 'Xoá dữ liệu thành công!');
         return redirect()->route('danhsachloai.index');
+    }
+
+    // public function destroy(Request $request)
+    // {
+    //    //dd($request->l_ma);
+    //     $loai = Loai::findOrFail($request->l_ma);
+    //     $loai->delete();
+    //     Session::flash('alert-info', 'Xóa thành công!');
+    //     return redirect()->route('danhsachloai.index');
         
     }
-}
+

@@ -46,6 +46,11 @@ class SanphamController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,
+        ["sp_ten"=>"required|unique:sanpham"],
+        ["sp_ten.required"=>"Bạn chưa nhập tên nông sản"]
+        
+        );
         $sanpham=new Sanpham();
         $sanpham->sp_ten=$request->sp_ten;
         $sanpham->l_ma = $request->l_ma;
@@ -92,6 +97,11 @@ class SanphamController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,
+        ["sp_ten"=>"required|unique:sanpham"],
+        ["sp_ten.required"=>"Bạn chưa nhập tên nông sản"]
+        
+        );
         $sanpham = Sanpham::where("sp_ma", $id)->first();
         $sanpham->sp_ten = $request->sp_ten;
         $sanpham->l_ma=$request->l_ma;
