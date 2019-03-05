@@ -15,9 +15,10 @@ class CreateHinhanhTable extends Migration
     {
         Schema::create('hinhanh', function (Blueprint $table) {
             $table->engine='InnoDB';
-            $table->increments('ha_ma');
+            $table->unsignedInteger('ha_ma');
             $table->string('ha_ten',255);
             $table->unsignedInteger('bd_ma');
+            $table->primary(['bd_ma', 'ha_ma']);
             $table->foreign('bd_ma')->references('bd_ma')->on('baidang')->onDelete('cascade')->onUpdate('cascade');
      
         });

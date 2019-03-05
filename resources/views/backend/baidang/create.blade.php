@@ -4,6 +4,12 @@
 Thêm mới bài viết
 @endsection
 
+@section('custom-css')
+<!-- Các css dành cho thư viện bootstrap-fileinput -->
+<link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
+<link href="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.css') }}" media="all" rel="stylesheet" type="text/css"/>
+@endsection
 
 @section('main-content')
 
@@ -133,9 +139,7 @@ $(function() {
         </select>
     </div>
 
-    
-    
-    
+      
     <div class="form-group">
         <label for="bd_ngayDang">Ngày đăng</label>
         <input type="text" class="form-control" id="bd_ngayDang" name="bd_ngayDang" value="{{ old('bd_ngayDang') }}" data-mask-datetime>
@@ -145,14 +149,20 @@ $(function() {
         <label for="bd_ngayHetHan">Ngày hết hạn</label>
         <input type="text" class="form-control" id="bd_ngayHetHan" name="bd_ngayHetHan" value="{{ old('bd_ngayHetHan') }}" data-mask-datetime>
     </div>
-    <label>Hình ảnh</label>
+    <label>Hình đại diện</label>
     <div class="form-group">
         <div class="file-loading">
               
-            <input id="bd_hinh" type="file" name="bd_hinh" value="{{ old('bd_hinh') }}">
+            <input id="bd_hinh" type="file" name="bd_hinh">
         </div>
     </div>
-   
+    <label>Hình ảnh liên quan</label>
+    <div class="form-group">
+        <div class="file-loading">
+           
+            <input id="bd_hinhanhlienquan" type="file" name="bd_hinhanhlienquan[]" multiple>
+        </div>
+    </div>
     <div class="form-group">
         <label for="bd_khoiLuong">Khối lượng</label>
         <input type="number" class="form-control" id="bd_khoiLuong" name="bd_khoiLuong" value="{{ old('bd_khoiLuong') }}">
@@ -165,4 +175,51 @@ $(function() {
     </div>
 </form>
 </div></div>
+@endsection
+
+
+@section('custom-scripts')
+<!-- Các script dành cho thư viện bootstrap-fileinput -->
+<script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/js/locales/fr.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/themes/fas/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.js') }}" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#bd_hinh").fileinput({
+            theme: 'fas',
+            showUpload: false,
+            showCaption: false,
+            browseClass: "btn btn-primary btn-lg",
+            fileType: "any",
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            overwriteInitial: false
+        });
+
+        $("#bd_hinhanhlienquan").fileinput({
+            theme: 'fas',
+            showUpload: false,
+            showCaption: false,
+            browseClass: "btn btn-primary btn-lg",
+            fileType: "any",
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            overwriteInitial: false,
+            allowedFileExtensions: ["jpg", "gif", "png", "txt"]
+        });
+    });
+</script>
+
+<!-- Các script dành cho thư viện Mặt nạ nhập liệu InputMask -->
+<script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+    
+});
+</script>
+
 @endsection

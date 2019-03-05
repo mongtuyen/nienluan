@@ -34,13 +34,13 @@
 						<div class="col-lg-7 text-lg-right header-top-right">
 							@if(Auth::check())
 					<div class="user-panel">
-						<a href="{{route('profile.profile')}}"><i class="fas fa-users"></i></i>Xin Chào {{Auth::user()->name}}</a>
-						<!-- <a href="{{route('dang-tin.create')}}"><i class="fas fa-plus-circle"></i> Đăng Tin</a> -->
-						<a href="{{route('dang-nhap.getLogout')}}"><i class="fas fa-sign-out-alt"></i></i> Đăng Xuất</a>					</div>
+						<!-- <a href="#"><i class="fas fa-users"></i></i>Xin Chào {{Auth::user()->name}}</a> -->
+						<!-- <a href="#"><i class="fas fa-plus-circle"></i> Đăng Tin</a> -->
+						<a href="#"><i class="fas fa-sign-out-alt"></i></i> Đăng Xuất</a>					</div>
 					@else
 					<div class="user-panel">
-						<a href="{{route('dang-nhap.getLogin')}}"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
-						<a href="{{route('dang-ky.getRegister')}}"><i class="fas fa-sign-in-alt"></i> Đăng Ký</a>
+						<a href="#"><i class="fas fa-sign-in-alt"></i> Đăng Nhập</a>
+						<a href="#"><i class="fas fa-sign-in-alt"></i> Đăng Ký</a>
 					</div>
 					@endif
 				</div>

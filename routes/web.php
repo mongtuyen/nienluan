@@ -33,15 +33,15 @@ Route::get('/', 'FrontendController@index')->name('frontend.home');
 Route::get('/gioi-thieu', 'FrontendController@about')->name('frontend.about');
 
 /*Route Đăng Nhập*/
-Route::get('/dang-nhap','U_LoginController@getLogin')->name('dang-nhap.getLogin');
-Route::post('/dang-nhap','U_LoginController@postLogin')->name('dang-nhap.postLogin');
-Route::get('/dang-xuat', function(){
-	Auth::logout();
-	return redirect()->route('frontend.home');
-})->name('dang-nhap.getLogout');
-/*Route Đăng Ký*/
-Route::get('/dang-ky','U_RegisterController@getRegister')->name('dang-ky.getRegister');
-Route::post('/dang-ky/xu-ly','U_RegisterController@postRegister')->name('dang-ky.postRegister');
+// Route::get('/dang-nhap','U_LoginController@getLogin')->name('dang-nhap.getLogin');
+// Route::post('/dang-nhap','U_LoginController@postLogin')->name('dang-nhap.postLogin');
+// Route::get('/dang-xuat', function(){
+// 	Auth::logout();
+// 	return redirect()->route('frontend.home');
+// })->name('dang-nhap.getLogout');
+// /*Route Đăng Ký*/
+// Route::get('/dang-ky','U_RegisterController@getRegister')->name('dang-ky.getRegister');
+// Route::post('/dang-ky/xu-ly','U_RegisterController@postRegister')->name('dang-ky.postRegister');
 
 
 Auth::routes();

@@ -75,6 +75,7 @@ Danh sách bài viết
                 <td>{{$baidang->thuocSanPham->sp_ten}}</td>
                 <td>{{ $baidang->bd_tieuDe }}</td>  
                 <td>
+                  @if( $baidang->bd_loai==2)
                     @if($baidang->bd_trangThaisp==1)
                     <span class="label label-success">Đã thu hoạch</span>
                   
@@ -82,6 +83,11 @@ Danh sách bài viết
                     <span class="label label-warning">Chưa thu hoạch</span>
                     
                     @endif
+                  @endif
+                  
+                  @if($baidang->bd_loai==1)
+                    <span> </span>
+                  @endif
                 </td>
                 <td>{{ $baidang->bd_ngayDang }}</td>
                 <td>{{ $baidang->bd_ngayHetHan }}</td>
@@ -96,32 +102,7 @@ Danh sách bài viết
                         {{ csrf_field() }}
                         
                         <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
-					      
-                        <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">Xóa</button> 
-                      <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-
-                      <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Cảnh báo</h4>
-              </div>
-              <div class="modal-body">
-                <p>Bạn có chắc chắn muốn xóa?</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-outline">Có, hãy xóa</button>
-              </div>
-            </div>
-          
-          </div>
-        
-        </div> -->
-
-                      
-                    </form>
+                </form>
                 </td>
             </tr>
         @endforeach

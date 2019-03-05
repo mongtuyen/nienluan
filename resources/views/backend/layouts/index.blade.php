@@ -29,7 +29,7 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   
-  <link rel="stylesheet" href="{{asset('css/custom-styles.css')}}">
+  <link rel="stylesheet" href="{{asset('css/custom-styles.css') }}">
   @yield('custom-css')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -164,7 +164,7 @@
      Both of these plugins are recommended to enhance the
      user experience. -->
      @yield('custom-scripts')
-<script src="{{asset('js/app.js')}}"></script>
+<!-- <script src="{{asset('js/app.js')}}"></script> -->
 
 
      <!-- <script>  

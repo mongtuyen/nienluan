@@ -9,6 +9,7 @@ use App\Sanpham;
 use Session;
 use Storage;
 use App\Nguoidung;
+use App\Hinhanh;
 class BaidangController extends Controller
 {
     /**
@@ -22,9 +23,7 @@ class BaidangController extends Controller
         $ds_nguoidung=Nguoidung::all();
         $ds_baidang = Baidang::paginate(5);
         return view('backend.baidang.index')
-            ->with('danhsachbaidang', $ds_baidang)
-            ->with('danhsachsanpham',$ds_sanpham)
-            ->with('danhsachnguoidung',$ds_nguoidung);
+            ->with('danhsachbaidang', $ds_baidang);
        
     }
 
@@ -52,17 +51,18 @@ class BaidangController extends Controller
      */
     public function store(Request $request)
     {
-        // $validation = $request->validate([
-        //     'bd_hinh' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
-        //     // Cú pháp dùng upload nhiều file
-        //     //'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
-        // ]);
-        $this->validate($request,[
-            'bd_tieuDe' => ['required', 'string'],
-            'bd_noiDung' => ['required'],
+        $validation = $request->validate([
+            'bd_hinh' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
+            'bd_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
+            'bd_tieuDe' => 'required|string',
+            'bd_noiDung' => 'required'
         ]);
-        try{
-        $baidang=new Baidang();
+        // $this->validate($request,[
+        //     'bd_tieuDe' => ['required', 'string'],
+        //     'bd_noiDung' => ['required'],
+        // ]);
+      
+        $baidang = new Baidang();
         $baidang->bd_tieuDe=$request->bd_tieuDe;
         $baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_noiDung=$request->bd_noiDung;
@@ -74,11 +74,10 @@ class BaidangController extends Controller
             $baidang->bd_hinh = $file->getClientOriginalName();
             
             // Chép file vào thư mục "photos"
-            $fileSaved = $file->storeAs('public/photos', $baidang->bd_hinh);
+            $fileSaved = $file->storeAs('public/storage/photos', $baidang->bd_hinh);
         }
-        else{
-            $baidang->bd_hinh="";
-        }
+        
+         
         $baidang->bd_khoiLuong=$request->bd_khoiLuong;
         $baidang->bd_gia=$request->bd_gia;
         $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
@@ -87,14 +86,25 @@ class BaidangController extends Controller
         $baidang->nd_ma=$request->nd_ma;
         $baidang->sp_ma=$request->sp_ma;
         $baidang->save();
+        // Lưu hình ảnh liên quan
+        if($request->hasFile('bd_hinhanhlienquan')) {
+            $files = $request->bd_hinhanhlienquan;
+
+            // duyệt từng ảnh và thực hiện lưu
+            foreach ($request->bd_hinhanhlienquan as $index => $file) {
+                
+                $file->storeAs('public/photos', $file->getClientOriginalName());
+
+                // Tạo đối tưọng HinhAnh
+                $hinhAnh = new Hinhanh();
+                $hinhAnh->bd_ma = $baidang->bd_ma;
+                $hinhAnh->ha_ma = ($index + 1);
+                $hinhAnh->ha_ten = $file->getClientOriginalName();
+                $hinhAnh->save();
+            }
+        }
         Session::flash('alert-info','Thêm thành công!');
         return redirect()->route('danhsachbaidang.index');
-    }catch(QueryException $ex)
-    {
-        return response([
-            'error' => true, 'message' => $ex->getMessage()
-        ], 500);
-    }
     
     }
 
@@ -119,7 +129,7 @@ class BaidangController extends Controller
     {
         $baidang = Baidang::where("bd_ma",  $id)->first();
         $ds_nguoidung = Nguoidung::all();
-        $ds_sanpham=Sanpham::all();
+        $ds_sanpham = Sanpham::all();
         return view('backend.baidang.edit')
             ->with('baidang', $baidang)
             ->with('danhsachsanpham',$ds_sanpham)
@@ -135,12 +145,14 @@ class BaidangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'bd_tieuDe' => ['required', 'string'],
-            'bd_noiDung' => ['required'],
+        $validation = $request->validate([
+           // 'bd_hinh' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            //'bd_hinhanhlienquan.*' => 'image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+            'bd_tieuDe' => 'required|string',
+            'bd_noiDung' => 'required'
         ]);
-        $baidang = Baidang::where("bd_ma",  $id)->first();
         
+        $baidang = Baidang::where("bd_ma",  $id)->first();
         $baidang->bd_tieuDe=$request->bd_tieuDe;
         $baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
@@ -163,9 +175,34 @@ class BaidangController extends Controller
             // Chép file vào thư mục "photos"
             $fileSaved = $file->storeAs('public/photos', $baidang->bd_hinh);
         }
-        else{
-            $baidang->bd_hinh="";
+        // Lưu hình ảnh liên quan
+        if($request->hasFile('bd_hinhanhlienquan')) {
+            // DELETE các dòng liên quan trong table `HinhAnh`
+            foreach($baidang->hinhAnh()->get() as $hinhAnh)
+            {
+                // Xóa hình cũ để tránh rác
+                Storage::delete('public/photos/' . $hinhAnh->ha_ten);
+
+                // Xóa record
+                $hinhAnh->delete();
+            }
+
+            $files = $request->bd_hinhanhlienquan;
+
+            // duyệt từng ảnh và thực hiện lưu
+            foreach ($request->bd_hinhanhlienquan as $index => $file) {
+                
+                $file->storeAs('public/photos', $file->getClientOriginalName());
+
+                // Tạo đối tưọng HinhAnh
+                $hinhAnh = new Hinhanh();
+                $hinhAnh->bd_ma = $baidang->bd_ma;
+                $hinhAnh->ha_ma = ($index + 1);
+                $hinhAnh->ha_ten = $file->getClientOriginalName();
+                $hinhAnh->save();
+            }
         }
+
         $baidang->save();
         Session::flash('alert-info','Cập nhật thành công!');
         return redirect()->route('danhsachbaidang.index');
@@ -181,10 +218,22 @@ class BaidangController extends Controller
     public function destroy($id)
     {
         $baidang = Baidang::where("bd_ma",  $id)->first();
-        if(empty($baiviet) == false)
+        if(empty($baidang) == false)
         {
+            // DELETE các dòng liên quan trong table `HinhAnh`
+            foreach($baidang->hinhAnh()->get() as $hinhAnh)
+            {
+                // Xóa hình cũ để tránh rác
+                Storage::delete('public/photos/' . $hinhAnh->ha_ten);
+
+                // Xóa record
+                $hinhAnh->delete();
+            }
+
+            // Xóa hình cũ để tránh rác
             Storage::delete('public/photos/' . $baidang->bd_hinh);
         }
+
         $baidang->delete();
         Session::flash('alert-info', 'Xóa thành công!');
         return redirect()->route('danhsachbaidang.index');
