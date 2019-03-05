@@ -8,9 +8,9 @@ class Hinhanh extends Model
 {
     public    $timestamps   = false;
     protected $table        = 'hinhanh';
-    //protected $fillable     = ['ha_ten'];
-   // protected $guarded      = ['ha_ma', 'bd_ma'];
-    //protected $primaryKey   = ['ha_ma', 'bd_ma'];
+    protected $fillable     = ['ha_ten'];
+    protected $guarded      = ['ha_ma', 'bd_ma'];
+    protected $primaryKey   = ['ha_ma', 'bd_ma'];
     public    $incrementing = false;
     //  public function baiDang()
     // {

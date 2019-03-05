@@ -74,7 +74,7 @@ class BaidangController extends Controller
             $baidang->bd_hinh = $file->getClientOriginalName();
             
             // Chép file vào thư mục "photos"
-            $fileSaved = $file->storeAs('public/storage/photos', $baidang->bd_hinh);
+            $fileSaved = $file->storeAs('public/photos', $baidang->bd_hinh);
         }
         
          
@@ -146,8 +146,8 @@ class BaidangController extends Controller
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
-           // 'bd_hinh' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
-            //'bd_hinhanhlienquan.*' => 'image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+          // 'bd_hinh' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+          //  'bd_hinhanhlienquan.*' => 'image|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'bd_tieuDe' => 'required|string',
             'bd_noiDung' => 'required'
         ]);
