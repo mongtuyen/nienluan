@@ -18,7 +18,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
     Route::resource('/danhsachloai','LoaiController');
     Route::get('/danhsachbaidang/printmua', 'BaidangController@printmua')->name('danhsachbaidang.printmua');
     Route::get('/danhsachbaidang/printban', 'BaidangController@printban')->name('danhsachbaidang.printban');
-    Route::post('timkiem', 'BaidangController@timkiem');
+    Route::post('/danhsachbaidang/timkiem', 'BaidangController@timkiem')->name('danhsachbaidang.timkiem');
     Route::resource('/danhsachbaidang','BaidangController');
     Route::resource('/danhsachsanpham','SanphamController');
     Route::resource('/danhsachquyen','QuyenController');

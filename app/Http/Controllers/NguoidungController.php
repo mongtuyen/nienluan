@@ -44,13 +44,28 @@ class NguoidungController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nd_hoTen' => ['required', 'string'],
-            'nd_email' => ['required', 'string', 'email', 'max:255', 'unique:nguoidung'],
-            'nd_taiKhoan' => ['required','string', 'max:20','unique:nguoidung'],
-            'nd_matKhau' => ['required', 'string', 'min:6'],
-            'nd_dienThoai' => ['required', 'numeric', 'min:10'],
+        $validation = $request->validate([
+            'nd_hoTen' =>'required|string',
+            'nd_email' => 'required|string|email|max:255|unique',
+            'nd_taiKhoan' =>'required|string|max:20|unique:nguoidung',
+            'nd_matKhau' => 'required|string|min:6',
+            'nd_dienThoai' =>'required|numeric|min:10'
+            
+        ],[
+            'nd_hoTen.required'=>'Bạn chưa nhập họ tên',
+            'nd_email.required'=>'Bạn chưa nhập email',
+            'nd_taiKhoan.required'=>'Bạn chưa nhập tài khoản',
+            'nd_taiKhoan.unique'=>'Tài khoản đã tồn tại',
+            'nd_matKhau.required'=>'Bạn chưa nhập mật khẩu',
+            'nd_dienThoai.required'=>'Bạn chưa nhập số điện thoại'
         ]);
+        // $this->validate($request,[
+        //     'nd_hoTen' => ['required', 'string'],
+        //     'nd_email' => ['required', 'string', 'email', 'max:255', 'unique:nguoidung'],
+        //     'nd_taiKhoan' => ['required','string', 'max:20','unique:nguoidung'],
+        //     'nd_matKhau' => ['required', 'string', 'min:6'],
+        //     'nd_dienThoai' => ['required', 'numeric', 'min:10'],
+        // ]);
         $nguoidung = new Nguoidung();
         $nguoidung->nd_ma = $request->nd_ma;
         $nguoidung->nd_hoTen = $request->nd_hoTen;
@@ -63,7 +78,7 @@ class NguoidungController extends Controller
         $nguoidung->nd_ngaySinh = $request->nd_ngaySinh;
         $nguoidung->q_ma = $request->q_ma;
         $nguoidung->save();
-        Session::flash('alert-info', 'Thêm thảnh công!');
+        Session::flash('alert-info', 'Thêm thành công!');
         return redirect()->route('danhsachnguoidung.index');
     
     }
@@ -105,11 +120,19 @@ class NguoidungController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'nd_hoTen' => ['required', 'string'],
-            'nd_email' => ['required', 'string', 'email', 'max:255'],
-            'nd_matKhau' => ['required', 'string', 'min:6'],
-            'nd_dienThoai' => ['required', 'numeric', 'min:10'],
+        $validation = $request->validate([
+            'nd_hoTen' =>'required|string',
+            'nd_email' => 'required|string|email|max:255',
+            'nd_matKhau' => 'required|string|min:6',
+            'nd_dienThoai' =>'required|numeric|min:10',
+            'nd_taiKhoan' =>'required|string|max:20',
+            
+        ],[
+            'nd_hoTen.required'=>'Bạn chưa nhập họ tên',
+            'nd_email.required'=>'Bạn chưa nhập email',
+            'nd_matKhau.required'=>'Bạn chưa nhập mật khẩu',
+            'nd_taiKhoan.required'=>'Bạn chưa nhập tài khoản',
+            'nd_dienThoai.required'=>'Bạn chưa nhập số điện thoại'
         ]);
         $nguoidung = Nguoidung::where("nd_ma",  $id)->first();
         $nguoidung->nd_hoTen = $request->nd_hoTen;

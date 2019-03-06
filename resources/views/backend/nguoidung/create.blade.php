@@ -25,7 +25,7 @@ Thêm mới người dùng
 <div  class="col-md-6">
 <div  class="box box-primary">
   
-<form method="post" action="{{ route('danhsachnguoidung.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('danhsachnguoidung.store') }}">
     <div class="box-body">
     {{ csrf_field() }}
     <div class="form-group">

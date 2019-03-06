@@ -24,7 +24,7 @@ Hiệu chỉnh bài viết
 @endif
 <div  class="col-md-12">
 <div  class="box box-primary">
-<form method="post" action="{{ route('danhsachbaidang.update', ['id' => $baidang->bd_ma]) }}"> 
+<form method="post" action="{{ route('danhsachbaidang.update', ['id' => $baidang->bd_ma]) }}" enctype="multipart/form-data"> 
     <input type="hidden" name="_method" value="PUT" />
     <div class="box-body">
     {{ csrf_field() }}

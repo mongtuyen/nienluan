@@ -13,32 +13,18 @@ Danh sách bài viết
       @endif
     @endforeach
 </div>
-<div>
+
 
 <a href="{{ route('danhsachbaidang.create') }}" class="btn btn-primary">Thêm</a>
 
 <form action="timkiem" method="post" class="navbar-form navbar-left" role="search">
   <input type="hidden" name="_token" value="{{csrf_token()}}";>
   <div class="form-group">
-  <input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
+    <input type="text" name="tukhoa" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
   </div>
   <button type="submit" class="btn btn-default">Tìm</button>
 </form>
-  <!-- <div class="col-sm-6">
-		<div class="input-group stylish-input-group">
-			<input type="text" name="bd_tieuDe" id="bd_tieuDe" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-search"></span>
-				</span>
 
-		</div>
-	</div>
-</div> -->
-<?php
-function doimau($str,$tukhoa){
-    str_replace($tukhoa,"<span style='color:red;'>$tukhoa</span>",$str);
-}
-?>
 <h4><b>Tìm kiếm : {{$tukhoa}}</b></h4>
 <div class="box">
 <table class="table table-bordered">
@@ -74,13 +60,21 @@ function doimau($str,$tukhoa){
                     @endif
                 </td>
                 <td>{{$baidang->thuocSanPham->sp_ten}}</td>
-                <td>{!!doimau($baidang->bd_tieuDe,$tukhoa)!!}{{ $baidang->bd_tieuDe }}</td>  
+                <td>{{ $baidang->bd_tieuDe }}</td>  
                 <td>
+                @if( $baidang->bd_loai==2)
                     @if($baidang->bd_trangThaisp==1)
-                    {{'Đã thu hoạch'}}
+                    <span class="label label-success">Đã thu hoạch</span>
+                  
                     @else
-                    {{'Chưa thu hoạch'}}
+                    <span class="label label-warning">Chưa thu hoạch</span>
+                    
                     @endif
+                  @endif
+                  
+                  @if($baidang->bd_loai==1)
+                    <span> </span>
+                  @endif
                 </td>
                 <td>{{ $baidang->bd_ngayDang }}</td>
                 <td>{{ $baidang->bd_ngayHetHan }}</td>

@@ -15,29 +15,20 @@ Danh sách bài viết
       @endif
     @endforeach
 </div>
-<div>
+
 
 <a href="{{ route('danhsachbaidang.create') }}" class="btn btn-primary">Thêm</a>
 <a href="{{ route('danhsachbaidang.printmua') }}" class="btn btn-primary">In tin mua</a>
 <a href="{{ route('danhsachbaidang.printban') }}" class="btn btn-primary">In tin bán</a>
-
-<form action="timkiem" method="post" class="navbar-form navbar-left" role="search">
-<input type="hidden" name="_token" value="{{csrf_token()}}">
-<div class="form-group">
-<input type="text" name="tukhoa" class="form-control" placeholder="Tìm kiếm">
-</div>
-<button type="submit" class="btn btn-default">Tìm</button>
+  
+<form style="position:relative;left:580px;" action="{{ route('danhsachbaidang.timkiem') }}" method="post" class="navbar-form navbar-left" role="search">
+  <input type="hidden" name="_token" value="{{csrf_token()}}">
+  <div class="form-group">
+    <input type="text" name="tukhoa" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
+  </div>
+  <button type="submit" class="btn btn-default">Tìm</button>
 </form>
-  <div class="col-sm-6">
-		<div class="input-group stylish-input-group">
-			<input type="text" name="bd_tieuDe" id="bd_tieuDe" class="form-control" placeholder="Nhập từ khóa tìm kiếm" />
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-search"></span>
-				</span>
-
-		</div>
-	</div>
-</div>
+<h4><br></h4>
 
 <div class="box">
 <table class="table table-bordered">

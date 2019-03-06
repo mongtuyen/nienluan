@@ -23,12 +23,13 @@ class LoaiController extends Controller
     }
 
     public function store(Request $request) {
-        $this->validate($request,
-        ["l_ten"=>"required|unique:loai"],
-        ["l_ten.required"=>"Bạn chưa nhập tên loại"] 
-    );
+        $validation = $request->validate([
+            'l_ten' =>'required|string|unique:loai',
+        ],[
+            'l_ten.required'=>'Bạn chưa nhập tên loại nông sản',
+            'l_ten.unique'=>'Loại nông sản đã tồn tại'
+        ]);
         $loai=new Loai();
-        // $loai->l_ma=$request->l_ma;
         $loai->l_ten=$request->l_ten;
         $loai->save();
         Session::flash('alert-info','Thêm thành công!');
@@ -57,11 +58,11 @@ class LoaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,
-            ["l_ten"=>"required|unique:loai"],
-            ["l_ten.required"=>"Bạn chưa nhập tên loại"] 
-        );
-
+        $validation = $request->validate([
+            'l_ten' =>'required|string',
+        ],[
+            'l_ten.required'=>'Bạn chưa nhập tên loại nông sản'
+        ]);
         $loai = Loai::where("l_ma", $id)->first();
         $loai->l_ten = $request->l_ten;
         $loai->save();
@@ -70,27 +71,6 @@ class LoaiController extends Controller
         return redirect()->route('danhsachloai.index');
     }
 
-    // public function update(Request $request){
-    //     $messages = [
-	// 	    'required' => 'Bạn chưa nhập tên loại',
-	// 	];
-	// 	$validator = Validator::make($request->all(), [
-    //         'ten_lsp'     => 'required'
-
-    //     ], $messages);
-
-    //     if ($validator->fails()) {
-    //         return redirect()->route('danhsachloai.create')
-    //                 ->withErrors($validator)
-    //                 ->withInput();
-    //     } else {
-    //    $loai = Loai::findOrFail($request->l_ma);
-    //    $loai->update($request->all());
-    //     //return back();
-    //     Session::flash('alert-info', 'Cập nhật thành công!');
-    //     return redirect()->route('danhsachloai.index');
-    //     }
-    // }
 
     /**
      * Remove the specified resource from storage.

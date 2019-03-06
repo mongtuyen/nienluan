@@ -31,11 +31,6 @@ class SanphamController extends Controller
     {
         $ds_loai = Loai::all(); 
         return view('backend.sanpham.create',['danhsachloai'=>$ds_loai]);
-         
-       // return view('backend.sanpham.create')
-         //   ->with('danhsachloai', $ds_loai);
-        //return view('backend.baidang.create',['danhsachsanpham'=>$ds_sanpham,'danhsachnguoidung'=>$ds_nguoidung]);
-    
     }
 
     /**
@@ -46,18 +41,18 @@ class SanphamController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        ["sp_ten"=>"required|unique:sanpham"],
-        ["sp_ten.required"=>"Bạn chưa nhập tên nông sản"]
-        
-        );
+        $validation = $request->validate([
+            'sp_ten' =>'required|unique:sanpham',
+        ],[
+            'sp_ten.required'=>'Bạn chưa nhập tên nông sản',
+            'sp_ten.unique'=>'Tên nông sản đã tồn tại'
+        ]);
         $sanpham=new Sanpham();
         $sanpham->sp_ten=$request->sp_ten;
         $sanpham->l_ma = $request->l_ma;
         $sanpham->save();
         Session::flash('alert-info', 'Thêm thành công!');
-        return redirect()->route('danhsachsanpham.index');
-    
+        return redirect()->route('danhsachsanpham.index');  
     }
 
     /**
@@ -97,19 +92,17 @@ class SanphamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,
-        ["sp_ten"=>"required|unique:sanpham"],
-        ["sp_ten.required"=>"Bạn chưa nhập tên nông sản"]
-        
-        );
+        $validation = $request->validate([
+            'sp_ten' =>'required|string',
+        ],[
+            'sp_ten.required'=>'Bạn chưa nhập tên nông sản',
+        ]);
         $sanpham = Sanpham::where("sp_ma", $id)->first();
         $sanpham->sp_ten = $request->sp_ten;
         $sanpham->l_ma=$request->l_ma;
         $sanpham->save();
-
         Session::flash('alert-info', 'Cập nhật thành công!');
         return redirect()->route('danhsachsanpham.index');
-
     }
 
     /**
@@ -122,9 +115,7 @@ class SanphamController extends Controller
     {
         $sanpham = Sanpham::where("sp_ma",  $id)->first();
         $sanpham->delete();
-
         Session::flash('alert-danger', 'Xoá dữ liệu thành công!');
-        return redirect()->route('danhsachsanpham.index');
-   
+        return redirect()->route('danhsachsanpham.index');  
     }
 }
