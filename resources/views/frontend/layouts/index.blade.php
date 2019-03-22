@@ -2,882 +2,753 @@
 <html lang="en">
 <head>
   <title>@yield('title')</title>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="description" content="">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="The Estate Teplate">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/styles/bootstrap4/bootstrap.min.css')}}">
-  <link href="{{ asset('theme/theestate/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/plugins/OwlCarousel2-2.2.1/animate.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/styles/main_styles.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ asset('theme/theestate/styles/responsive.css') }}">
-  <!-- Các custom style của frontend -->
-  <link rel="stylesheet" href="{{ asset('theme/theestate/css/custom-styles.css') }}">
-  <!-- Các custom style dành riêng cho từng view -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- Title -->
+  <title>Famie - Farm Services &amp; Organic Food Store Template | Home</title>
+  <!-- Favicon -->
+  <link rel="icon" href="{{asset('theme/farmie/img/core-img/favicon.ico') }}">
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet"  href="{{ asset('theme/farmie/style.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('theme/farmie/css/custom-styles.css') }}">
+
   @yield('custom-css')
 </head>
 
 <body>
 
-<div class="super_container">
-	
-	<!-- Home -->
-	<div class="home">
-		
-		<!-- Home Slider -->
-		<div class="home_slider_container">
-			<div class="owl-carousel owl-theme home_slider">
-
-				<!-- Home Slider Item -->
-				<div class="owl-item home_slider_item">
-					<!-- Image by https://unsplash.com/@aahubs -->
-					<div class="home_slider_background" style="background-image:url(theme/theestate/images/anh2.jpg)"></div>
-					<div class="home_slider_content_container text-center">
-						<div class="home_slider_content">
-							<h1 data-animation-in="flipInX" data-animation-out="animate-out fadeOut">Tìm nông sản</h1>
-						</div>
-					</div>
-				</div>
-
-				<!-- Home Slider Item -->
-				<div class="owl-item home_slider_item">
-					<!-- Image by https://unsplash.com/@aahubs -->
-					<div class="home_slider_background" style="background-image:url(theme/theestate/images/anh6.jpg)"></div>
-					<div class="home_slider_content_container text-center">
-						<div class="home_slider_content">
-							<h1 data-animation-in="flipInX" data-animation-out="animate-out fadeOut">Tìm nông sản</h1>
-						</div>
-					</div>
-				</div>
-
-				<!-- Home Slider Item -->
-				<div class="owl-item home_slider_item">
-					<!-- Image by https://unsplash.com/@aahubs -->
-					<div class="home_slider_background" style="background-image:url(theme/theestate/images/anh4.jpg)"></div>
-					<div class="home_slider_content_container text-center">
-						<div class="home_slider_content">
-							<h1 data-animation-in="flipInX" data-animation-out="animate-out fadeOut">Tìm nông sản</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Home Slider Nav -->
-			<div class="home_slider_nav_left home_slider_nav d-flex flex-row align-items-center justify-content-end">
-				<img src="{{ asset('theme/theestate/images/nav_left.png') }}" alt="">
-			</div>
-
-		</div>
-
-	</div>
+<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+    	<div class="spinner"></div>
+  	</div>
 
 	<!-- Header -->
 
-  @include('frontend.layouts.partials.header')
-  @yield('main-content')
-	<!-- Search Box -->
-
-	<div class="search_box">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-
-					<div class="search_box_outer">
-						<div class="search_box_inner">
-
-							<!-- Search Box Title -->
-							<div class="search_box_title text-center">
-								<div class="search_box_title_inner">
-									<div class="search_box_title_icon d-flex flex-column align-items-center justify-content-center"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<span>search your home</span>
-								</div>
-							</div>
-
-							<!-- Search Arrow -->
-							<div class="search_arrow_box">
-								<div class="search_arrow_box_inner">
-									<div class="search_arrow_circle d-flex flex-column align-items-center justify-content-center"><span>Search it here</span></div>
-									<img src="{{ asset('theme/theestate/images/search_arrow.png') }}" alt="">
-								</div>
-							</div>
-
-							<!-- Search Form -->
-							<form class="search_form" action="#">
-								<div class="search_box_container">
-									<ul class="dropdown_row clearfix">
-										<li class="dropdown_item dropdown_item_5">
-											<div class="dropdown_item_title">Keywords</div>
-											<select name="keywords" id="keywords" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Keyword 1</option>
-												<option>Keyword 2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_5">
-											<div class="dropdown_item_title">Property ID</div>
-											<select name="property_ID" id="property_ID" class="dropdown_item_select">
-												<option>Any</option>
-												<option>ID 1</option>
-												<option>ID 2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_5">
-											<div class="dropdown_item_title">Property Status</div>
-											<select name="property_status" id="property_status" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Status 1</option>
-												<option>Status 2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_5">
-											<div class="dropdown_item_title">Location</div>
-											<select name="property_location" id="property_location" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Location 1</option>
-												<option>Location 2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_5">
-											<div class="dropdown_item_title">Property Type</div>
-											<select name="property_type" id="property_type" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Type 1</option>
-												<option>Type 2</option>
-											</select>
-										</li>
-									</ul>
-								</div>
-
-								<div class="search_box_container">
-									<ul class="dropdown_row clearfix">
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Bedrooms no</div>
-											<select name="bedrooms_no" id="bedrooms_no" class="dropdown_item_select">
-												<option>Any</option>
-												<option>1</option>
-												<option>2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Bathrooms no</div>
-											<select name="bathrooms_no" id="bathrooms_no" class="dropdown_item_select">
-												<option>Any</option>
-												<option>1</option>
-												<option>2</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Min Price</div>
-											<select name="min_price" id="min_price" class="dropdown_item_select">
-												<option>Any</option>
-												<option>$10000</option>
-												<option>$20000</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Max Price</div>
-											<select name="max_price" id="max_price" class="dropdown_item_select">
-												<option>Any</option>
-												<option>$1000000</option>
-												<option>$2000000</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Min Sq Ft</div>
-											<select name="min_sq_ft" id="min_sq_ft" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Any</option>
-												<option>Any</option>
-											</select>
-										</li>
-										<li class="dropdown_item dropdown_item_6">
-											<div class="dropdown_item_title">Max Sq Ft</div>
-											<select name="max_sq_ft" id="max_sq_ft" class="dropdown_item_select">
-												<option>Any</option>
-												<option>Any</option>
-												<option>Any</option>
-											</select>
-										</li>
-										<li class="dropdown_item">
-											<div class="search_button">
-												<input value="search" type="submit" class="search_submit_button">
-											</div>
-										</li>
-									</ul>
-								</div>
-
-								<div class="search_features_container">
-									<div class="search_features_trigger">
-										<a href="#">Specific features</a>
-									</div>
-									<ul class="search_features clearfix">
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_1" class="search_features_cb">
-												<label for="search_features_1">Feature 1</label>
-											</div>	
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_2" class="search_features_cb">
-												<label for="search_features_2">Feature 2</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_3" class="search_features_cb">
-												<label for="search_features_3">Feature 3</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_4" class="search_features_cb">
-												<label for="search_features_4">Feature 4</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_5" class="search_features_cb">
-												<label for="search_features_5">Feature 5</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_6" class="search_features_cb">
-												<label for="search_features_6">Feature 6</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_7" class="search_features_cb">
-												<label for="search_features_7">Feature 7</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_8" class="search_features_cb">
-												<label for="search_features_8">Feature 8</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_9" class="search_features_cb">
-												<label for="search_features_9">Feature 9</label>
-											</div>
-										</li>
-										<li class="search_features_item">
-											<div>
-												<input type="checkbox" id="search_features_10" class="search_features_cb">
-												<label for="search_features_10">Feature 10</label>
-											</div>
-										</li>
-									</ul>
-								</div>
-
-							</form>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>		
-	</div>
-
-	<!-- Featured Properties -->
-
-	<div class="featured">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h3>featured properties</h3>
-						<span class="section_subtitle">See our best offers</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row featured_row">
-				<div class="col-lg-4 featured_card_col">
-
-					<div class="featured_card_container">
-						<div class="card featured_card trans_300">
-							<div class="featured_panel">featured</div>
-							<img class="card-img-top" src="{{ asset('theme/theestate/images/featured_1.jpg') }}" alt="https://unsplash.com/@breather">
-							<div class="card-body">
-								<div class="card-title"><a href="listings_single.html">House in West California</a></div>
-								<div class="card-text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</div>
-								<div class="rooms">
-
-									<div class="room">
-										<span class="room_title">Bedrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/bedroom.png') }}" alt=""></div>
-											<span class="room_number">4</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Bathrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/shower.png') }}" alt=""></div>
-											<span class="room_number">3</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Area</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/area.png') }}" alt=""></div>
-											<span class="room_number">7100 Sq Ft</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Patio</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/patio.png') }}" alt=""></div>
-											<span class="room_number">1</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Garage</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/garage.png') }}" alt=""></div>
-											<span class="room_number">2</span>
-										</div>
-									</div>
-
-								</div>
-
-								<div class="room_tags">
-									<span class="room_tag"><a href="#">Hottub</a></span>
-									<span class="room_tag"><a href="#">Swimming Pool</a></span>
-									<span class="room_tag"><a href="#">Garden</a></span>
-									<span class="room_tag"><a href="#">Patio</a></span>
-									<span class="room_tag"><a href="#">Hard Wood Floor</a></span>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-							<img src="{{ asset('theme/theestate/images/tag.svg') }}" alt="https://www.flaticon.com/authors/lucy-g">
-							<div class="featured_card_box_content">
-								<div class="featured_card_price_title">For Sale</div>
-								<div class="featured_card_price">$540,000</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="col-lg-4 featured_card_col">
-
-					<div class="featured_card_container">
-						<div class="card featured_card trans_300">
-							<div class="featured_panel">featured</div>
-							<img class="card-img-top" src="{{ asset('theme/theestate/images/featured_2.jpg') }}" alt="https://unsplash.com/@astute">
-							<div class="card-body">
-								<div class="card-title"><a href="listings_single.html">House in West California</a></div>
-								<div class="card-text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</div>
-								<div class="rooms">
-
-									<div class="room">
-										<span class="room_title">Bedrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/bedroom.png') }}" alt=""></div>
-											<span class="room_number">4</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Bathrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/shower.png') }}" alt=""></div>
-											<span class="room_number">3</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Area</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/area.png') }}" alt=""></div>
-											<span class="room_number">7100 Sq Ft</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Patio</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/patio.png') }}" alt=""></div>
-											<span class="room_number">1</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Garage</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/garage.png') }}" alt=""></div>
-											<span class="room_number">2</span>
-										</div>
-									</div>
-
-								</div>
-
-								<div class="room_tags">
-									<span class="room_tag"><a href="#">Hottub</a></span>
-									<span class="room_tag"><a href="#">Swimming Pool</a></span>
-									<span class="room_tag"><a href="#">Garden</a></span>
-									<span class="room_tag"><a href="#">Patio</a></span>
-									<span class="room_tag"><a href="#">Hard Wood Floor</a></span>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-							<img src="{{ asset('theme/theestate/images/tag.svg') }}" alt="https://www.flaticon.com/authors/lucy-g">
-							<div class="featured_card_box_content">
-								<div class="featured_card_price_title">For Sale</div>
-								<div class="featured_card_price">$540,000</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="col-lg-4 featured_card_col">
-
-					<div class="featured_card_container">
-						<div class="card featured_card trans_300">
-							<div class="featured_panel">featured</div>
-							<img class="card-img-top" src="{{ asset('theme/theestate/images/featured_3.jpg') }}" alt="https://unsplash.com/@marcusneto">
-							<div class="card-body">
-								<div class="card-title"><a href="listings_single.html">House in West California</a></div>
-								<div class="card-text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</div>
-								<div class="rooms">
-
-									<div class="room">
-										<span class="room_title">Bedrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/bedroom.png') }}" alt=""></div>
-											<span class="room_number">4</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Bathrooms</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/shower.png') }}" alt=""></div>
-											<span class="room_number">3</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Area</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/area.png') }}" alt=""></div>
-											<span class="room_number">7100 Sq Ft</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Patio</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/patio.png') }}" alt=""></div>
-											<span class="room_number">1</span>
-										</div>
-									</div>
-
-									<div class="room">
-										<span class="room_title">Garage</span>
-										<div class="room_content">
-											<div class="room_image"><img src="{{ asset('theme/theestate/images/garage.png') }}" alt=""></div>
-											<span class="room_number">2</span>
-										</div>
-									</div>
-
-								</div>
-
-								<div class="room_tags">
-									<span class="room_tag"><a href="#">Hottub</a></span>
-									<span class="room_tag"><a href="#">Swimming Pool</a></span>
-									<span class="room_tag"><a href="#">Garden</a></span>
-									<span class="room_tag"><a href="#">Patio</a></span>
-									<span class="room_tag"><a href="#">Hard Wood Floor</a></span>
-								</div>
-
-							</div>
-						</div>
-
-						<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-							<img src="{{ asset('theme/theestate/images/tag.svg') }}" alt="https://www.flaticon.com/authors/lucy-g">
-							<div class="featured_card_box_content">
-								<div class="featured_card_price_title">For Sale</div>
-								<div class="featured_card_price">$540,000</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Testimonials -->
-
-	<div class="testimonials">
-		
-	
-
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h3>clients testimonials</h3>
-						<span class="section_subtitle">See our best offers</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					
-					<div class="testimonials_slider_container">
-
-						<!-- Testimonials Slider -->
-						<div class="owl-carousel owl-theme testimonials_slider">
-							
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<p class="testimonials_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque libero. Vivamus vel interdum massa. Mauris ut felis vel diam pretium eleifend vel eu neque. Mauris a condimentum tortor. Cras nec molestie est. Nulla vel facilisis metus. Quisque tempus fermentum enim, in feugiat sem laoreet</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="{{ asset('theme/theestate/images/person.jpg') }}" alt="https://unsplash.com/@remdesigns">
-										</div>
-										<div class="testimonial_name">natalie smith</div>
-										<div class="testimonial_title">Client in California</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<p class="testimonials_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque libero. Vivamus vel interdum massa. Mauris ut felis vel diam pretium eleifend vel eu neque. Mauris a condimentum tortor. Cras nec molestie est. Nulla vel facilisis metus. Quisque tempus fermentum enim, in feugiat sem laoreet</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="{{ asset('theme/theestate/images/person.jpg') }}" alt="https://unsplash.com/@remdesigns">
-										</div>
-										<div class="testimonial_name">natalie smith</div>
-										<div class="testimonial_title">Client in California</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<p class="testimonials_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque libero. Vivamus vel interdum massa. Mauris ut felis vel diam pretium eleifend vel eu neque. Mauris a condimentum tortor. Cras nec molestie est. Nulla vel facilisis metus. Quisque tempus fermentum enim, in feugiat sem laoreet</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="{{ asset('theme/theestate/images/person.jpg') }}" alt="https://unsplash.com/@remdesigns">
-										</div>
-										<div class="testimonial_name">natalie smith</div>
-										<div class="testimonial_title">Client in California</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Workflow -->
-
-	<div class="workflow">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h3>see how we operate</h3>
-						<span class="section_subtitle">What you need to do</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row workflow_row">
-				<div class="workflow_rocket"><img src="{{ asset('theme/theestate/images/rocket.png') }}" alt=""></div>
-
-				<!-- Workflow Item -->
-				<div class="col-lg-4 workflow_col">
-					<div class="workflow_item">
-						<div class="workflow_image_container d-flex flex-column align-items-center justify-content-center">
-							<div class="workflow_image_background">
-								<div class="workflow_circle_outer trans_200"></div>
-								<div class="workflow_circle_inner trans_200"></div>
-								<div class="workflow_num text-center trans_200"><span>01.</span></div>
-							</div>
-							<div class="workflow_image">
-								<img src="{{ asset('theme/theestate/images/workflow_1.png') }}" alt="">
-							</div>
-							
-						</div>
-						<div class="workflow_item_content text-center">
-							<div class="workflow_title">Choose a Location</div>
-							<p class="workflow_text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Workflow Item -->
-				<div class="col-lg-4 workflow_col">
-					<div class="workflow_item">
-						<div class="workflow_image_container d-flex flex-column align-items-center justify-content-center">
-							<div class="workflow_image_background">
-								<div class="workflow_circle_outer trans_200"></div>
-								<div class="workflow_circle_inner trans_200"></div>
-								<div class="workflow_num text-center trans_200"><span>02.</span></div>
-							</div>
-							<div class="workflow_image">
-								<img src="{{ asset('theme/theestate/images/workflow_2.png') }}" alt="">
-							</div>
-							
-						</div>
-						<div class="workflow_item_content text-center">
-							<div class="workflow_title">Find the Perfect Home</div>
-							<p class="workflow_text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</p>
-						</div>
-					</div>
-				</div>
-
-				<!-- Workflow Item -->
-				<div class="col-lg-4 workflow_col">
-					<div class="workflow_item">
-						<div class="workflow_image_container d-flex flex-column align-items-center justify-content-center">
-							<div class="workflow_image_background">
-								<div class="workflow_circle_outer trans_200"></div>
-								<div class="workflow_circle_inner trans_200"></div>
-								<div class="workflow_num text-center trans_200"><span>03.</span></div>
-							</div>
-							<div class="workflow_image">
-								<img src="{{ asset('theme/theestate/images/workflow_3.png') }}" alt="">
-							</div>
-							
-						</div>
-						<div class="workflow_item_content text-center">
-							<div class="workflow_title">Move in your new life</div>
-							<p class="workflow_text">Donec ullamcorper nulla non metus auctor fringi lla. Curabitur blandit tempus porttitor.</p>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Cities -->
-
-	<div class="cities">
-		<div class="cities_background"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h3>cities clients prefer</h3>
-						<span class="section_subtitle">What you need to do</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col">
-
-					<!-- Cities Slider -->
-		
-					<div class="cities_slider_container">
-						<div class="owl-carousel owl-theme cities_slider">
-							
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_1.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>miami</span></div>
-								</a>
-							</div>
-
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_2.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>dublin</span></div>
-								</a>
-							</div>
-
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_3.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>vienna</span></div>
-								</a>
-							</div>
-
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_4.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>marbella</span></div>
-								</a>
-							</div>
-
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_5.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>new york</span></div>
-								</a>
-							</div>
-
-							<!-- City Item -->
-							<div class="owl-item city_item">
-								<a href="#">
-									<div class="city_image">
-										<img src="{{ asset('theme/theestate/images/city_6.jpg') }}" alt="">
-									</div>
-									<div class="city_details"><img src="{{ asset('theme/theestate/images/search.png') }}" alt=""></div>
-									<div class="city_name"><span>geneva</span></div>
-								</a>
-							</div>
-							
-						</div>
-						
-						<div class="cities_prev cities_nav d-flex flex-row align-items-center justify-content-center trans_200">
-							<img src="{{ asset('theme/theestate/images/nav_left.png') }}" alt="">
-						</div>
-
-						<div class="cities_next cities_nav d-flex flex-row align-items-center justify-content-center trans_200">
-							<img src="{{ asset('theme/theestate/images/nav_right.png') }}" alt="">
-						</div>
-
-					</div>
-
-				</div>
-					
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Call to Action -->
-
-	<div class="cta_1">
-		<div class="cta_1_background" style="background-image:url(theme/theestate/images/cta_1.jpg)"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="cta_1_content d-flex flex-lg-row flex-column align-items-center justify-content-start">
-						<h3 class="cta_1_text text-lg-left text-center">Do you want to talk with one of our <span>real estate experts?</span></h3>
-						<div class="cta_1_phone">Call now:   +0080 234 567 84441</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="container">
-			<div class="row row-equal-height">
-
-				<div class="col-lg-6">
-					<div class="newsletter_title">
-						<h3>subscribe to our newsletter</h3>
-						<span class="newsletter_subtitle">Get the latest offers</span>
-					</div>
-					<div class="newsletter_form_container">
-						<form action="#">
-							<div class="newsletter_form_content d-flex flex-row">
-								<input id="newsletter_email" class="newsletter_email" type="email" placeholder="Your email here" required="required" data-error="Valid email is required.">
-								<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_200" value="Submit">subscribe</button>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<a href="#">
-						<div class="weekly_offer">
-							<div class="weekly_offer_content d-flex flex-row">
-								<div class="weekly_offer_icon d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ asset('theme/theestate/images/prize.svg') }}" alt="">
-								</div>
-								<div class="weekly_offer_text text-center">weekly offer</div>
-							</div>
-							<div class="weekly_offer_image" style="background-image:url(theme/theestate/images/weekly.jpg)"></div>
-						</div>
-					</a>
-				</div>
-
-			</div>
-		</div>
-	</div>
+  	@include('frontend.layouts.partials.header')
+
+
+  	@yield('main-content')
+	 <!-- ##### Hero Area Start ##### -->
+	 <div class="hero-area">
+    <div class="welcome-slides owl-carousel">
+
+      <!-- Single Welcome Slides -->
+      <div class="single-welcome-slides bg-img bg-overlay jarallax" style="background-image: url(theme/farmie/img/bg-img/1.jpg);">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-12 col-lg-10">
+              <div class="welcome-content">
+                <h2 data-animation="fadeInUp" data-delay="200ms">The hearth of the farm is the true center of our universe.</h2>
+                <p data-animation="fadeInUp" data-delay="400ms">Mauris vestibulum dolor nec lacinia facilisis. Fusce interdum sagittis volutpat. Praesent eget varius ligula, malesuada eleifend purus. Aenean euismod est at mauris mollis ultricies.
+                  Morbi arcu mi, dictum eu luala, dapibus
+                  interdum mollis.</p>
+                <a href="#" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Single Welcome Slides -->
+      <div class="single-welcome-slides bg-img bg-overlay jarallax" style="background-image: url(theme/farmie/img/bg-img/7.jpg);">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-12 col-lg-10">
+              <div class="welcome-content">
+                <h2 data-animation="fadeInDown" data-delay="200ms">The hearth of the farm is the true center of our universe.</h2>
+                <p data-animation="fadeInDown" data-delay="400ms">Mauris vestibulum dolor nec lacinia facilisis. Fusce interdum sagittis volutpat. Praesent eget varius ligula, malesuada eleifend purus. Aenean euismod est at mauris mollis ultricies.
+                  Morbi arcu mi, dictum eu luala, dapibus
+                  interdum mollis.</p>
+                <a href="#" class="btn famie-btn mt-4" data-animation="bounceInDown" data-delay="600ms">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ##### Hero Area End ##### -->
+
+  <!-- ##### Famie Benefits Area Start ##### -->
+  <section class="famie-benefits-area section-padding-100-0 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="benefits-thumbnail mb-50">
+            <img src="{{asset('theme/farmie/img/bg-img/2.jpg')}}" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <!-- Single Benefits Area -->
+        <div class="col-12 col-sm-4 col-lg">
+          <div class="single-benefits-area wow fadeInUp mb-50" data-wow-delay="100ms">
+            <img src="{{asset('theme/farmie/img/core-img/digger.png')}}" alt="">
+            <h5>Best Services</h5>
+          </div>
+        </div>
+
+        <!-- Single Benefits Area -->
+        <div class="col-12 col-sm-4 col-lg">
+          <div class="single-benefits-area wow fadeInUp mb-50" data-wow-delay="300ms">
+            <img src="{{asset('theme/farmie/img/core-img/windmill.png')}}" alt="">
+            <h5>Farm Experiences</h5>
+          </div>
+        </div>
+
+        <!-- Single Benefits Area -->
+        <div class="col-12 col-sm-4 col-lg">
+          <div class="single-benefits-area wow fadeInUp mb-50" data-wow-delay="500ms">
+            <img src="{{asset('theme/farmie/img/core-img/cereals.png')}}" alt="">
+            <h5>100% Natural</h5>
+          </div>
+        </div>
+
+        <!-- Single Benefits Area -->
+        <div class="col-12 col-sm-4 col-lg">
+          <div class="single-benefits-area wow fadeInUp mb-50" data-wow-delay="700ms">
+            <img src="{{asset('theme/farmie/img/core-img/tractor.png')}}" alt="">
+            <h5>Farm Equipment</h5>
+          </div>
+        </div>
+
+        <!-- Single Benefits Area -->
+        <div class="col-12 col-sm-4 col-lg">
+          <div class="single-benefits-area wow fadeInUp mb-50" data-wow-delay="900ms">
+            <img src="{{asset('theme/farmie/img/core-img/sunrise.png')}}" alt="">
+            <h5>Organic food</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Famie Benefits Area End ##### -->
+
+  <!-- ##### About Us Area Start ##### -->
+  <section class="about-us-area">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- About Us Content -->
+        <div class="col-12 col-md-8">
+          <div class="about-us-content mb-100">
+            <!-- Section Heading -->
+            <div class="section-heading">
+              <p>About us</p>
+              <h2><span>Let Us</span> Tell You Our Story</h2>
+              <img src="{{asset('theme/farmie/img/core-img/decor.png')}}" alt="">
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetu adipiscing elit. Etiam nunc elit, pretium atlanta urna veloci, fermentum malesuda mina. Donec auctor nislec neque sagittis, sit amet dapibus pellentesque donal feugiat. Nulla mollis magna non
+              sanaliquet, volutpat do zutum, ultrices consectetur, ultrices at purus.</p>
+            <a href="#" class="btn famie-btn mt-30">Read More</a>
+          </div>
+        </div>
+
+        <!-- Famie Video Play -->
+        <div class="col-12 col-md-4">
+          <div class="famie-video-play mb-100">
+            <img src="{{asset('theme/farmie/img/bg-img/6.jpg')}}" alt="">
+            <!-- Play Icon -->
+            <a href="http://www.youtube.com/watch?v=7HKoqNJtMTQ" class="play-icon"><i class="fa fa-play"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ##### About Us Area End ##### -->
+
+  <!-- ##### Services Area Start ##### -->
+  <section class="services-area d-flex flex-wrap">
+    <!-- Service Thumbnail -->
+    <div class="services-thumbnail bg-img jarallax" style="background-image: url('theme/farmie/img/bg-img/7.jpg');"></div>
+
+    <!-- Service Content -->
+    <div class="services-content section-padding-100-50 px-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <!-- Section Heading -->
+            <div class="section-heading">
+              <p>What we do</p>
+              <h2><span>Our Produce</span> Is Mainstay For Us</h2>
+              <img src="{{asset('theme/farmie/img/core-img/decor.png')}}" alt="">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 mb-50">
+            <p>Mauris fermentum nunc quis massa lacinia consequat. Suspendisse orci magna, pharetra sedonia risus ut,
+              elementum mollis nisin. Nunc in sapien turpis. Donec egeto david orci pulvinar ultrices necto drax turpis.
+              Pellentesque justo metus, semper nec ullamcorper id, gravida ultricies arcu.</p>
+          </div>
+
+          <!-- Single Service Area -->
+          <div class="col-12 col-lg-6">
+            <div class="single-service-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+              <!-- Service Title -->
+              <div class="service-title mb-3 d-flex align-items-center">
+                <img src="{{asset('theme/farmie/img/core-img/s1.png')}}" alt="">
+                <h5>Fruit &amp; Vegetable</h5>
+              </div>
+              <p>Intiam eu sagittis est, aster cosmo lacini libero. Praesent dignissim sed odio velo aliquam manta legolas. </p>
+            </div>
+          </div>
+
+          <!-- Single Service Area -->
+          <div class="col-12 col-lg-6">
+            <div class="single-service-area mb-50 wow fadeInUp" data-wow-delay="300ms">
+              <!-- Service Title -->
+              <div class="service-title mb-3 d-flex align-items-center">
+                <img src="{{asset('theme/farmie/img/core-img/s2.png')}}" alt="">
+                <h5>Meat &amp; Eggs</h5>
+              </div>
+              <p>Intiam eu sagittis est, aster cosmo lacini libero. Praesent dignissim sed odio velo aliquam manta legolas. </p>
+            </div>
+          </div>
+
+          <!-- Single Service Area -->
+          <div class="col-12 col-lg-6">
+            <div class="single-service-area mb-50 wow fadeInUp" data-wow-delay="500ms">
+              <!-- Service Title -->
+              <div class="service-title mb-3 d-flex align-items-center">
+                <img src="{{asset('theme/farmie/img/core-img/s3.png')}}" alt="">
+                <h5>Milk &amp; Cheese</h5>
+              </div>
+              <p>Intiam eu sagittis est, aster cosmo lacini libero. Praesent dignissim sed odio velo aliquam manta legolas. </p>
+            </div>
+          </div>
+
+          <!-- Single Service Area -->
+          <div class="col-12 col-lg-6">
+            <div class="single-service-area mb-50 wow fadeInUp" data-wow-delay="700ms">
+              <!-- Service Title -->
+              <div class="service-title mb-3 d-flex align-items-center">
+                <img src="{{asset('theme/farmie/img/core-img/s4.png')}}" alt="">
+                <h5>Rice &amp; Corn</h5>
+              </div>
+              <p>Intiam eu sagittis est, aster cosmo lacini libero. Praesent dignissim sed odio velo aliquam manta legolas. </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Services Area End ##### -->
+
+  <!-- ##### Our Products Area Start ##### -->
+  <section class="our-products-area section-padding-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Section Heading -->
+          <div class="section-heading text-center">
+            <p>Featured Products</p>
+            <h2><span>Our Product</span> Are Highest Quality</h2>
+            <img src="{{asset('theme/farmie/img/core-img/decor2.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!-- Single Product Area -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+            <!-- Product Thumbnail -->
+            <div class="product-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/p1.jpg')}}" alt="">
+              <!-- Product Tags -->
+              <span class="product-tags">Hot</span>
+              <!-- Product Meta Data -->
+              <div class="product-meta-data">
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="icon_heart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon_cart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="arrow_left-right_alt"></i></a>
+              </div>
+            </div>
+            <!-- Product Description -->
+            <div class="product-desc text-center pt-4">
+              <a href="#" class="product-title">Strawberry</a>
+              <h6 class="price">$17.99</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Product Area -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
+            <!-- Product Thumbnail -->
+            <div class="product-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/p2.jpg')}}" alt="">
+              <!-- Product Meta Data -->
+              <div class="product-meta-data">
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="icon_heart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon_cart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="arrow_left-right_alt"></i></a>
+              </div>
+            </div>
+            <!-- Product Description -->
+            <div class="product-desc text-center pt-4">
+              <a href="#" class="product-title">Baked Breads</a>
+              <h6 class="price">$9.99</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Product Area -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="500ms">
+            <!-- Product Thumbnail -->
+            <div class="product-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/p3.jpg')}}" alt="">
+              <!-- Product Meta Data -->
+              <div class="product-meta-data">
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="icon_heart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon_cart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="arrow_left-right_alt"></i></a>
+              </div>
+            </div>
+            <!-- Product Description -->
+            <div class="product-desc text-center pt-4">
+              <a href="#" class="product-title">Prime Beef</a>
+              <h6 class="price">$59.99</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Product Area -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="700ms">
+            <!-- Product Thumbnail -->
+            <div class="product-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/p4.jpg')}}" alt="">
+              <!-- Product Tags -->
+              <span class="product-tags bg-danger">Sale</span>
+              <!-- Product Meta Data -->
+              <div class="product-meta-data">
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Favourite"><i class="icon_heart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="icon_cart_alt"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="arrow_left-right_alt"></i></a>
+              </div>
+            </div>
+            <!-- Product Description -->
+            <div class="product-desc text-center pt-4">
+              <a href="#" class="product-title">Pure Honey</a>
+              <h6 class="price"><span>$29.99</span> $19.99</h6>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="gotoshop-btn text-center wow fadeInUp" data-wow-delay="900ms">
+            <a href="shop.html" class="btn famie-btn">Go to Store</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Our Products Area End ##### -->
+
+  <!-- ##### Newsletter Area Start ##### -->
+  <section class="newsletter-area section-padding-100 bg-img bg-overlay jarallax" style="background-image: url('theme/farmie/img/bg-img/8.jpg');">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+          <div class="newsletter-content">
+            <!-- Section Heading -->
+            <div class="section-heading white text-center">
+              <p>What we do</p>
+              <h2><span>Our Produce</span> Is Mainstay For Us</h2>
+              <img src="{{asset('theme/farmie/img/core-img/decor2.png')}}" alt="">
+            </div>
+            <p class="text-white mb-50 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at diam convallis ligula cursus bibendum sed at enim. Class aptent taciti sociosqu ad litora torquent conubia nostra, per inceptos
+              himenaeos.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Newsletter Form -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Enter your email">
+            <button type="submit" class="btn famie-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Newsletter Area End ##### -->
+
+  <!-- ##### Farming Practice Area Start ##### -->
+  <section class="farming-practice-area section-padding-100-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Section Heading -->
+          <div class="section-heading text-center">
+            <p>Make the green world</p>
+            <h2><span>Farming Practices</span> To Preserve Land & Water</h2>
+            <img src="{{asset('theme/farmie/img/core-img/decor2.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/9.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/chicken.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Chicken Farmed For Meat</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="200ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/10.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/pig.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Pig Farm Management</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="300ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/11.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/cow.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Beef Cattle Farming</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="400ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/12.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/cereal.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Improved Rice Cultivation</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="500ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/13.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/sprout.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Soil Improvement Techniques</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Farming Practice Area -->
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="single-farming-practice-area mb-50 wow fadeInUp" data-wow-delay="600ms">
+            <!-- Thumbnail -->
+            <div class="farming-practice-thumbnail">
+              <img src="{{asset('theme/farmie/img/bg-img/14.jpg')}}" alt="">
+            </div>
+            <!-- Content -->
+            <div class="farming-practice-content text-center">
+              <!-- Icon -->
+              <div class="farming-icon">
+                <img src="{{asset('theme/farmie/img/core-img/vegetable.png')}}" alt="">
+              </div>
+              <span>Farming practice for</span>
+              <h4>Intensive Fruit Farming</h4>
+              <p>Donec nec justo eget felis facilisis ferme ntum. Aliquam portitor mauris sit amet orci. donec salim...</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ##### Farming Practice Area End ##### -->
+
+  <!-- ##### Testimonial Area Start ##### -->
+  <section class="testimonial-area bg-img bg-overlay section-padding-100 jarallax" style="background-image: url('theme/farmie/img/bg-img/15.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <!-- Testimonial Slides -->
+          <div class="testimonial-slides owl-carousel">
+
+            <!-- Single Slide -->
+            <div class="single-slide">
+              <!-- Testimonial Text -->
+              <div class="testi-text d-flex">
+                <div class="quote-icon">
+                  <img src="{{asset('theme/farmie/img/core-img/quote.png')}}" alt="">
+                </div>
+                <h5>"Thank you for your organic products. My children like your products and they use for breakfast. We are loving the pure milk, freshly fruit and of course our staple, Brown Rice Bread. Your Gluten Free breads truly make me feel
+                  lighter and uplifted. It's the only bread I plan to eat for the rest of my life. I will use them for many years."</h5>
+              </div>
+              <!-- Testimonial Thumbnail Name -->
+              <div class="testimonial-thumbnail-name d-flex align-items-center">
+                <div class="testimonial-thumbnail">
+                  <img src="{{asset('theme/farmie/img/bg-img/16.jpg')}}" alt="">
+                </div>
+                <div class="testimonial-name">
+                  <h5>Mrs Lara Sullivan</h5>
+                  <h6>Customer</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide">
+              <!-- Testimonial Text -->
+              <div class="testi-text d-flex">
+                <div class="quote-icon">
+                  <img src="{{asset('theme/farmie/img/core-img/quote.png')}}" alt="">
+                </div>
+                <h5>"Thank you for your organic products. My children like your products and they use for breakfast. We are loving the pure milk, freshly fruit and of course our staple, Brown Rice Bread. Your Gluten Free breads truly make me feel
+                  lighter and uplifted. It's the only bread I plan to eat for the rest of my life. I will use them for many years."</h5>
+              </div>
+              <!-- Testimonial Thumbnail Name -->
+              <div class="testimonial-thumbnail-name d-flex align-items-center">
+                <div class="testimonial-thumbnail">
+                  <img src="{{asset('theme/farmie/img/bg-img/16.jpg')}}" alt="">
+                </div>
+                <div class="testimonial-name">
+                  <h5>Ajoy Das</h5>
+                  <h6>Client</h6>
+                </div>
+              </div>
+            </div>
+
+            <!-- Single Slide -->
+            <div class="single-slide">
+              <!-- Testimonial Text -->
+              <div class="testi-text d-flex">
+                <div class="quote-icon">
+                  <img src="{{asset('theme/farmie/img/core-img/quote.png')}}" alt="">
+                </div>
+                <h5>"Thank you for your organic products. My children like your products and they use for breakfast. We are loving the pure milk, freshly fruit and of course our staple, Brown Rice Bread. Your Gluten Free breads truly make me feel
+                  lighter and uplifted. It's the only bread I plan to eat for the rest of my life. I will use them for many years."</h5>
+              </div>
+              <!-- Testimonial Thumbnail Name -->
+              <div class="testimonial-thumbnail-name d-flex align-items-center">
+                <div class="testimonial-thumbnail">
+                  <img src="{{asset('theme/farmie/img/bg-img/16.jpg')}}" alt="">
+                </div>
+                <div class="testimonial-name">
+                  <h5>Akash Khan</h5>
+                  <h6>Customer</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Testimonial Area End ##### -->
+
+  <!-- ##### Contact Area Start ##### -->
+  <section class="contact-area section-padding-100-0">
+    <div class="container">
+      <div class="row justify-content-between">
+
+        <!-- Contact Content -->
+        <div class="col-12 col-lg-5">
+          <div class="contact-content mb-100">
+            <!-- Section Heading -->
+            <div class="section-heading">
+              <p>Contact now</p>
+              <h2><span>Get In Touch</span> With Us</h2>
+              <img src="{{asset('theme/farmie/img/core-img/decor.png')}}" alt="">
+            </div>
+            <!-- Contact Form Area -->
+            <div class="contact-form-area">
+              <form action="index.html" method="post">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name">
+                  </div>
+                  <div class="col-lg-6">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email">
+                  </div>
+                  <div class="col-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Your Subject">
+                  </div>
+                  <div class="col-12">
+                    <textarea name="message" class="form-control" cols="30" rows="10" placeholder="Your Message"></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn famie-btn">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Maps -->
+        <div class="col-lg-6">
+          <div class="contact-maps mb-100">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28313.28917392649!2d-88.2740948914384!3d41.76219337461615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880efa1199df6109%3A0x8a1293b2ae8e0497!2sE+New+York+St%2C+Aurora%2C+IL%2C+USA!5e0!3m2!1sen!2sbd!4v1542893000723"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### Contact Area End ##### -->
+
+  <!-- ##### News Area Start ##### -->
+  <section class="news-area bg-gray section-padding-100-0">
+    <div class="container">
+      <div class="row">
+
+        <!-- Featured Post Area -->
+        <div class="col-12 col-lg-6">
+          <div class="featured-post-area mb-100 wow fadeInUp" data-wow-delay="100ms">
+            <img src="{{asset('theme/farmie/img/bg-img/17.jpg')}}" alt="">
+            <!-- Post Content -->
+            <div class="post-content">
+              <h6>Post on <a href="#">18 Aug 2018</a> / <a href="#">Carlos Bacca</a></h6>
+              <a href="#" class="post-title">Why innovation is key to maintaining our export market share</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Blog Area -->
+        <div class="col-12 col-lg-6 mb-100">
+
+          <!-- Single Blog Area -->
+          <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="300ms">
+            <!-- Post Content -->
+            <div class="post-content">
+              <h6>Post on <a href="#">18 Aug 2018</a> / <a href="#">Peter Crough</a></h6>
+              <a href="#" class="post-title">Rising cattle supplies see beef export lifted</a>
+              <p>Maecenas facilisis quam orcit, velo porttitor arcu egestas eu. Maecenas donald imperdiet nibh, quis. Etiam non scelerisque exited sagittis...</p>
+            </div>
+          </div>
+
+          <!-- Single Blog Area -->
+          <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="500ms">
+            <!-- Post Content -->
+            <div class="post-content">
+              <h6>Post on <a href="#">18 Aug 2018</a> / <a href="#">Peter Crough</a></h6>
+              <a href="#" class="post-title">Cattle marts: Cows take a hit at the ringside</a>
+              <p>Maecenas facilisis quam orcit, velo porttitor arcu egestas eu. Maecenas donald imperdiet nibh, quis. Etiam non scelerisque exited sagittis...</p>
+            </div>
+          </div>
+
+          <!-- Single Blog Area -->
+          <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="700ms">
+            <!-- Post Content -->
+            <div class="post-content">
+              <h6>Post on <a href="#">18 Aug 2018</a> / <a href="#">Peter Crough</a></h6>
+              <a href="#" class="post-title">Malting barley price set to commence</a>
+              <p>Maecenas facilisis quam orcit, velo porttitor arcu egestas eu. Maecenas donald imperdiet nibh, quis. Etiam non scelerisque exited sagittis...</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ##### News Area End ##### -->
 
 	<!-- Footer -->
-  @include('frontend.layouts.partials.footer')
+  	@include('frontend.layouts.partials.footer')
 	
-	<!-- Credits -->
+ <!-- ##### All Javascript Files ##### -->
+  <!-- jquery 2.2.4  -->
+  <script src="{{asset('theme/farmie/js/jquery.min.js')}}"></script>
+  <!-- Popper js -->
+  <script src="{{asset('theme/farmie/js/popper.min.js')}}"></script>
+  <!-- Bootstrap js -->
+  <script src="{{asset('theme/farmie/js/bootstrap.min.js')}}"></script>
+  <!-- Owl Carousel js -->
+  <script src="{{asset('theme/farmie/js/owl.carousel.min.js')}}"></script>
+  <!-- Classynav -->
+  <script src="{{asset('theme/farmie/js/classynav.js')}}"></script>
+  <!-- Wow js -->
+  <script src="{{asset('theme/farmie/js/wow.min.js')}}"></script>
+  <!-- Sticky js -->
+  <script src="{{asset('theme/farmie/js/jquery.sticky.js')}}"></script>
+  <!-- Magnific Popup js -->
+  <script src="{{asset('theme/farmie/js/jquery.magnific-popup.min.js')}}"></script>
+  <!-- Scrollup js -->
+  <script src="{{asset('theme/farmie/js/jquery.scrollup.min.js')}}"></script>
+  <!-- Jarallax js -->
+  <script src="{{asset('theme/farmie/js/jarallax.min.js')}}"></script>
+  <!-- Jarallax Video js -->
+  <script src="{{asset('theme/farmie/js/jarallax-video.min.js')}}"></script>
+  <!-- Active js -->
+  <script src="{{asset('theme/farmie/js/active.js')}}"></script>
 
-	<div class="credits">
-		<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-	</div>
-
-
-
-
-<script src="{{ asset('theme/theestate/js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/styles/bootstrap4/popper.js') }}"></script>
-<script src="{{ asset('theme/theestate/styles/bootstrap4/bootstrap.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/greensock/TweenMax.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/greensock/TimelineMax.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/greensock/animation.gsap.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/greensock/ScrollToPlugin.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/scrollTo/jquery.scrollTo.min.js') }}"></script>
-<script src="{{ asset('theme/theestate/plugins/easing/easing.js') }}"></script>
-<script src="{{ asset('theme/theestate/js/custom.js') }}"></script>
 @yield('custom-scripts')
 </body>
 

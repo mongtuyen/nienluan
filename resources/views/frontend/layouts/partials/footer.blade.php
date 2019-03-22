@@ -1,87 +1,129 @@
-<footer class="footer">
-		<div class="container">
-			<div class="row">
-				
-				<!-- Footer About -->
+<footer class="footer-area">
+    <!-- Main Footer Area -->
+    <div class="main-footer bg-img bg-overlay section-padding-80-0" style="background-image: url(theme/farmie/img/bg-img/3.jpg);">
+      <div class="container">
+        <div class="row">
 
-				<div class="col-lg-3 footer_col">
-					<div class="footer_col_title">
-						<div class="logo_container">
-							<a href="#">
-								<div class="logo">
-									<img src="{{ asset('theme/theestate/images/logo.png') }}" alt="">
-									<span>the estate</span>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div class="footer_social">
-						<ul class="footer_social_list">
-							<li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-							<li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
-						</ul>
-					</div>
-					<div class="footer_about">
-						<p>Lorem ipsum dolor sit amet, cons ectetur  quis ferme adipiscing elit. Suspen dis se tellus eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida  quis ferme semper augue.</p>
-					</div>
-				</div>
-				
-				<!-- Footer Useful Links -->
+          <!-- Single Footer Widget Area -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="footer-widget mb-80">
+              <a href="#" class="foo-logo d-block mb-30"><img src="{{asset('theme/farmie/img/core-img/logo2.png')}}" alt=""></a>
+              <p>Lorem ipsum dolor sit amet, consecte stare adipiscing elit. In act honcus risus atiner Pellentesque risus.</p>
+              <div class="contact-info">
+                <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>120 Raymond Rd, New York</span></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i><span>info.deercreative@gmail.com</span></p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i><span>+84 223 9000</span></p>
+              </div>
+            </div>
+          </div>
 
-				<div class="col-lg-3 footer_col">
-					<div class="footer_col_title">useful links</div>
-					<ul class="footer_useful_links">
-						<li class="useful_links_item"><a href="#">Listings</a></li>
-						<li class="useful_links_item"><a href="#">Favorite Cities</a></li>
-						<li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
-						<li class="useful_links_item"><a href="#">Featured Listings</a></li>
-						<li class="useful_links_item"><a href="#">Properties on Offer</a></li>
-						<li class="useful_links_item"><a href="#">Services</a></li>
-						<li class="useful_links_item"><a href="#">News</a></li>
-						<li class="useful_links_item"><a href="#">Our Agents</a></li>
-					</ul>
-				</div>
+          <!-- Single Footer Widget Area -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="footer-widget mb-80">
+              <h5 class="widget-title">QUICK LINK</h5>
+              <!-- Footer Widget Nav -->
+              <nav class="footer-widget-nav">
+                <ul>
+                  <li><a href="#">Purchase</a></li>
+                  <li><a href="#">Policities</a></li>
+                  <li><a href="#">Shipping</a></li>
+                  <li><a href="#">FAQs</a></li>
+                  <li><a href="#">Return</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Payments</a></li>
+                  <li><a href="#">Partners</a></li>
+                  <li><a href="#">Guide</a></li>
+                  <li><a href="#">Standard</a></li>
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Brands</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
 
-				<!-- Footer Contact Form -->
-				<div class="col-lg-3 footer_col">
-					<div class="footer_col_title">say hello</div>
-					<div class="footer_contact_form_container">
-						<form id="footer_contact_form" class="footer_contact_form" action="post">
-							<input id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-							<input id="contact_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-							<textarea id="contact_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-							<button id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="Submit">send</button>
-						</form>
-					</div>
-				</div>
+          <!-- Single Footer Widget Area -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="footer-widget mb-80">
+              <h5 class="widget-title">RECENT NEWS</h5>
 
-				<!-- Footer Contact Info -->
+              <!-- Single Recent News Start -->
+              <div class="single-recent-blog d-flex align-items-center">
+                <div class="post-thumbnail">
+                  <img src="{{asset('theme/farmie/img/bg-img/4.jpg')}}" alt="">
+                </div>
+                <div class="post-content">
+                  <a href="#" class="post-title">WA’s largest farming business on the market</a>
+                  <div class="post-date">18 Aug 2018</div>
+                </div>
+              </div>
 
-				<div class="col-lg-3 footer_col">
-					<div class="footer_col_title">contact info</div>
-					<ul class="contact_info_list">
-						<li class="contact_info_item d-flex flex-row">
-							<div><div class="contact_info_icon"><img src="{{ asset('theme/theestate/images/placeholder.svg') }}" alt=""></div></div>
-							<div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
-						</li>
-						<li class="contact_info_item d-flex flex-row">
-							<div><div class="contact_info_icon"><img src="{{ asset('theme/theestate/images/phone-call.svg') }}" alt=""></div></div>
-							<div class="contact_info_text">2556-808-8613</div>
-						</li>
-						<li class="contact_info_item d-flex flex-row">
-							<div><div class="contact_info_icon"><img src="{{ asset('theme/theestate/images/message.svg') }}" alt=""></div></div>
-							<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
-						</li>
-						<li class="contact_info_item d-flex flex-row">
-							<div><div class="contact_info_icon"><img src="{{ asset('theme/theestate/images/planet-earth.svg') }}" alt=""></div></div>
-							<div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
-						</li>
-					</ul>
-				</div>
+              <!-- Single Recent News Start -->
+              <div class="single-recent-blog d-flex align-items-center">
+                <div class="post-thumbnail">
+                  <img src="{{asset('theme/farmie/img/bg-img/5.jpg')}}" alt="">
+                </div>
+                <div class="post-content">
+                  <a href="#" class="post-title">Beef retail prices hit a record</a>
+                  <div class="post-date">18 Aug 2018</div>
+                </div>
+              </div>
 
-			</div>
-		</div>
-	</footer>
+            </div>
+          </div>
+
+          <!-- Single Footer Widget Area -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="footer-widget mb-80">
+              <h5 class="widget-title">STAY CONNECTED</h5>
+              <!-- Footer Social Info -->
+              <div class="footer-social-info">
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                  <span>Facebook</span>
+                </a>
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                  <span>Twitter</span>
+                </a>
+                <a href="#">
+                  <i class="fa fa-pinterest" aria-hidden="true"></i>
+                  <span>Pinterest</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Copywrite Area  -->
+    <div class="copywrite-area">
+      <div class="container">
+        <div class="copywrite-text">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+            </div>
+            <div class="col-md-6">
+              <div class="footer-nav">
+                <nav>
+                  <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Produce</a></li>
+                    <li><a href="#">Practice</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
