@@ -60,7 +60,7 @@ table {
                 
                 @foreach ($danhsachnguoidung as $nd)
                 @if ($baidang->nd_ma==$nd->nd_ma)
-                <td align="left">{{$nd->nd_hoTen}}</td>
+                <td align="left">{{$nd->nd_name}}</td>
                 @endif
                 @endforeach
                 <td align="left">{{ $baidang->bd_ngayDang }}</td>             

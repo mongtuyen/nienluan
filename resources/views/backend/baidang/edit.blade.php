@@ -91,9 +91,9 @@ Hiệu chỉnh bài viết
         <select name="nd_ma" class="form-control">
             @foreach($danhsachnguoidung as $nguoidung)
                 @if($nguoidung->nd_ma == $baidang->nd_ma)
-                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_hoTen }}</option>
+                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_name }}</option>
                 @else
-                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_hoTen }}</option>
+                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_name }}</option>
                 @endif
             @endforeach
         </select>
@@ -134,6 +134,43 @@ Hiệu chỉnh bài viết
     <button type="submit" class="btn btn-primary">Lưu</button>
 </div>
 </form></div></div>
+<h3 align="center">Danh sách bình luận</h3>
+<div  class="col-md-12">
+<div  class="box box-primary">
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Người viết</th>             
+            <th>Nội dung</th>           
+            <th>Ngày đăng</th>                                          
+            <th>Tùy chọn</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($baidang->binhLuan as $bl)
+            <tr>
+                <td>{{ $bl->bl_ma }}</td>
+                <td>{{ $bl->nguoidung->nd_name}}</td>
+                <td>{{ $bl->bl_noiDung}}</td>
+                <td>{{ $bl->bl_time }}</td>  
+                <!-- <td> <a href="admin/comment/xoa/{{$bl->bl_ma}}/{{$baidang->bd_ma}}">Delete</a></td> -->
+                <td> <a href="{{ route('xoabinhluan',['id' => $bl->bl_ma, 'idbd' => $baidang->bd_ma]) }}">Xóa</a></td>
+                <td><form method="post" action="{{ route('xoabinhluan',['id' => $bl->bl_ma, 'idbd' => $baidang->bd_ma]) }}">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ csrf_field() }}
+                        
+                        <button type="submit" class="btn btn-danger">Xóa</button></td>
+                </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+</div></div>
+
 @endsection
 
 @section('custom-scripts')

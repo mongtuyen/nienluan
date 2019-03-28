@@ -34,14 +34,16 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
+
+
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="{{ route('login') }}" method="post">
+    <form action="{{ route('adminlogin') }}" method="post">
     {{ csrf_field() }}
       <div class="form-group has-feedback">
 
 
-      <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
+      <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
 
          @if ($errors->has('username'))
             <span class="invalid-feedback" role="alert">

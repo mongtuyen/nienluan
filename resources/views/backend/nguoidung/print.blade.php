@@ -53,7 +53,7 @@ table {
             <tr>
                 <td align="center">{{ $loop->index + 1 }}</td>
                 
-                <td align="left">{{ $nguoidung->nd_hoTen }}</td>
+                <td align="left">{{ $nguoidung->nd_name }}</td>
                 <td align="right">@if($nguoidung->nd_gioiTinh==1)
                     {{'Nam'}}
                     @elseif($nguoidung->nd_gioiTinh==2)

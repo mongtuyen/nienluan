@@ -7,12 +7,11 @@
           <!-- Single Footer Widget Area -->
           <div class="col-12 col-sm-6 col-lg-3">
             <div class="footer-widget mb-80">
-              <a href="#" class="foo-logo d-block mb-30"><img src="{{asset('theme/farmie/img/core-img/logo2.png')}}" alt=""></a>
-              <p>Lorem ipsum dolor sit amet, consecte stare adipiscing elit. In act honcus risus atiner Pellentesque risus.</p>
+              <a href="{{route('frontend.home')}}" class="foo-logo d-block mb-30"><img src="{{asset('theme/farmie/img/core-img/logo2.png')}}" alt=""></a>
               <div class="contact-info">
-                <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>120 Raymond Rd, New York</span></p>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i><span>info.deercreative@gmail.com</span></p>
-                <p><i class="fa fa-phone" aria-hidden="true"></i><span>+84 223 9000</span></p>
+                <p><i class="fa fa-map-pin" aria-hidden="true"></i><span>KTX khu A, Đại học Cần Thơ</span></p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i><span>tuyenb1507187@student.ctu.edu.vn</span></p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i><span>0357661088</span></p>
               </div>
             </div>
           </div>
@@ -74,7 +73,7 @@
           <!-- Single Footer Widget Area -->
           <div class="col-12 col-sm-6 col-lg-3">
             <div class="footer-widget mb-80">
-              <h5 class="widget-title">STAY CONNECTED</h5>
+              <h5 class="widget-title">Liên kết khác</h5>
               <!-- Footer Social Info -->
               <div class="footer-social-info">
                 <a href="#">

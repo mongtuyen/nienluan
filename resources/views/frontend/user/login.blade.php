@@ -1,4 +1,4 @@
-@include('frontend.layouts.partials.header')
+@extends('frontend.layouts.partials.index')
 @section('title')
 Login
 @endsection
@@ -23,69 +23,87 @@ Login
 @endsection
 @section('main-content')
 <div class="container">
-	<div class="login-section" ng-controller="loginController">
-		<h2 class="text-center">ĐĂNG NHẬP</h2>
-		@if(Session::has('alert-danger'))
-		<div class="alert alert-danger">
-			{{Session::get('alert-danger')}}
-			<a style="margin-left: 820px; color:black;" href="" data-dismiss="alert"><i class="fa fa-close"></i></a>
-		</div>
-		@endif
-		<form ng-submit="submitForm()" name="frmLogin">
-			<div class="form-group">
-				<lable>Tên Đăng Nhập:</lable>
-				<input class="form-control" type="text" name="username" id="username" placeholder="Tên Đăng Nhập" ng-model="username" ng-required=true>
-				<span class="error" ng-show="frmLogin.username.$error.required">Vui lòng nhập tên tài khoản</span>
-			</div>
-			<div class="form-group">
-				<lable>Mật Khẩu:</lable>
-				<input class="form-control" type="password" name="password" id="password" placeholder="Mật Khẩu" ng-model="password" ng-required=true>
-				<span class="error" ng-show="frmLogin.password.$error.required">Vui lòng nhập mật khẩu</span>
-			</div>
-			<div class="form-group text-center">
-				<button type="submit" id="btnSubmit" class="btn btn-default">Đăng Nhập</button>
-			</div>
-		</form>
-	</div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+			<h2 class="text-center">ĐĂNG NHẬP</h2>
+		
+            <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+</div>
+<div class="flash-message">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+       </div> 
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="dangnhap">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Tên đăng nhập</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Mật khẩu</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Đăng nhập
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('custom-script')
-<script>
-	var app = angular.module('userApp',[]);
-	app.controller('loginController', function($scope){
-		$scope.submitForm = function(){
-			if ($scope.frmLogin.$valid) {
-				$.ajax({
-					type: 'POST',
-					url: '{{route('dang-nhap.postLogin')}}',
-					data: {
-						'username': $('#username').val(),
-						'password': $('#password').val(),
-						'_token': '{{ csrf_token() }}' 
-					},
-					success: function(response){
-						if(response == 1){
-							swal({
-								title: "Đăng Nhập Thành Công!",
-								text: "Nhấn Ok Để Tiếp Tục!",
-								icon: "success",
-								button: "OK"
-							}).then(function() {
-								window.location = "http://localhost::1000/niemluan/public";
-							});
-						}else if(response == 0){
-							swal({
-								title: "Đăng Nhập Thất Bại!",
-								text: "Nhấn Ok Để Tiếp Tục!",
-								icon: "error",
-								button: "OK"
-							});
-						}
-					}
-				});
-			}
-		};
-	});
-</script>
+
 @endsection

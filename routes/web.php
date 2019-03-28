@@ -14,7 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+
+Route::get('/admin/login', 'NguoidungController@getloginadmin')->name('adminlogin');
+Route::post('/admin/login', 'NguoidungController@postloginadmin');
+
+Route::get('/admin/logout', 'NguoidungController@adminlogout')->name('adminlogout');
+
+
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){//
     Route::resource('/danhsachloai','LoaiController');
     Route::get('/danhsachbaidang/printmua', 'BaidangController@printmua')->name('danhsachbaidang.printmua');
     Route::get('/danhsachbaidang/printban', 'BaidangController@printban')->name('danhsachbaidang.printban');
@@ -22,28 +29,46 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
     Route::resource('/danhsachbaidang','BaidangController');
     Route::resource('/danhsachsanpham','SanphamController');
     Route::resource('/danhsachquyen','QuyenController');
-    Route::get('/danhsachnguoidung/print', 'NguoidungController@print')->name('danhsachnguoidung.print');
-   
+    Route::get('/danhsachnguoidung/print', 'NguoidungController@print')->name('danhsachnguoidung.print');   
     Route::resource('/danhsachnguoidung','NguoidungController');
     Route::get('/tongquan', 'BaocaoController@index')->name('tongquan');
 
 
 });
-Route::get('/', 'FrontendController@index')->name('frontend.home');
-//Route::get('/gioi-thieu', 'FrontendController@about')->name('frontend.about');
+Route::group(['prefix'=>'admin/comment','middleware'=>'adminLogin'],function(){//
+    Route::get('xoa/{id}/{idbd}', 'CommentController@getXoa')->name('xoabinhluan');
 
-/*Route Đăng Nhập*/
-Route::get('/dang-nhap','U_LoginController@getLogin')->name('dang-nhap.getLogin');
-Route::post('/dang-nhap','U_LoginController@postLogin')->name('dang-nhap.postLogin');
-Route::get('/dang-xuat', function(){
-	Auth::logout();
-	return redirect()->route('frontend.home');
-})->name('dang-nhap.getLogout');
+
+});
+//Frontend
+Route::get('/trangchu', 'FrontendController@index')->name('frontend.home');
+Route::get('/lienhe', 'FrontendController@contact')->name('frontend.contact');
+Route::get('/tinmua', 'FrontendController@tinmua')->name('frontend.tinmua');
+Route::get('/tinban', 'FrontendController@tinban')->name('frontend.tinban');
+
+Route::get('dangnhap','NguoidungController@getLogin');
+Route::post('dangnhap','NguoidungController@postLogin')->name('dangnhap.postLogin');
+Route::get('/dangxuat','NguoidungController@getLogout');
+Route::get('/dangky','NguoidungController@getRegister')->name('dangky.getRegister');
+Route::post('/dangky','NguoidungController@postRegister')->name('dangky.postRegister');
+Route::get('/nguoidung','NguoidungController@getUser');
+Route::post('/nguoidung','NguoidungController@updateUser')->name('profile.updateProfile');
+Route::post('/comment/{id}','CommentController@postComment')->name('comment');
+
+
+Route::get('/chitiettin/{id}', 'FrontendController@baidang')->name('frontend.details');
+Route::get('/chitiettinmua/{id}', 'FrontendController@chitiettinmua')->name('frontend.muadetails');
+
+
+// Route::get('/dang-xuat', function(){
+// 	Auth::logout();
+// 	return redirect()->route('frontend.home');
+// })->name('dang-nhap.getLogout');
 /*Route Đăng Ký*/
-Route::get('/dang-ky','U_RegisterController@getRegister')->name('dang-ky.getRegister');
-Route::post('/dang-ky/xu-ly','U_RegisterController@postRegister')->name('dang-ky.postRegister');
+// Route::get('/dang-ky','U_RegisterController@getRegister')->name('dang-ky.getRegister');
+// Route::post('/dang-ky/xu-ly','U_RegisterController@postRegister')->name('dang-ky.postRegister');
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

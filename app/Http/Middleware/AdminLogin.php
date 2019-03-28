@@ -17,11 +17,14 @@ class AdminLogin
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
-            //$user=Auth::user();
-            //if($user->)
-            return $next($request);
+            $user=Auth::user();
+            if($user->q_ma==1)
+                return $next($request);
+            else 
+                return redirect('/admin/login');
         }
-        else return redirect('/login');
+        else 
+            return redirect('/admin/login');
         
     }
 }

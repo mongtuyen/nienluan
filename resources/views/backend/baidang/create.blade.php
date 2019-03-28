@@ -131,19 +131,16 @@ $(function() {
         <select name="nd_ma" class="form-control">
             @foreach($danhsachnguoidung as $nguoidung)
                 @if(old('nd_ma') == $nguoidung->nd_ma)
-                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_hoTen }}</option>
+                <option value="{{ $nguoidung->nd_ma }}" selected>{{ $nguoidung->nd_name }}</option>
                 @else
-                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_hoTen }}</option>
+                <option value="{{ $nguoidung->nd_ma }}">{{ $nguoidung->nd_name }}</option>
                 @endif
             @endforeach
         </select>
     </div>
 
       
-    <div class="form-group">
-        <label for="bd_ngayDang">Ngày đăng</label>
-        <input type="text" class="form-control" id="bd_ngayDang" name="bd_ngayDang" value="{{ old('bd_ngayDang') }}" data-mask-datetime>
-    </div>
+    
 
     <div class="form-group">
         <label for="bd_ngayHetHan">Ngày hết hạn</label>

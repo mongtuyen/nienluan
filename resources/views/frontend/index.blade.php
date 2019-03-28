@@ -2,7 +2,7 @@
 @extends('frontend.layouts.index')
 {{-- Thay thế nội dung vào Placeholder `title` của view `frontend.layouts.index` --}}
 @section('title')
-Nông nghiệp sạch - Sunshine
+Nông nghiệp sạch 
 @endsection
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.index` --}}
 @section('custom-css')

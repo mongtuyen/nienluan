@@ -41,17 +41,17 @@ Thêm mới người dùng
         </select>
     </div>
     <div class="form-group">
-        <label for="nd_taiKhoan">Tài khoản</label>
-        <input type="text" class="form-control" id="nd_taiKhoan" name="nd_taiKhoan" value="{{ old('nd_taiKhoan') }}">
+        <label for="username">Tài khoản</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
     </div>
     <div class="form-group">
-        <label for="nd_matKhau">Mật khẩu</label>
-        <input type="text" class="form-control" id="nd_matKhau" name="nd_matKhau" value="{{ old('nd_matKhau') }}">
+        <label for="password">Mật khẩu</label>
+        <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}">
     </div>
 
     <div class="form-group">
-        <label for="nd_hoTen">Họ tên</label>
-        <input type="text" class="form-control" id="nd_hoTen" name="nd_hoTen" value="{{ old('nd_hoTen') }}">
+        <label for="nd_name">Họ tên</label>
+        <input type="text" class="form-control" id="nd_name" name="nd_name" value="{{ old('nd_name') }}">
     </div>
     <div class="form-group">
         <label for="nd_gioiTinh">Giới tính</label>

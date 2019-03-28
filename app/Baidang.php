@@ -17,7 +17,7 @@ class Baidang extends Model
     
   
     public function nguoidung(){
-        return $this->belongsTo('App\Nguoidung', 'nd_ma','nd_ma');
+        return $this->belongsTo('App\User', 'nd_ma','nd_ma');
     }
     public function thuocSanPham(){
         return $this->belongsTo('App\Sanpham', 'sp_ma','sp_ma');
@@ -25,5 +25,9 @@ class Baidang extends Model
     public function hinhAnh()
     {
         return $this->hasMany('App\Hinhanh', 'bd_ma', 'bd_ma');
+    }
+    public function binhLuan()
+    {
+        return $this->hasMany('App\Binhluan', 'bd_ma', 'bd_ma');
     }
 }

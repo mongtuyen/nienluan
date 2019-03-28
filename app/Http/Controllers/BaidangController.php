@@ -8,8 +8,9 @@ use App\Baidang;
 use App\Sanpham;
 use Session;
 use Storage;
-use App\Nguoidung;
+use App\User;
 use App\Hinhanh;
+use App\Binhluan;
 class BaidangController extends Controller
 {
     /**
@@ -20,7 +21,7 @@ class BaidangController extends Controller
     public function index()
     {
         $ds_sanpham=Sanpham::all();
-        $ds_nguoidung=Nguoidung::all();
+        $ds_nguoidung=User::all();
         $ds_baidang = Baidang::paginate(5);
         return view('backend.baidang.index')
             ->with('danhsachbaidang', $ds_baidang);
@@ -35,7 +36,7 @@ class BaidangController extends Controller
     public function create()
     {
         $ds_sanpham = Sanpham::all();
-        $ds_nguoidung = Nguoidung::all();
+        $ds_nguoidung = User::all();
         return view('backend.baidang.create')
         ->with('danhsachsanpham',$ds_sanpham)
         ->with('danhsachnguoidung',$ds_nguoidung);
@@ -61,7 +62,7 @@ class BaidangController extends Controller
         );
         $baidang = new Baidang();
         $baidang->bd_tieuDe=$request->bd_tieuDe;
-        $baidang->bd_ngayDang=$request->bd_ngayDang;
+        //$baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_noiDung=$request->bd_noiDung;
         if($request->hasFile('bd_hinh'))
         {
@@ -125,7 +126,7 @@ class BaidangController extends Controller
     public function edit($id)
     {
         $baidang = Baidang::where("bd_ma",  $id)->first();
-        $ds_nguoidung = Nguoidung::all();
+        $ds_nguoidung = User::all();
         $ds_sanpham = Sanpham::all();
         return view('backend.baidang.edit')
             ->with('baidang', $baidang)
@@ -239,7 +240,7 @@ class BaidangController extends Controller
     public function printmua()
     {
         $ds_sanpham = Sanpham::all();
-        $ds_nguoidung    = Nguoidung::all();
+        $ds_nguoidung    = User::all();
         $ds_baidang    = Baidang::where('bd_loai','like',"1")->paginate(5);
         
         $data = [
@@ -255,7 +256,7 @@ class BaidangController extends Controller
     public function printban()
     {
         $ds_sanpham = Sanpham::all();
-        $ds_nguoidung    = Nguoidung::all();
+        $ds_nguoidung    = User::all();
         $ds_baidang    = Baidang::where('bd_loai','like',"2")->paginate(5);
         
         $data = [
@@ -272,7 +273,7 @@ class BaidangController extends Controller
     public function timkiem(Request $request){
         $tukhoa=$request->tukhoa;
         $ds_sanpham = Sanpham::all();
-        $ds_nguoidung  = Nguoidung::all();
+        $ds_nguoidung  = User::all();
         $ds_baidang= Baidang::where('bd_tieuDe','like',"%$tukhoa%")->orWhere('bd_noiDung','like',"%$tukhoa%")->paginate(5);
         return view('backend.baidang.timkiem')
             ->with('danhsachbaidang', $ds_baidang)

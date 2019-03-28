@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -49,10 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'username' => ['required','string', 'max:20','unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'nd_name' => ['required', 'string', 'max:255'],
+            'nd_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nd_username' => ['required','string', 'max:20','unique:users'],
+            'nd_password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -65,10 +65,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'username' => $data['username'],           
-            'password' => Hash::make($data['password']),
+            'nd_name' => $data['nd_name'],
+            'nd_email' => $data['nd_email'],
+            'nd_username' => $data['nd_username'],           
+            'nd_password' => Hash::make($data['nd_password']),
+            'nd_gioitinh' => $data['nd_gioitinh'],
+            'nd_namSinh' => $data['nd_namSinh'],
+            'nd_diaChi' => $data['nd_diaChi'],
+            'nd_dienThoai' => $data['nd_dienThoai'],
+            'q_ma' => 2,
         ]);
+    }
+    public function register(Request $request)
+    {
+        
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+        
+        return redirect('/login')->with('status', 'Vui lòng đăng nhập bằng tài khoản mới đăng ký.');
     }
 }

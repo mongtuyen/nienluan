@@ -8,7 +8,7 @@ class Hinhanh extends Model
 {
     public    $timestamps   = false;
     protected $table        = 'hinhanh';
-    protected $fillable     = ['ha_ten'];
+    protected $fillable     = ['ha_ten','bd_ma'];
     protected $guarded      = ['ha_ma', 'bd_ma'];
     protected $primaryKey   = ['ha_ma', 'bd_ma'];
     public    $incrementing = false;

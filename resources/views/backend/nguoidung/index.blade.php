@@ -34,13 +34,13 @@ Danh sách người dùng
         @foreach($danhsachnguoidung as $nguoidung)
             <tr>
                 <td>{{ $nguoidung->nd_ma }}</td>
-                <td>{{ $nguoidung->nd_hoTen }}</td>
+                <td>{{ $nguoidung->nd_name }}</td>
                 <td>@if($nguoidung->nd_gioiTinh==1)
                     {{'Nam'}}
                     @elseif($nguoidung->nd_gioiTinh==2)
                     {{'Nữ'}}
                     @endif</td>
-                <td>{{ $nguoidung->nd_gioiTinh }}</td>
+                
                 <td>{{ $nguoidung->quyen->q_ten }}</td>
                 <td>{{ $nguoidung->nd_email }}</td>
                 
@@ -61,30 +61,4 @@ Danh sách người dùng
     </tbody>
 </table>
 </div>
-<!-- 
-<div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="myModalLabel">Delete Confirmation</h4>
-      </div>
-      <form action="{{route('danhsachnguoidung.destroy','test')}}" method="post">
-      		{{method_field('delete')}}
-      		{{csrf_field()}}
-	      <div class="modal-body">
-				<p class="text-center">
-					Are you sure you want to delete this?
-				</p>
-	      		<input type="hidden" name="nd_ma" id="nd_ma" value="">
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-outline" data-dismiss="modal">No, Cancel</button>
-	        <button type="submit" class="btn btn-outline">Yes, Delete</button>
-	      </div>
-      </form>
-    </div>
-  </div>
-</div> -->
 @endsection

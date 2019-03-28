@@ -81,7 +81,7 @@ Danh sách bài viết
                
                 <td>{{ $baidang->bd_khoiLuong }}</td>
                 <td>{{ $baidang->bd_gia }}</td>
-                <td>{{$baidang->nguoidung->nd_hoTen}}</td>
+                <td>{{$baidang->nguoidung->nd_name}}</td>
                 
                 <td><a href="{{ route('danhsachbaidang.edit', ['id' => $baidang->bd_ma]) }}"class="btn btn-primary pull-left">Sửa</a>
                 <form method="post" action="{{ route('danhsachbaidang.destroy', ['id' => $baidang->bd_ma]) }}">
