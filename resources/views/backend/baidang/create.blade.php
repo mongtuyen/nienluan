@@ -67,7 +67,18 @@ $(function() {
         <option value="1" {{ old('bd_loaiTin') == 1 ? "selected" : "" }}>Tin mua</option>
         <option value="2" {{ old('bd_loaiTin') == 2 ? "selected" : "" }}>Tin bán</option>
     </select> -->
-    
+    <div class="form-group">
+        <label for="status">Trạng thái tin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label class="fancy-radio">
+            <input name="status" value="2" type="radio" id="close" value="{{ old('status') }}" checked>
+            <span><i></i>Close</span>
+        </label>
+        <label class="fancy-radio">
+            <input name="status" value="1" type="radio" id="open" value="{{ old('status') }}">
+                <span><i></i>Open</span>
+        </label>
+        
+    </div>
     <div class="form-group">
         <label for="sp_ma">Thuộc sản phẩm</label>
         <select name="sp_ma" class="form-control" id="sp_ma">

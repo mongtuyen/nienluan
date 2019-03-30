@@ -5,6 +5,9 @@
         background-color: white;
         height: 1500px;
     }
+    .h5{
+      text-transform: uppercase;
+    }
     </style>
 <div class="col-12 col-md-4">
   <div class="sidebar-area">
@@ -16,7 +19,7 @@
         <button type="submit"><i class="icon_search" aria-hidden="true"></i></button>
       </form>
     </div>
-<div class="logo">
+<div class="logo ">
     <div class="single-widget-area">
       <a href="{{route('frontend.tatcatin') }}"><h5  class="widget-title">Tất cả</h5></a>
         @foreach($danhsachloai as $loai)

@@ -9,7 +9,8 @@ use App\Quyen;
 use App\User;
 use DB;
 use Session;
-
+use App\SanPham;
+use App\Baidang;
 class NguoidungController extends Controller
 {
     /**
@@ -130,7 +131,6 @@ class NguoidungController extends Controller
         $validation = $request->validate([
             'nd_name' =>'required|string',
             'nd_email' => 'required|string|email|max:255',
-            'username' =>'required|string|max:20',
             'password' => 'required|string|min:6',
             'nd_dienThoai' =>'required|numeric|min:10',
             'nd_ngaySinh'=>'required'
@@ -139,7 +139,6 @@ class NguoidungController extends Controller
             'nd_name.required'=>'Bạn chưa nhập họ tên',
             'nd_email.required'=>'Bạn chưa nhập email',
             'nd_ngaySinh.required'=>'Bạn chưa nhập ngày sinh',
-            'username.required'=>'Bạn chưa nhập tài khoản',
             'username.unique'=>'Tài khoản đã tồn tại',
             'password.required'=>'Bạn chưa nhập mật khẩu',
             'password.min'=>'Mật khẩu ít nhất 5 ký tự',
@@ -151,7 +150,7 @@ class NguoidungController extends Controller
         // return dd(Auth::user());
         //$nd = User::where('nd_ma',$id)->first();
         Auth::user()->nd_name = $request->nd_name;
-        Auth::user()->username = $request->username;
+        
         Auth::user()->password = bcrypt($request->password);
         Auth::user()->nd_gioiTinh = $request->nd_gioiTinh;
         Auth::user()->nd_diaChi = $request->nd_diaChi;
@@ -164,6 +163,63 @@ class NguoidungController extends Controller
         return redirect('nguoidung');
     
     }
+
+    public function getmytin(){
+        $user = User::find(Auth::user()->nd_ma);
+        $sanpham=Sanpham::all();
+        //echo $user->nd_ma;
+        $danhsachbaidang=Baidang::where('nd_ma',$user->nd_ma)->orderBy('bd_ngayDang','desc')->get();
+       
+        return view('frontend.user.mytin')
+                ->with('user', $user)
+                ->with('baidang',$danhsachbaidang)
+                ->with('sp',$sanpham);
+    }
+    public function editmytin($id)
+    {
+        $baidang = Baidang::where("bd_ma",  $id)->first();
+        
+        $ds_sanpham = Sanpham::all();
+        return view('frontend.baidang.ban-edit')
+            ->with('baidang', $baidang)
+            ->with('danhsachsanpham',$ds_sanpham);
+           
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatemytin(Request $request, $id)
+    {
+        // $validation = $request->validate([
+        //     'bd_hinh' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+        //     'bd_hinhanhlienquan.*' => 'image|mimes:jpg,jpeg,png,gif,webp|max:2048',
+        //     'bd_tieuDe' => 'required|string',
+        //     'bd_noiDung' => 'required'
+        // ]);
+        
+        $baidang = Baidang::where("bd_ma",  $id)->first();
+        
+        
+        $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
+        $baidang->bd_trangThaisp=$request->bd_trangThaisp;
+        $baidang->status=$request->status;
+       
+        $baidang->bd_gia=$request->bd_gia;
+        $baidang->bd_khoiLuong=$request->bd_khoiLuong;
+       
+        $baidang->save();
+        Session::flash('alert-info','Cập nhật thành công!');
+        return redirect()->back();
+     
+    }
+
+
+
     public function index()
     {
         $ds_nguoidung = User::all(); 

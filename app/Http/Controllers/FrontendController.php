@@ -27,7 +27,7 @@ class FrontendController extends Controller
 
         $danhsachloai = Loai::all();
         $danhsachbaidang = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->paginate(10);
-        $dsbd = $this->searchBaiDang($request);
+        
 
         //$danhsachbaidang=DB::table('baidang')->orderBy('bd_ngayDang','desc');
         //$danhsachbaidang1 = $this->searchTin($request);
@@ -95,10 +95,7 @@ class FrontendController extends Controller
         return view('frontend.pages.contact');
         
     }
-    public function about()
-    {
-        return view('frontend.pages.about');
-    }
+    
     public function tinmua(Request $request)
     {
         $ds_top3_newest_bd = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->take(3)->get();
@@ -124,19 +121,7 @@ class FrontendController extends Controller
         ->with('danhsachbaidang',$danhsachbaidang);
         
     }
-    private function searchBaiDang(Request $request)
-    {
-        $query = DB::table('baidang')->select('*');
-    
-        $searchBySP = $request->query('searchBySP');
-        if($searchBySP != null)
-        {
-            $query->where('sp_ma', $searchBySP);
-        }
-    
-        $data = $query->get();
-        return $data;
-    }
+   
     public function gettinban(){
         $danhsachloai = Loai::all();
         $danhsachsanpham=Sanpham::all();

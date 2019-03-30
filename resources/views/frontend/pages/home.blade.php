@@ -1,4 +1,4 @@
-@extends('frontend.layouts.partials.index')
+@extends('frontend.layouts.partials.trangchu')
 @section('title')
 Trang chủ
 @endsection

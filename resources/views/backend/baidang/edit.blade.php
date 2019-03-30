@@ -39,6 +39,18 @@ Hiệu chỉnh bài viết
             <span><i></i>Tin bán</span>
         </label>
     </div>
+    <div class="form-group">
+        <label for="status">Trạng thái tin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <label class="fancy-radio">
+            <input name="status" value="2" type="radio" id="close" {{ old('status', $baidang->status)==2 ? "checked" : "" }}>
+            <span><i></i>Close</span>
+        </label>
+        <label class="fancy-radio">
+            <input name="status" value="1" type="radio" id="open" {{ old('status', $baidang->status)==1 ? "checked" : "" }}>
+                <span><i></i>Open</span>
+        </label>
+        
+    </div>
     <!-- <div class="form-group">
     <label for="bd_loaiTin">Loại tin</label>
     <select name="bd_loaiTin" class="form-control">

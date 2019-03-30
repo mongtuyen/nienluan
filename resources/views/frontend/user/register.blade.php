@@ -1,4 +1,4 @@
-@extends('frontend.layouts.partials.index')
+@extends('frontend.layouts.partials.index1')
 @section('title')
 Đăng ký tài khoản
 @endsection
@@ -106,7 +106,7 @@
         <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai" value="{{ old('nd_dienThoai') }}">
     </div>
     
-    <button type="submit" class="btn btn-primary">Đăng ký</button>
+    <button type="submit" class="btn famie-btn mt-4">Đăng ký</button>
     </div>
 </form>
 </div></div></div></div></div></div>

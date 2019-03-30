@@ -38,7 +38,7 @@ Danh sách bài viết
             <th>Trạng thái sản phẩm</th>           
             <th>Ngày đăng</th>
             <th>Ngày hết hạn</th> 
-                       
+            <th>Trạng thái tin</th>      
             <th>Khối lượng</th>
             <th>Giá</th>
             <th>Người viết</th>            
@@ -78,7 +78,13 @@ Danh sách bài viết
                 </td>
                 <td>{{ $baidang->bd_ngayDang }}</td>
                 <td>{{ $baidang->bd_ngayHetHan }}</td>
-               
+                <td>
+                    @if($baidang->status==1)
+                    {{'Open'}}
+                    @else
+                    {{'Close'}}
+                    @endif
+                </td>
                 <td>{{ $baidang->bd_khoiLuong }}</td>
                 <td>{{ $baidang->bd_gia }}</td>
                 <td>{{$baidang->nguoidung->nd_name}}</td>

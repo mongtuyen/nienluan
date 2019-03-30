@@ -140,15 +140,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
             </div>
-            <div class="col-md-6">
-              <div class="footer-nav">
-                <nav>
-                  <ul>
-                    
-                  </ul>
-                </nav>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

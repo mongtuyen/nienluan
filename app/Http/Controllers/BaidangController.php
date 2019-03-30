@@ -81,6 +81,8 @@ class BaidangController extends Controller
         $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
         $baidang->bd_trangThaisp=$request->bd_trangThaisp;
         $baidang->bd_loai=$request->bd_loai;
+        $baidang->status=$request->status;
+        
         $baidang->nd_ma=$request->nd_ma;
         $baidang->sp_ma=$request->sp_ma;
         $baidang->save();
@@ -155,6 +157,7 @@ class BaidangController extends Controller
         $baidang->bd_ngayDang=$request->bd_ngayDang;
         $baidang->bd_ngayHetHan=$request->bd_ngayHetHan;
         $baidang->bd_trangThaisp=$request->bd_trangThaisp;
+        $baidang->status=$request->status;
         $baidang->bd_noiDung=$request->bd_noiDung;
         $baidang->bd_gia=$request->bd_gia;
         $baidang->bd_khoiLuong=$request->bd_khoiLuong;

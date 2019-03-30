@@ -15,14 +15,16 @@ Danh sách tin mua
 
 
         <section class="news-area section-padding-100-0">
-        <h4><b>Tìm kiếm : {{$tukhoa}}</b></h4>
+        <h5 align="center"><b>Tìm kiếm : {{$tukhoa}}</b></h5>
+        <br>
     <div class="container">
       <div class="row">
     
       
       <div class="col-12 col-lg-6">
     
-          <h3>Danh sách tin mua</h3>
+          <h4>DANH SÁCH TIN MUA</h4>
+          <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='1')
@@ -43,8 +45,8 @@ Danh sách tin mua
     
 
        <div class="col-12 col-lg-6 mb-100">
-          <h3>Danh sách tin bán</h3>
-          
+          <h4>DANH SÁCH TIN BÁN</h4>
+          <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='2')

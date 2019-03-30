@@ -1,4 +1,4 @@
-@extends('frontend.layouts.partials.index')
+@extends('frontend.layouts.partials.index1')
 
 @section('title')
 Đăng tin bán

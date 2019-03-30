@@ -2,17 +2,26 @@
 @section('title')
 Danh sách tin bán
 @endsection
- @section('main-content')
+@section('main-content')
+     
+<h4>DANH SÁCH TIN BÁN</h4>
+<a href="{{route('frontend.dangtinban')}}" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Đăng tin</a>       
+<hr>
 
- 
-
-  <section class="news-area bg-gray section-padding-100-0">
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+</div>
+  <section class="news-area bg-white section-padding-70-0">
     <div class="container">
       <div class="row">
     
-      <div class="col-12 col-lg-6 mb-100">
-          <h3>Danh sách tin bán</h3>
+      <div class="col-12 col-lg-14 mb-100">
           
+             
           
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='2')

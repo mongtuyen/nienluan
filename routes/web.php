@@ -57,17 +57,23 @@ Route::get('/nguoidung','NguoidungController@getUser');
 Route::post('/nguoidung','NguoidungController@updateUser')->name('profile.updateProfile');
 Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 
+Route::get('/mytin','NguoidungController@getmytin');
+Route::get('/editmytin/{id}','NguoidungController@editmytin')->name('profile.editmytin');
+Route::post('/updatemytin/{id}','NguoidungController@updatemytin')->name('profile.updatemytin');
+
 
 Route::get('/chitiettin/{id}', 'FrontendController@baidang')->name('frontend.details');
 Route::get('/chitiettinmua/{id}', 'FrontendController@chitiettinmua')->name('frontend.muadetails');
 
-Route::group(['middleware'=>'userLogin'],function(){//
+Route::group(['middleware'=>'user3Login'],function(){
     Route::get('/dangtinban','FrontendController@gettinban');
     Route::post('/dangtinban','FrontendController@posttinban')->name('frontend.dangtinban');
+    
+});
+Route::group(['middleware'=>'user2Login'],function(){
     Route::get('/dangtinmua','FrontendController@gettinmua');
     Route::post('/dangtinmua','FrontendController@posttinmua')->name('frontend.dangtinmua');
 });
-
 Route::post('/usertimkiem', 'FrontendController@timkiembaidang')->name('frontend.timkiem');
     
 Route::get('/loctin/{id}','FrontendController@gettinrau')->name('frontend.tinrau');

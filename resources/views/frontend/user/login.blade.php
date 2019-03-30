@@ -1,4 +1,4 @@
-@extends('frontend.layouts.partials.index')
+@extends('frontend.layouts.partials.index1')
 @section('title')
 Đăng nhập
 @endsection
@@ -90,10 +90,13 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn famie-btn mt-4">
                                     Đăng nhập
                                 </button>
-
+                                <br>
+                                <br><br>
+                                <br>
+                                <br><br>
                             </div>
                         </div>
                     </form>

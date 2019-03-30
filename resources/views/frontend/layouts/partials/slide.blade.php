@@ -1,6 +1,9 @@
  <!-- ##### Hero Area Start ##### -->
- <div class="container">
- <div class="hero-area">
+ <style>
+ 
+ 
+ </style>
+ 
     <div class="welcome-slides owl-carousel">
 
       <!-- Single Welcome Slides -->
@@ -31,6 +34,7 @@
                   </p>
                   <a href="{{route('frontend.dangtinmua')}}" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Tôi muốn mua</a>
                 <a href="{{route('frontend.dangtinban')}}" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Tôi muốn bán</a>
+                
               </div>
             </div>
           </div>
@@ -39,4 +43,3 @@
 
     </div>
   </div>
-</div>

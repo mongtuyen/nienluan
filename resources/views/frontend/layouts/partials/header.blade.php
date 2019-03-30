@@ -14,7 +14,8 @@
              
 					@if(Auth::check())
           <a href="nguoidung"><i class="fa fa-user"></i>  {{Auth::user()->nd_name}}</a>
-					<a href="dangxuat"></i> Đăng xuất</a>                       					
+					<a href="mytin"></i>Tin của tôi </a>  &nbsp;&nbsp;&nbsp;
+          <a href="dangxuat"></i>  Đăng xuất</a>                       					
 					@else
 						<a href="dangnhap"><i class="fa fa-user"></i> Đăng nhập</a>
 						<a href="dangky">Đăng ký</a>

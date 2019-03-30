@@ -1,4 +1,4 @@
-@extends('frontend.layouts.partials.index')
+@extends('frontend.layouts.partials.index1')
 @section('title')
 Thông tin người dùng
 @endsection
@@ -34,10 +34,11 @@ Thông tin người dùng
     <div class="box-body">
     <!-- <input type="hidden" name="_method" value="PUT" /> -->
     {{ csrf_field() }}
-    
     <div class="form-group">
-        <label for="username">Tài khoản</label>
-        <input type="text" class="form-control" id="username" name="username" value="{{  Auth::user()->username}}">
+        <label for="username">Loại tài khoản: {{  Auth::user()->quyen->q_ten}}</label>
+ </div>
+    <div class="form-group">
+        <label for="username">Tài khoản: {{  Auth::user()->username}}</label>
     </div>
     <div class="form-group">
         <label for="nd_matKhau">Mật khẩu</label>
@@ -69,7 +70,7 @@ Thông tin người dùng
         <label for="nd_dienThoai">Điện thoại</label>
         <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai" value="{{  Auth::user()->nd_dienThoai }}" placeholder="Nhập tên">
     </div>
-    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="submit" class="btn famie-btn mt-4">Lưu</button>
     </div>
 </form> <br><br>
 
