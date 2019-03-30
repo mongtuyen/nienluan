@@ -74,13 +74,7 @@ Hiệu chỉnh bài viết
             <span><i></i>Chưa thu hoạch</span>
         </label>
     </div>
-    <!-- <div class="form-group">
-    <label for="bd_trangThaisp">Trạng thái sản phẩm</label>
-    <select name="bd_trangThaisp" class="form-control">
-        <option value="1" {{ old('bd_trangThaisp', $baidang->bd_trangThaisp) == 1 ? "selected" : "" }}>Đã thu hoạch</option>
-        <option value="2" {{ old('bd_trangThaisp', $baidang->bd_trangThaisp) == 2 ? "selected" : "" }}>Gần thu hoạch</option>
-    </select>
-    </div> -->
+    
     <div class="form-group">
         <label for="bd_noiDung">Nội dung</label>
         <textarea name ="bd_noiDung" id="bd_noiDung" class="form-control ckeditor" rows="5" required>{{$baidang->bd_noiDung}}</textarea> 
@@ -107,7 +101,7 @@ Hiệu chỉnh bài viết
         <label for="bd_ngayHetHan">Ngày hết hạn</label>
         <input type="text" class="form-control" id="bd_ngayHetHan" name="bd_ngayHetHan" value="{{ old('bd_ngayHetHan',$baidang->bd_ngayHetHan) }}" data-mask-datetime>
     </div>
-
+@if($baidang->bd_loai==2)
     <label>Hình đại diện</label>
     <div class="form-group">
         <div class="file-loading">        
@@ -130,7 +124,7 @@ Hiệu chỉnh bài viết
         <label for="bd_gia">Giá</label>
         <input type="number" class="form-control" id="bd_gia" name="bd_gia" value="{{ old('bd_gia', $baidang->bd_gia) }}">
     </div>
-
+@endif
     <button type="submit" class="btn btn-primary">Lưu</button>
 </div>
 </form></div></div>

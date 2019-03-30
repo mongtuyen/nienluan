@@ -8,15 +8,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <!-- Title -->
-  <title>Famie - Farm Services &amp; Organic Food Store Template | Home</title>
+  
   <!-- Favicon -->
   <link rel="icon" href="{{asset('theme/farmie/img/core-img/favicon.ico') }}">
   <!-- Core Stylesheet -->
   <link rel="stylesheet"  href="{{ asset('theme/farmie/style.css') }}">
 
   <link rel="stylesheet" type="text/css" href="{{ asset('theme/farmie/css/custom-styles.css') }}">
-  
+  <script type="text/javascript" language="javascript" src="{{asset('theme/adminlte/bower_components/ckeditor/ckeditor.js')}}"></script>
+ 
   @yield('custom-css')
+  <style>
+  #sidebar {
+        background-color: #e1d5e7;
+        height: 3000px;
+    }
+
+    #main-content {
+        background-color: #f8cecc;
+        height: 300px;
+    }
+
+    #main-footer {
+        background-color: #fad7ac;
+        height: 100px;
+    }
+  </style>
 </head>
 
 <body>
@@ -30,14 +47,26 @@
 
   	@include('frontend.layouts.partials.header')
 
+    <section class="famie-blog-area">
+    <div class="container">
+      <div class="row">
+        <!-- Posts Area -->
+        <div class="col-12 col-md-8">
+          
 
-  	@yield('main-content')
-  
+          @yield('main-content')
+        </div>
+
+        @include('frontend.layouts.partials.sidebar')
+      </div>
+    </div>
+  </section>
+
   
 
 	<!-- Footer -->
   	@include('frontend.layouts.partials.footer')
-	
+	</div>
  <!-- ##### All Javascript Files ##### -->
   <!-- jquery 2.2.4  -->
   <script src="{{asset('theme/farmie/js/jquery.min.js')}}"></script>

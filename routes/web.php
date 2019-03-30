@@ -42,9 +42,11 @@ Route::group(['prefix'=>'admin/comment','middleware'=>'adminLogin'],function(){/
 });
 //Frontend
 Route::get('/trangchu', 'FrontendController@index')->name('frontend.home');
-Route::get('/lienhe', 'FrontendController@contact')->name('frontend.contact');
+
 Route::get('/tinmua', 'FrontendController@tinmua')->name('frontend.tinmua');
 Route::get('/tinban', 'FrontendController@tinban')->name('frontend.tinban');
+Route::get('/lienhe', 'FrontendController@contact')->name('frontend.contact');
+
 
 Route::get('dangnhap','NguoidungController@getLogin');
 Route::post('dangnhap','NguoidungController@postLogin')->name('dangnhap.postLogin');
@@ -58,6 +60,21 @@ Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 
 Route::get('/chitiettin/{id}', 'FrontendController@baidang')->name('frontend.details');
 Route::get('/chitiettinmua/{id}', 'FrontendController@chitiettinmua')->name('frontend.muadetails');
+
+Route::group(['middleware'=>'userLogin'],function(){//
+    Route::get('/dangtinban','FrontendController@gettinban');
+    Route::post('/dangtinban','FrontendController@posttinban')->name('frontend.dangtinban');
+    Route::get('/dangtinmua','FrontendController@gettinmua');
+    Route::post('/dangtinmua','FrontendController@posttinmua')->name('frontend.dangtinmua');
+});
+
+Route::post('/usertimkiem', 'FrontendController@timkiembaidang')->name('frontend.timkiem');
+    
+Route::get('/loctin/{id}','FrontendController@gettinrau')->name('frontend.tinrau');
+Route::get('/loctatca','FrontendController@getall')->name('frontend.tatcatin');
+
+//Route::post('/rau','FrontendController@gettinrau');
+//Route::get('/cu','FrontendController@gettincu')->name('frontend.tincu');
 
 
 // Route::get('/dang-xuat', function(){

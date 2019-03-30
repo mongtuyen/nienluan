@@ -1,5 +1,8 @@
 
 @extends('frontend.layouts.partials.index')
+@section('title')
+Chi tiết tin mua
+@endsection
  @section('main-content')
  <html>
  <head>
@@ -64,7 +67,7 @@
 					<p class="stext-102 cl3 p-t-23">
 						Ngày kết thúc: {{$baidang->bd_ngayHetHan}}
 					</p>
-					<p>
+					<p class="stext-102 cl3 p-t-23">
 						Địa chỉ chi tiết trên bản đồ
 					</p>
 					
@@ -221,6 +224,10 @@
 												Gửi
 											</button>
 										</form>
+										@else
+										<h5 class="mtext-108 cl2 p-b-7">
+												Vui lòng đăng nhập để bình luận 
+											</h5>
 										@endif
 									</div>
 								</div>

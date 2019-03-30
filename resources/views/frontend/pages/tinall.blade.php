@@ -1,3 +1,8 @@
+@extends('frontend.layouts.partials.index')
+@section('title')
+Danh sách tin mua
+@endsection
+@section('main-content')
 
 <style>
 .img-list2{
@@ -6,7 +11,7 @@
 }
 .vl {
   border-left: 1px solid green;
-  height: 1550px;
+  height: 1500px;
   position: absolute;
   left: 102%;
   margin-left: -7px;
@@ -14,11 +19,9 @@
 }
 </style>
 
-
  
 
-
-   
+ <!-- ---------------------------------------------- -->
         <section class="news-area section-padding-100-0">
     <div class="container">
       <div class="row">
@@ -26,10 +29,10 @@
 
       <div class="col-12 col-lg-6">
     
-          <h4>DANH SÁCH TIN MUA</h4>
-          <hr>
+      <h4>DANH SÁCH TIN MUA</h4>
+      <hr>
           <!-- Single Blog Area -->
-           @foreach($danhsachbaidang as $bd)
+           @foreach($allbd as $bd)
            @if($bd->bd_loai=='1')
             <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
             <!-- Post Content -->          
@@ -48,10 +51,10 @@
     
 
        <div class="col-12 col-lg-6 mb-100">
-          <h4>DANH SÁCH TIN BÁN</h4>
+       <h4>DANH SÁCH TIN BÁN</h4>
           <hr>
           <!-- Single Blog Area -->
-           @foreach($danhsachbaidang as $bd)
+           @foreach($allbd as $bd)
            @if($bd->bd_loai=='2')
             <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
             <!-- Post Content -->          
@@ -78,12 +81,11 @@
           @endforeach
          
         </div>
- {{$danhsachbaidang->links()}}
+ {{$allbd->links()}}
       </div>
     </div>
-
-
-
-
   </section>
-        
+  
+
+
+  @endsection

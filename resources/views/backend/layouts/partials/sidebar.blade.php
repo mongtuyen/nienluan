@@ -67,20 +67,7 @@
         <li class="{{ Request::is('danhsachbaidang*') ? 'active' : '' }}"><a href="{{ route('danhsachbaidang.index') }}"><i class="fa fa-tasks"></i>Quản lý bài đăng</a></li>
          
         
-        <!-- Optionally, you can add icons to the links -->
-        <!-- <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Facebook</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Gmail</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Google</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li> -->
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>

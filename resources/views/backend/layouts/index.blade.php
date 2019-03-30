@@ -44,8 +44,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Sàn giao dịch nông sản
-        <small>Cầu nối giữa nông dân và doanh nghiệp</small>
+        Quản trị viên
+        
       </h1> 
       <!-- <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -160,31 +160,7 @@
 
 <script type="text/javascript" language="javascript" src="{{asset('theme/adminlte/bower_components/ckeditor/ckeditor.js')}}"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
      @yield('custom-scripts')
-<!-- <script src="{{asset('js/app.js')}}"></script> -->
 
-
-     <!-- <script>  
-  $('#edit').on('show.bs.modal', function (event) {
-    console.log('open')
-      var button = $(event.relatedTarget) 
-      var l_ten = button.data('l_ten') 
-      var l_ma = button.data('l_ma') 
-      var modal = $(this)
-      modal.find('.modal-body #l_ten').val(l_ten);
-      modal.find('.modal-body #l_ma').val(l_ma);
-})
-  $('#delete').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) 
-      var l_ma = button.data('l_ma') 
-      var nd_ma = button.data('nd_ma') 
-      var modal = $(this)
-      modal.find('.modal-body #l_ma').val(l_ma);
-      modal.find('.modal-body #nd_ma').val(nd_ma);
-})
-</script> -->
 </body>
 </html>

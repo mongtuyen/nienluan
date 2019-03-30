@@ -1,33 +1,28 @@
+@extends('frontend.layouts.partials.index')
+@section('title')
+Danh sách tin mua
+@endsection
+@section('main-content')
 
 <style>
 .img-list2{
     width: 100px;
     height:100px;
 }
-.vl {
-  border-left: 1px solid green;
-  height: 1550px;
-  position: absolute;
-  left: 102%;
-  margin-left: -7px;
-  top: 0;
-}
 </style>
-
 
  
 
 
-   
         <section class="news-area section-padding-100-0">
+        <h4><b>Tìm kiếm : {{$tukhoa}}</b></h4>
     <div class="container">
       <div class="row">
     
-
+      
       <div class="col-12 col-lg-6">
     
-          <h4>DANH SÁCH TIN MUA</h4>
-          <hr>
+          <h3>Danh sách tin mua</h3>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='1')
@@ -41,15 +36,15 @@
             </div>
           @endif
           @endforeach
-          <div class="vl"></div>
+          
       </div>
 
 
     
 
        <div class="col-12 col-lg-6 mb-100">
-          <h4>DANH SÁCH TIN BÁN</h4>
-          <hr>
+          <h3>Danh sách tin bán</h3>
+          
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='2')
@@ -81,9 +76,5 @@
  {{$danhsachbaidang->links()}}
       </div>
     </div>
-
-
-
-
   </section>
-        
+  @endsection

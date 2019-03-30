@@ -22,8 +22,8 @@ table {
                 <td class="companyInfo" align="center">
                     Công ty TNHH Nông nghiệp sạch<br />
                     http://nongnghiepsach.com/<br />
-                    (0292)3.888.999 # 01.222.888.999<br />
-                    <img src="{{ asset('storage/nongnghiep.jpg') }}" height="100px"/>
+                    035 766 1088<br />
+                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}" height="100px"/>
                 </td>
             </tr>
         </table>
@@ -56,7 +56,7 @@ table {
                 @endif
                 @endforeach
                 <td align="left">{{ $baidang->bd_tieuDe }}</td>
-                <td align="left">{{ $baidang->bd_noiDung }}</td>
+                <td align="left">{!! $baidang->bd_noiDung !!}</td>
                 
                 @foreach ($danhsachnguoidung as $nd)
                 @if ($baidang->nd_ma==$nd->nd_ma)

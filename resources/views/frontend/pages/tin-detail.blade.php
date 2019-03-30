@@ -1,5 +1,8 @@
 
 @extends('frontend.layouts.partials.index')
+@section('title')
+Chi tiết tin bán
+@endsection
  @section('main-content')
  <html>
  <head>
@@ -54,9 +57,9 @@
 						<div class="slick3 gallery-lb">
 							<div class="item-slick3" data-thumb="{{ asset('storage/photos/'. $baidang->bd_hinh) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" alt="IMG-PRODUCT"  class="img-list">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('storage/photos/' .  $baidang->bd_hinh) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('storage/photos/' .  $baidang->bd_hinh) }}"  class="img-list">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
@@ -66,9 +69,9 @@
 							@foreach($hinhanhlienquan as $hinhanh)
 							<div class="item-slick3" data-thumb="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}" alt="IMG-PRODUCT"  class="img-list">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}"  class="img-list">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
@@ -88,7 +91,7 @@
 					{{ $baidang->bd_tieuDe }}
 						</h4>
 					<span class="mtext-106 cl2">
-						Giá: {{ $baidang->bd_gia }}
+						Giá: {{ $baidang->bd_gia }} VND/KG
 					</span>
 					<p class="stext-102 cl3 p-t-23">
 						Khối lượng: {{ $baidang->bd_khoiLuong }} kg
@@ -116,25 +119,7 @@
                     <span> </span>
                   @endif
 					</p>
-					<div class="flex-w flex-m p-l-100 p-t-40 respon7">
-						<div class="flex-m bor9 p-r-10 m-r-11">
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-								<i class="zmdi zmdi-favorite"></i>
-							</a>
-						</div>
-
-						<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-							<i class="fa fa-twitter"></i>
-						</a>
-
-						<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-							<i class="fa fa-google-plus"></i>
-						</a>
-					</div>
+					
 				</div>
 			</div>
 
@@ -218,7 +203,7 @@
 											{{$nguoidung->nd_email}}
 											</span>
 										</li>
-										<div class="col-lg-6">
+										<div class="col-lg-15">
 										@if($nguoidung->nd_diaChi=='Đồng Tháp')
           					<div class="contact-maps mb-100">
           
@@ -284,10 +269,14 @@
 												</div>
 											</div>
 
-											<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+											<button type="submit" class="btn famie-btn mt-4 animated bounceInDown">
 												Gửi
 											</button>
 										</form>
+										@else
+										<h5 class="mtext-108 cl2 p-b-7">
+												Vui lòng đăng nhập để bình luận 
+											</h5>
 										@endif
 									</div>
 								</div>

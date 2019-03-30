@@ -1,6 +1,6 @@
 @extends('frontend.layouts.partials.index')
 @section('title')
-Đăng ký 
+Đăng ký tài khoản
 @endsection
 @section('custom-css')
 <style type="text/css" media="screen">

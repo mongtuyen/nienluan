@@ -1,6 +1,6 @@
 /* ***** Master Stylesheet ***** */
 /* :: 1.0 Import Fonts */
-@import url("https://fonts.googleapis.com/css?family=Karla:400,700");
+@import url("https://fonts.googleapis.com/css?family=Arial:400,700");
 /* :: 2.0 Import All CSS Plugins */
 @import url(css/bootstrap.min.css);
 @import url(css/classy-nav.css);
@@ -14,7 +14,7 @@
   padding: 0; }
 
 body {
-  font-family: "Karla", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #707070; }
 
 h1,
@@ -23,13 +23,13 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Karla", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #303030;
   line-height: 1.3;
   font-weight: 700; }
 
 p {
-  font-family: "Karla", sans-serif;
+  font-family: "Arial", sans-serif;
   color: #707070;
   font-size: 14px;
   line-height: 1.7;
@@ -46,7 +46,7 @@ a:hover {
   color: #707070;
   font-weight: 700;
   font-size: 14px;
-  font-family: "Karla", sans-serif; }
+  font-family: "Arial", sans-serif; }
 
 ul {
   margin: 0; }
