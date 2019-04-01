@@ -61,11 +61,11 @@ Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 Route::post('/nhapgia/{id}','CommentController@postGia')->name('nhapgia');
 
 
- Route::get('/mytin','NguoidungController@getmytin');
- Route::put('/updatemytin/{id}','NguoidungController@updatemytin')->name('profile.updatemytin');
- Route::get('/edittinmua/{id}','NguoidungController@edittinmua')->name('profile.edittinmua');
- Route::put('/updatedaugia/{id}', 'CommentController@updatedaugia')->name('capnhatdaugia');
-    Route::get('/editmytin/{id}','NguoidungController@editmytin')->name('profile.editmytin');
+Route::get('/mytin','NguoidungController@getmytin');
+Route::put('/updatemytin/{id}','NguoidungController@updatemytin')->name('profile.updatemytin');
+Route::get('/edittinmua/{id}','NguoidungController@edittinmua')->name('profile.edittinmua');
+Route::put('/updatedaugia/{id}', 'CommentController@updatedaugia')->name('capnhatdaugia');
+Route::get('/editmytin/{id}','NguoidungController@editmytin')->name('profile.editmytin');
 
 
 
@@ -96,14 +96,6 @@ Route::get('/loctinmua/{id}','TinController@gettinmua')->name('frontend.loctinmu
 Route::get('/loctinban/{id}','TinController@gettinban')->name('frontend.loctinban');
 
 
-
-// Route::get('/dang-xuat', function(){
-// 	Auth::logout();
-// 	return redirect()->route('frontend.home');
-// })->name('dang-nhap.getLogout');
-/*Route Đăng Ký*/
-// Route::get('/dang-ky','U_RegisterController@getRegister')->name('dang-ky.getRegister');
-// Route::post('/dang-ky/xu-ly','U_RegisterController@postRegister')->name('dang-ky.postRegister');
 
 
 // Auth::routes();
