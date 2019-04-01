@@ -17,6 +17,35 @@ Danh sách tin mua
   margin-left: -7px;
   top: 0;
 }
+
+.button3 {
+	background-color: #f44336;
+	border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+  
+  opacity: 1;
+  cursor: not-allowed;
+} 
+.button4 {
+	background-color: #4CAF50;
+	border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+ 
+  opacity: 1;
+  cursor: not-allowed;
+} 
 </style>
 
  
@@ -40,6 +69,12 @@ Danh sách tin mua
                 <a href="{{ route('frontend.muadetails', ['id' => $bd->bd_ma]) }}" class="post-title">{{$bd->bd_tieuDe}}</a>
                 <p>Ngày đăng: {{$bd->bd_ngayDang}}/{{$bd->nguoidung->nd_name}}</p>
                 <p>Khối lượng: {{$bd->bd_khoiLuong}} kg</p>
+               
+						@if ($bd->status==2)
+             Trạng thái tin:
+						<button class="button3">Close</button>
+						
+						@endif
               </div>
             </div>
           @endif
@@ -74,7 +109,12 @@ Danh sách tin mua
                     @endif
                   
               </p>
-
+              
+						@if ($bd->status==2)
+            Trạng thái tin:
+						<button class="button3">Close</button>
+						
+						@endif
             </div>
           </div>
           @endif

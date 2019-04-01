@@ -1,3 +1,8 @@
+@extends('frontend.layouts.partials.index')
+@section('title')
+Danh sách tin mua
+@endsection
+@section('main-content')
 
 <style>
 .img-list2{
@@ -6,49 +11,19 @@
 }
 .vl {
   border-left: 1px solid green;
-  height: 1550px;
+  height: 1500px;
   position: absolute;
   left: 102%;
   margin-left: -7px;
   top: 0;
 }
-
-.button3 {
-	background-color: #f44336;
-	border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 3px 1px;
-  
-  opacity: 1;
-  cursor: not-allowed;
-} 
-.button4 {
-	background-color: #4CAF50;
-	border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 3px 1px;
- 
-  opacity: 1;
-  cursor: not-allowed;
-} 
-
 </style>
 
-
  
 
 
-   
+
+        <!-- ---------------------------------------------- -->
         <section class="news-area section-padding-100-0">
     <div class="container">
       <div class="row">
@@ -56,8 +31,8 @@
 
       <div class="col-12 col-lg-6">
     
-          <h4>DANH SÁCH TIN MUA</h4>
-          <hr>
+      <h4>DANH SÁCH TIN MUA</h4>
+      <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
            @if($bd->bd_loai=='1')
@@ -67,11 +42,6 @@
                 <a href="{{ route('frontend.muadetails', ['id' => $bd->bd_ma]) }}" class="post-title">{{$bd->bd_tieuDe}}</a>
                 <p>Ngày đăng: {{$bd->bd_ngayDang}}/{{$bd->nguoidung->nd_name}}</p>
                 <p>Khối lượng: {{$bd->bd_khoiLuong}} kg</p>
-                @if ($bd->status==2)
-            Trạng thái tin :
-						<button class="button3">Close</button>
-						
-						@endif
               </div>
             </div>
           @endif
@@ -83,7 +53,7 @@
     
 
        <div class="col-12 col-lg-6 mb-100">
-          <h4>DANH SÁCH TIN BÁN</h4>
+       <h4>DANH SÁCH TIN BÁN</h4>
           <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
@@ -106,11 +76,7 @@
                     @endif
                   
               </p>
-              @if ($bd->status==2)
-            Trạng thái tin :
-						<button class="button3">Close</button>
-						
-						@endif
+
             </div>
           </div>
           @endif
@@ -120,9 +86,6 @@
  {{$danhsachbaidang->links()}}
       </div>
     </div>
-
-
-
-
   </section>
-        
+  
+  @endsection

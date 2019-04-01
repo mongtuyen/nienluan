@@ -12,19 +12,18 @@
 <div class="col-12 col-md-4">
   <div class="sidebar-area">
     <br>
-     
+   
     <div class="single-widget-area">
-      <form action="usertimkiem" method="post" class="search-widget-form" role="search">
+      <form action="usertimkiemloai" method="post" class="search-widget-form" role="search">
         <input type="hidden" name="_token" value="{{csrf_token()}}";>
         <input type="search" name="tukhoa" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
         <button type="submit"><i class="icon_search" aria-hidden="true"></i></button>
       </form>
     </div>
-   
   
 <div class="logo ">
     <div class="single-widget-area">
-      <a href="{{route('frontend.tatcatin') }}"><h5  class="widget-title">Tất cả</h5></a>
+      <a href="{{route('frontend.tinban') }}"><h5  class="widget-title">Tất cả</h5></a>
         @foreach($danhsachloai as $loai)
           <br>
           <h5 class="widget-title">{{ $loai->l_ten }}</h5>
@@ -32,7 +31,7 @@
           @if(count($loai->cacSanPham)>0)
             <ul class="cata-list">
               @foreach($loai->cacSanPham as $sanpham)             
-                <li><a href="{{route('frontend.tinrau', ['id' => $sanpham->sp_ma]) }}">{{ $sanpham->sp_ten }}</a></li>
+                <li><a href="{{route('frontend.loctinban', ['id' => $sanpham->sp_ma]) }}">{{ $sanpham->sp_ten }}</a></li>
               @endforeach
               </ul>
               @endif
@@ -43,7 +42,7 @@
             <div class="single-widget-area">
             
               <!-- Title -->
-              <h5 class="widget-title">Tin mới nhất</h5>
+              <h5 class="widget-title">Tin bán mới nhất</h5>
 
               <!-- Single Recent News Start -->
               @foreach($danhsachbaidangmoinhat as $new)

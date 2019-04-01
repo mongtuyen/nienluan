@@ -33,13 +33,13 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){//
     Route::resource('/danhsachnguoidung','NguoidungController');
     Route::get('/tongquan', 'BaocaoController@index')->name('tongquan');
 
+    Route::delete('/xoa/{id}', 'CommentController@getXoa')->name('xoabinhluan');
 
 });
-Route::group(['prefix'=>'admin/comment','middleware'=>'adminLogin'],function(){//
-    Route::get('xoa/{id}/{idbd}', 'CommentController@getXoa')->name('xoabinhluan');
-
-
-});
+//Route::group(['prefix'=>'admin/comment','middleware'=>'adminLogin'],function(){//
+    
+    
+//});
 //Frontend
 Route::get('/trangchu', 'FrontendController@index')->name('frontend.home');
 
@@ -55,32 +55,45 @@ Route::get('/dangky','NguoidungController@getRegister')->name('dangky.getRegiste
 Route::post('/dangky','NguoidungController@postRegister')->name('dangky.postRegister');
 Route::get('/nguoidung','NguoidungController@getUser');
 Route::post('/nguoidung','NguoidungController@updateUser')->name('profile.updateProfile');
-Route::post('/comment/{id}','CommentController@postComment')->name('comment');
 
-Route::get('/mytin','NguoidungController@getmytin');
-Route::get('/editmytin/{id}','NguoidungController@editmytin')->name('profile.editmytin');
-Route::post('/updatemytin/{id}','NguoidungController@updatemytin')->name('profile.updatemytin');
+Route::post('/comment/{id}','CommentController@postComment')->name('comment');
+Route::post('/nhapgia/{id}','CommentController@postGia')->name('nhapgia');
+
+
+ Route::get('/mytin','NguoidungController@getmytin');
+ Route::put('/updatemytin/{id}','NguoidungController@updatemytin')->name('profile.updatemytin');
+ Route::get('/edittinmua/{id}','NguoidungController@edittinmua')->name('profile.edittinmua');
+ Route::put('/updatedaugia/{id}', 'CommentController@updatedaugia')->name('capnhatdaugia');
+    Route::get('/editmytin/{id}','NguoidungController@editmytin')->name('profile.editmytin');
+
 
 
 Route::get('/chitiettin/{id}', 'FrontendController@baidang')->name('frontend.details');
 Route::get('/chitiettinmua/{id}', 'FrontendController@chitiettinmua')->name('frontend.muadetails');
-
+//ban
 Route::group(['middleware'=>'user3Login'],function(){
     Route::get('/dangtinban','FrontendController@gettinban');
     Route::post('/dangtinban','FrontendController@posttinban')->name('frontend.dangtinban');
-    
+   
 });
+//mua
 Route::group(['middleware'=>'user2Login'],function(){
     Route::get('/dangtinmua','FrontendController@gettinmua');
     Route::post('/dangtinmua','FrontendController@posttinmua')->name('frontend.dangtinmua');
+   
+   
 });
 Route::post('/usertimkiem', 'FrontendController@timkiembaidang')->name('frontend.timkiem');
-    
+Route::post('/usertimkiemloai', 'FrontendController@timkiembaidang1')->name('frontend.timkiem1');
+     
 Route::get('/loctin/{id}','FrontendController@gettinrau')->name('frontend.tinrau');
 Route::get('/loctatca','FrontendController@getall')->name('frontend.tatcatin');
 
-//Route::post('/rau','FrontendController@gettinrau');
-//Route::get('/cu','FrontendController@gettincu')->name('frontend.tincu');
+
+Route::get('/loctinmua/{id}','TinController@gettinmua')->name('frontend.loctinmua');
+
+Route::get('/loctinban/{id}','TinController@gettinban')->name('frontend.loctinban');
+
 
 
 // Route::get('/dang-xuat', function(){

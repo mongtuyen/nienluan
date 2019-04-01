@@ -81,7 +81,7 @@
 
     <div class="form-group">
         <label for="bd_ngayHetHan">Ngày hết hạn</label>
-        <input type="text" class="form-control" id="bd_ngayHetHan" name="bd_ngayHetHan" value="{{ old('bd_ngayHetHan') }}" data-mask-datetime>
+        <input type="date" class="form-control" id="bd_ngayHetHan" name="bd_ngayHetHan" value="{{ old('bd_ngayHetHan') }}" data-mask-datetime>
     </div>
     <label>Hình đại diện</label>
     <div class="form-group">
@@ -105,7 +105,7 @@
         <label for="bd_gia">Giá</label>
         <input type="number" class="form-control" id="bd_gia" name="bd_gia" value="{{ old('bd_gia') }}">
     </div>
-    <button type="submit" class="btn btn-primary">Đăng tin</button>
+    <button type="submit" class="btn famie-btn mt-4">Đăng tin</button>
     </div>
 </form>
 </div></div></div></div></div></div>

@@ -140,6 +140,7 @@ Hiệu chỉnh bài viết
     <button type="submit" class="btn btn-primary">Lưu</button>
 </div>
 </form></div></div>
+@if($baidang->bd_loai==1)
 <h3 align="center">Danh sách bình luận</h3>
 <div  class="col-md-12">
 <div  class="box box-primary">
@@ -163,12 +164,63 @@ Hiệu chỉnh bài viết
                 <td>{{ $bl->bl_noiDung}}</td>
                 <td>{{ $bl->bl_time }}</td>  
                 <!-- <td> <a href="admin/comment/xoa/{{$bl->bl_ma}}/{{$baidang->bd_ma}}">Delete</a></td> -->
-                <td> <a href="{{ route('xoabinhluan',['id' => $bl->bl_ma, 'idbd' => $baidang->bd_ma]) }}">Xóa</a></td>
+                <!-- <td> <a href="{{ route('xoabinhluan',['id' => $bl->bl_ma, 'idbd' => $baidang->bd_ma]) }}">Xóa</a></td>
                 <td><form method="post" action="{{ route('xoabinhluan',['id' => $bl->bl_ma, 'idbd' => $baidang->bd_ma]) }}">
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         
                         <button type="submit" class="btn btn-danger">Xóa</button></td>
+                </form> -->
+                <td><form method="post" action="{{ route('xoabinhluan', ['id' => $bl->bl_ma]) }}">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ csrf_field() }}
+                        
+                        <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
+               </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+</div></div>
+@else
+<h3 align="center">Danh sách đấu giá</h3>
+
+<div  class="col-md-12">
+<div  class="box box-primary">
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Người viết</th>             
+            <th>Giá</th>  
+            <th>Khối lượng</th>         
+            <th>Ngày đăng</th>    
+            <th>Trạng thái</th>                                      
+            <th>Tùy chọn</th>           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($baidang->gia as $i => $g)
+            <tr>
+                <td>{{ $i+1 }}</td>
+                <td>{{ $g->nguoidung->nd_name}}</td>
+                <td>{{ $g->dg_noiDung}}</td>
+                <td>{{ $g->dg_khoiLuong}}</td>
+                <td>{{ $g->dg_time }}</td>
+                <td> @if($g->dg_trangThai==1)
+                    {{'Đang chờ'}}
+                    @else
+                    {{'Được chọn'}}
+                    @endif
+                </td>  
+                <td> <a href="#">Chọn</a></td>
+                <td><form method="post" action="#">
+                <input type="hidden" name="_method" value="PUT" />
+                        {{ csrf_field() }}
+                        
+                        <button type="submit" class="btn btn-sussess">Chọn</button></td>
                 </form>
                 </td>
             </tr>
@@ -176,7 +228,7 @@ Hiệu chỉnh bài viết
     </tbody>
 </table>
 </div></div>
-
+@endif
 @endsection
 
 @section('custom-scripts')

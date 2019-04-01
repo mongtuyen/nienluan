@@ -39,6 +39,36 @@ Chi tiết tin bán
 	<link rel="stylesheet" type="text/css" href="{{ asset('theme/details/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('theme/details/css/main.css')}}">
 <!--===============================================================================================-->
+<style>
+.button3 {
+	background-color: #f44336;
+	border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+  
+  opacity: 1;
+  cursor: not-allowed;
+} 
+.button4 {
+	background-color: #4CAF50;
+	border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+ 
+  opacity: 1;
+  cursor: not-allowed;
+} 
+</style>
 </head>
 <body>
 <div class="container">
@@ -102,6 +132,11 @@ Chi tiết tin bán
 					</p>
 					<p class="stext-102 cl3 p-t-23">
 						Ngày kết thúc: {{$baidang->bd_ngayHetHan}}
+						
+					</p>
+					<p class="stext-102 cl3 p-t-23">
+						
+						Địa chỉ :{{$baidang->nguoidung->nd_diaChi}} (chi tiết trên bản đồ)
 					</p>
 					<p class="stext-102 cl3 p-t-23">
 					Trạng thái sản phẩm: 
@@ -119,7 +154,16 @@ Chi tiết tin bán
                     <span> </span>
                   @endif
 					</p>
-					
+					<p>
+						
+						Trạng thái tin :
+						@if ($baidang->status==2)
+						<button class="button3">Close</button>
+						@else
+						<button class="button4">Open</button>
+						@endif
+						
+					</p>
 				</div>
 			</div>
 
@@ -142,7 +186,7 @@ Chi tiết tin bán
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab" aria-expanded="false">Đánh giá</a>
+							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab" aria-expanded="false">Giao dịch</a>
 						</li>
 					</ul>
 
@@ -216,7 +260,7 @@ Chi tiết tin bán
 										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5997505699343!2d105.99872531428231!3d10.04984897493264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a07026bf87db75%3A0xd5f7e94bd1d880d0!2zQ2jhu6MgVGFtIELDrG5o!5e0!3m2!1svi!2s!4v1553767635301" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
 										@endif
-										<a href="#" class="btn famie-btn mt-4 animated bounceInDown" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
+										<a href="#" class="btn famie-btn mt-4" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
 								
 									</ul>
 									
@@ -230,52 +274,107 @@ Chi tiết tin bán
 						
 
 							<div class="row">
-								<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<div class="col-sm-5 col-md-8 col-lg-8 m-lr-auto">
 									<div class="p-b-30 m-lr-15-sm">
 										<!-- Review -->
-											@foreach($baidang->binhLuan as $cm)
+										<!-- @foreach($baidang->gia as $gd)
 										<div class="flex-w flex-t p-b-68">
 											
 									
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-													{{ $cm->nguoidung->nd_name}}
-													<small>{{$cm->bl_time}}</small>
+													{{ $gd->nguoidung->nd_name}}
+													<small>{{$gd->dg_time}}</small>
 													</span>
 
 													
 												</div>
 
 												<p class="stext-102 cl6">
-												{{$cm->bl_noiDung}}
+												{{$gd->dg_noiDung}}
+												</p>
+												<p class="stext-102 cl6">
+												{{$gd->dg_khoiLuong}}
 												</p>
 											</div>
 										</div>
-										@endforeach
+										@endforeach -->
+										<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+</div>
+										<div class="box">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Người đăng</th>
+            <th>Thời điểm</th>  
+						<th>Giá (vnđ/kg)</th>  
+						<th>Khối lượng (kg)</th>  						          
+            <th>Trạng thái</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+		@foreach($baidang->gia as $i=> $gd)
+            <tr>
+                <td>{{ $i+1 }}</td>
+               
+                <td>{{$gd->nguoidung->nd_name}}</td>
+                <td>{{$gd->dg_time}}</td>  
+                <td>{{$gd->dg_noiDung}}</td>
+                <td>{{$gd->dg_khoiLuong}}</td>
+                 
+                <td>
+                    @if($gd->dg_trangThai==1)
+                    {{'Đang chờ'}}
+                    @else
+                    {{'Được chọn'}}
+                    @endif
+                </td>
+               
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+</div>
+
 										@if(Auth::check())
-									
+											@if(Auth::user()->nd_ma!=$baidang->nd_ma && $baidang->status!=2)
 										<!-- Add review --comment/{{$baidang->bd_ma}}-->
-										<form action="{{route('comment', ['id' => $baidang->bd_ma])}}" method="post" class="w-full">
+									<br>
+										<form action="{{route('nhapgia', ['id' => $baidang->bd_ma])}}" method="post" class="w-full">
 											
 											{{ csrf_field() }}
-											<h5 class="mtext-108 cl2 p-b-7">
-												Bình luận 
+											<h5 align="center" class="mtext-108 cl2 p-b-7">
+												Nhập thông tin đấu giá 
 											</h5>
-											<div class="row p-b-25">
-												<div class="col-12 p-b-5">
-													<label class="stext-102 cl3" for="review">Nhập bình luận</label>
-													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="bl_noiDung" name="bl_noiDung"></textarea>
-												</div>
-											</div>
+										
+											<div class="box-body">
+											<div class="form-group">
+        <label for="dg_noiDung">Giá (vnđ/kg)</label>
+        <input type="text" class="form-control" id="dg_noiDung" name="dg_noiDung" value="{{ old('dg_noiDung') }}" required>
+    </div>
+		<div class="form-group">
+        <label for="dg_khoiLuong">Khối lượng (kg)</label>
+        <input type="text" class="form-control" id="dg_khoiLuong" name="dg_khoiLuong" value="{{ old('dg_khoiLuong') }}" required>
+    </div>
 
-											<button type="submit" class="btn famie-btn mt-4 animated bounceInDown">
+											<button type="submit" class="btn famie-btn mt-4">
 												Gửi
 											</button>
+											</div>
 										</form>
+									
+											@endif
 										@else
 										<h5 class="mtext-108 cl2 p-b-7">
-												Vui lòng đăng nhập để bình luận 
+												Vui lòng đăng nhập để đấu giá 
 											</h5>
 										@endif
 									</div>

@@ -27,7 +27,7 @@ class FrontendController extends Controller
 
         $danhsachloai = Loai::all();
         $danhsachbaidang = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->paginate(10);
-        
+       // $mua=Baidang::where('bd_loai','like',"1")->orderBy('bd_ngayDang','desc')->paginate(10);
 
         //$danhsachbaidang=DB::table('baidang')->orderBy('bd_ngayDang','desc');
         //$danhsachbaidang1 = $this->searchTin($request);
@@ -235,6 +235,8 @@ class FrontendController extends Controller
         ->with('allbd',$tatcabaidang);
         
     }
+
+
     public function timkiembaidang(Request $request){
         $tukhoa=$request->tukhoa;
         $ds_top3_newest_bd = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->take(3)->get();
@@ -248,5 +250,22 @@ class FrontendController extends Controller
             ->with('danhsachbaidangmoinhat', $ds_top3_newest_bd)
             ->with('danhsachsanpham', $ds_sanpham);
     }
+    public function timkiembaidang1(Request $request){
+        $tukhoa=$request->tukhoa;
+        $ds_top3_newest_bd = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->take(3)->get();
+        $ds_sanpham = Sanpham::all();
+        $danhsachloai = Loai::all();
+        $ds_baidang= Baidang::where('bd_tieuDe','like',"%$tukhoa%")->orderBy('bd_ngayDang','desc')->paginate(5);
+        return view('frontend.pages.timkiem2')
+            ->with('danhsachbaidang', $ds_baidang)
+            ->with('tukhoa',$tukhoa)
+            ->with('danhsachloai', $danhsachloai)
+            ->with('danhsachbaidangmoinhat', $ds_top3_newest_bd)
+            ->with('danhsachsanpham', $ds_sanpham);
+    }
+
+
     
+
+
 }

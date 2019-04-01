@@ -30,4 +30,8 @@ class Baidang extends Model
     {
         return $this->hasMany('App\Binhluan', 'bd_ma', 'bd_ma');
     }
+    public function gia()
+    {
+        return $this->hasMany('App\Daugia', 'bd_ma', 'bd_ma');
+    }
 }

@@ -69,10 +69,10 @@ Danh sách bài viết
                 <td>
                   @if( $baidang->bd_loai==2)
                     @if($baidang->bd_trangThaisp==1)
-                    <span class="label label-success">Đã thu hoạch</span>
+                    {{'Đã thu hoạch'}}
                   
                     @else
-                    <span class="label label-warning">Chưa thu hoạch</span>
+                    {{'Chưa thu hoạch'}}
                     
                     @endif
                   @endif
@@ -85,9 +85,9 @@ Danh sách bài viết
                 <td>{{ $baidang->bd_ngayHetHan }}</td>
                 <td>
                     @if($baidang->status==1)
-                    {{'Open'}}
+                    <span class="label label-success">Open</span>
                     @else
-                    {{'Close'}}
+                    <span class="label label-danger">Close</span>
                     @endif
                 </td>
                 <td>{{ $baidang->bd_khoiLuong }}</td>

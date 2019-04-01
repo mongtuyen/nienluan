@@ -185,7 +185,16 @@ class NguoidungController extends Controller
             ->with('danhsachsanpham',$ds_sanpham);
            
     }
-
+    public function edittinmua($id)
+    {
+        $baidang = Baidang::where("bd_ma",  $id)->first();
+        
+        $ds_sanpham = Sanpham::all();
+        return view('frontend.baidang.mua-edit')
+            ->with('baidang', $baidang)
+            ->with('danhsachsanpham',$ds_sanpham);
+           
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -195,13 +204,6 @@ class NguoidungController extends Controller
      */
     public function updatemytin(Request $request, $id)
     {
-        // $validation = $request->validate([
-        //     'bd_hinh' => 'file|image|mimes:jpg,jpeg,png,gif,webp|max:2048',
-        //     'bd_hinhanhlienquan.*' => 'image|mimes:jpg,jpeg,png,gif,webp|max:2048',
-        //     'bd_tieuDe' => 'required|string',
-        //     'bd_noiDung' => 'required'
-        // ]);
-        
         $baidang = Baidang::where("bd_ma",  $id)->first();
         
         

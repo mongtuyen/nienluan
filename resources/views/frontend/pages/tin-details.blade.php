@@ -39,6 +39,36 @@ Chi tiết tin mua
 	<link rel="stylesheet" type="text/css" href="{{ asset('theme/details/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('theme/details/css/main.css')}}">
 <!--===============================================================================================-->
+<style>
+.button3 {
+	background-color: #f44336;
+	border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+  
+  opacity: 1;
+  cursor: not-allowed;
+} 
+.button4 {
+	background-color: #4CAF50;
+	border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 1px;
+ 
+  opacity: 1;
+  cursor: not-allowed;
+} 
+</style>
 </head>
 <body>
 <div class="container">
@@ -49,7 +79,13 @@ Chi tiết tin mua
 
 		<div class="row">
 			
-
+		<div class="col-md-6 col-lg-5 p-b-30">
+				<div class="p-l-25 p-r-30 p-lr-0-lg">
+					<div class="wrap-slick3 flex-sb flex-w">
+						
+					</div>
+				</div>
+			</div>
 			<div class="col-md-6 col-lg-5 p-b-30">
 				<div class="p-r-50 p-t-5 p-lr-0-lg">
 					
@@ -68,7 +104,17 @@ Chi tiết tin mua
 						Ngày kết thúc: {{$baidang->bd_ngayHetHan}}
 					</p>
 					<p class="stext-102 cl3 p-t-23">
-						Địa chỉ chi tiết trên bản đồ
+						Địa chỉ :{{$baidang->nguoidung->nd_diaChi}} (chi tiết trên bản đồ)
+					</p>
+					<p >
+						
+						Trạng thái tin :
+						@if ($baidang->status==2)
+						<button class="button3">Close</button>
+						@else
+						<button class="button4">Open</button>
+						@endif
+						
 					</p>
 					
 				</div>
@@ -93,7 +139,7 @@ Chi tiết tin mua
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab" aria-expanded="false">Đánh giá</a>
+							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab" aria-expanded="false">Bình luận</a>
 						</li>
 					</ul>
 
@@ -167,7 +213,7 @@ Chi tiết tin mua
 										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5997505699343!2d105.99872531428231!3d10.04984897493264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a07026bf87db75%3A0xd5f7e94bd1d880d0!2zQ2jhu6MgVGFtIELDrG5o!5e0!3m2!1svi!2s!4v1553767635301" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
 										@endif
-										<a href="#" class="btn famie-btn mt-4 animated bounceInDown" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
+										<a href="#" class="btn famie-btn mt-4" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
 								
 									</ul>
 									
@@ -220,7 +266,7 @@ Chi tiết tin mua
 												</div>
 											</div>
 
-											<button type="submit" class="btn famie-btn mt-4 animated bounceInDown" >
+											<button type="submit" class="btn famie-btn mt-4" >
 												Gửi
 											</button>
 										</form>

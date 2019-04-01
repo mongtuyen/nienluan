@@ -1,9 +1,15 @@
-@extends('frontend.layouts.partials.indexban')
+@extends('frontend.layouts.partials.index')
 @section('title')
-Danh sách tin bán
+Danh sách tin mua
 @endsection
 @section('main-content')
+
 <style>
+.img-list1{
+    width: 100px;
+    height:100px;
+}
+
 .button3 {
 	background-color: #f44336;
 	border: none;
@@ -31,18 +37,18 @@ Danh sách tin bán
  
   opacity: 1;
   cursor: not-allowed;
-} </style>
-<h4>DANH SÁCH TIN BÁN</h4>
-<a href="{{route('frontend.dangtinban')}}" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Đăng tin</a>       
+} 
+</style>
+
+
+
+<h4>DANH SÁCH </h4>
+<!-- <a href="{{route('frontend.dangtinban')}}" class="btn famie-btn mt-4" data-animation="bounceInUp" data-delay="600ms">Đăng tin</a>        -->
+
+<h5 align="center"><b>Tìm kiếm: {{$tukhoa}}</b></h5>
 <hr>
 
-<div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-</div>
+
   <section class="news-area bg-white section-padding-70-0">
     <div class="container">
       <div class="row">
@@ -52,37 +58,37 @@ Danh sách tin bán
              
           
            @foreach($danhsachbaidang as $bd)
-           @if($bd->bd_loai=='2')
 
 
 
           <div class="single-blog-area style-2 wow fadeInUp" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+            @if($bd->bd_hinh!=null)
+
             <div class="post-thumbnail">
               <img src="{{ asset('storage/photos/' . $bd->bd_hinh) }}"  class="img-list1" />
-            </div>   
+            </div> 
+            @endif 
             <div class="post-content">              
               <a href="{{ route('frontend.details', ['id' => $bd->bd_ma]) }}" class="post-title">{{$bd->bd_tieuDe}}</a>
               <p>Ngày đăng: {{$bd->bd_ngayDang}}/{{$bd->nguoidung->nd_name}}<p>
-              <p>Khối lượng: {{$bd->bd_khoiLuong}} kg - Trạng thái sản phẩm: 
+              <p>Khối lượng: {{$bd->bd_khoiLuong}} kg 
+                  @if($bd->bd_loai==2)
+                  - Trạng thái sản phẩm: 
                     @if($bd->bd_trangThaisp==1)
                     <span class="label label-success">Đã thu hoạch</span>
                     @else
                     <span class="label label-warning">Chưa thu hoạch</span>
                     @endif
+                  @endif
               </p>
-              <p>
-						
-						
-						@if ($bd->status==2)
-            Trạng thái tin:
+              @if ($bd->status==2)
+            Trạng thái tin :
 						<button class="button3">Close</button>
 						
 						@endif
-						
-					</p>
             </div>
           </div>
-          @endif
+        
           @endforeach
     
         </div>
@@ -91,14 +97,10 @@ Danh sách tin bán
     </div>
   </section>
   {{$danhsachbaidang->links()}}
-<style>
-.img-list1{
-    width: 100px;
-    height:100px;
-}
-</style>
 
   @endsection
 
 
   
+ 
+
