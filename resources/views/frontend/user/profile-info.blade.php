@@ -35,91 +35,44 @@ Thông tin người dùng
     <!-- <input type="hidden" name="_method" value="PUT" /> -->
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="username">Loại tài khoản: {{  Auth::user()->quyen->q_ten}}</label>
+        <label for="username"><b>Loại tài khoản:</b> {{  Auth::user()->quyen->q_ten}}</label>
  </div>
     <div class="form-group">
-        <label for="username">Tài khoản: {{  Auth::user()->username}}</label>
+        <label for="username"><b>Tài khoản:</b> {{  Auth::user()->username}}</label>
     </div>
     <div class="form-group">
-        <label for="nd_matKhau">Mật khẩu</label>
+        <label for="nd_matKhau"><b>Mật khẩu</b></label>
         <input type="text" class="form-control" id="password" name="password" value="{{ Auth::user()->password }}">
     </div>
     <div class="form-group">
-        <label for="nd_name">Họ tên</label>
+        <label for="nd_name"><b>Họ tên</b></label>
         <input type="text" class="form-control" id="nd_name" name="nd_name" value="{{ Auth::user()->nd_name }}">
     </div>
-    <label for="nd_gioiTinh">Giới tính</label>
+    <label for="nd_gioiTinh"><b>Giới tính</b></label>
     <select name="nd_gioiTinh">
         <option value="1" {{  Auth::user()->nd_gioiTinh == 1 ? "selected" : "" }}>Nam</option>
         <option value="2" {{  Auth::user()->nd_gioiTinh == 2 ? "selected" : "" }}>Nữ</option>
     </select>
     <div class="form-group">
-        <label for="nd_email">Email</label>
+        <label for="nd_email"><b>Email</b></label>
         <input type="text" class="form-control" id="nd_email" name="nd_email" value="{{  Auth::user()->nd_email }}">
     </div>
 
     <div class="form-group">
-        <label for="nd_ngaySinh">Ngày sinh</label>
+        <label for="nd_ngaySinh"><b>Ngày sinh</b></label>
         <input type="text" class="form-control" id="nd_ngaySinh" name="nd_ngaySinh" value="{{  Auth::user()->nd_ngaySinh }}" data-mask-datetime>
     </div>
     <div class="form-group">
-        <label for="nd_diaChi">Địa chỉ</label>
+        <label for="nd_diaChi"><b>Địa chỉ</b></label>
         <input type="text" class="form-control" id="nd_diaChi" name="nd_diaChi" value="{{  Auth::user()->nd_diaChi }}">
     </div>
     <div class="form-group">
-        <label for="nd_dienThoai">Điện thoại</label>
+        <label for="nd_dienThoai"><b>Điện thoại</b></label>
         <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai" value="{{  Auth::user()->nd_dienThoai }}" placeholder="Nhập tên">
     </div>
     <button type="submit" class="btn famie-btn mt-4">Lưu</button>
     </div>
 </form> <br><br>
 
-<!-- <form method="post" action="{{ route('profile.updateProfile',['id' => Auth::user()->nd_ma])}}" > 
-    <div class="box-body">
-    <input type="hidden" name="_method" value="PUT" />
-    {{ csrf_field() }}
-   
-	<div class="form-group">
-			<label>Tài khoản</label>
-			<input disabled="true" type="text" value="{{Auth::user()->username}}" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Họ tên</label>
-			<input name="name" type="text" value="{{Auth::user()->nd_name}}" class="form-control" >
-		</div>
-		<div class="form-group">
-			<label>Email</label>
-			<input name="email" type="email" value="{{Auth::user()->nd_email}}" class="form-control">
-		</div>
-    <div class="form-group">
-        <label for="nd_matKhau">Mật khẩu</label>
-        <input type="text" class="form-control" id="password" name="password"  value="{{Auth::user()->password}}">
-    </div>
-    
-    
-    <div class="form-group">
-        <label for="nd_ngaySinh">Ngày sinh</label>
-        <input type="text" class="form-control" id="nd_ngaySinh" name="nd_ngaySinh"  value="{{Auth::user()->nd_ngaySinh}}" data-mask-datetime>
-    </div>
-
-	<div class="form-group">
-	<label for="nd_gioiTinh">Giới tính</label>
-        <select name="nd_gioiTinh" id="nd_gioiTinh" class="form-control">
-            <option value="Nam" <?php echo (Auth::user()->nd_gioiTinh == 'Nam') ? 'selected' : '' ?>>Nam</option>
-            <option value="Nữ" <?php echo (Auth::user()->nd_gioiTinh == 'Nữ') ? 'selected' : '' ?>>Nữ</option>
-     	</select>
-    </div>
-          
-    <div class="form-group">
-        <label for="nd_diaChi">Địa chỉ</label>
-        <input type="text" class="form-control" id="nd_diaChi" name="nd_diaChi"  value="{{Auth::user()->nd_diaChi}}">
-    </div>
-    <div class="form-group">
-        <label for="nd_dienThoai">Điện thoại</label>
-        <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai"  value="{{Auth::user()->nd_dienThoai}}" placeholder="Nhập tên">
-    </div>
-    <button type="submit" class="btn btn-primary">Lưu</button>
-    </div>
-</form> -->
 </div></div></div></div></div></div>
 @endsection

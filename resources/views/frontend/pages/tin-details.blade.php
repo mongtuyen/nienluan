@@ -73,9 +73,7 @@ Chi tiết tin mua
 <body>
 <div class="container">
 	<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-		<button class="how-pos3 hov3 trans-04 js-hide-modal" data-sp-ma="{{ $baidang->bd_ma }}">
-			<img src="{{ asset('theme/details/images/icons/icon-close.png') }}" alt="CLOSE">
-		</button>
+		
 
 		<div class="row">
 			

@@ -43,52 +43,31 @@ class FrontendController extends Controller
     {
         //$baidang = Baidang::find($id);
         $nguoidung = DB::table('users')->join('baidang', 'baidang.nd_ma','=','users.nd_ma')->where('bd_ma', $id)->first();      
-        //$baidang = DB::table('baidang')->where('bd_ma', $id)->first();
         $baidang = Baidang::where("bd_ma",  $id)->first();
-        //$user = Auth::user();
         // $danhsachhinhanhlienquan = DB::table('hinhanh')
         //                         ->where('bd_ma', $id)
         //                         ->get();
         $ds_top3_newest_bd = Baidang::where('bd_loai','like',"1")->orWhere('bd_loai','like',"2")->orderBy('bd_ngayDang','desc')->take(3)->get();
-
-        $bdlienquan=Baidang::where('sp_ma',$baidang->sp_ma)->take(4)->get();
+        //$bdlienquan=Baidang::where('sp_ma',$baidang->sp_ma)->take(4)->get();
         $danhsachloai = Loai::all();
         $hinhanhlienquan=Baidang::find($id)->hinhAnh()->get();
         return view('frontend.pages.tin-detail')
             ->with('baidang', $baidang)
-            // ->with('danhsachhinhanhlienquan', $danhsachhinhanhlienquan)
             ->with('danhsachloai', $danhsachloai)
             ->with('hinhanhlienquan',$hinhanhlienquan)
             ->with('nguoidung',$nguoidung)
-            ->with('danhsachbaidangmoinhat', $ds_top3_newest_bd)
-            ->with('bdlienquan',$bdlienquan);
-         
-            
-        //     $nguoidung = User::where("nd_ma",  $id)->first();
-        // $ds_quyen = Quyen::all();
-
-        // return view('backend.nguoidung.edit')
-        //     ->with('nguoidung', $nguoidung)
-        //     ->with('danhsachquyen', $ds_quyen);
-  
-            
+            ->with('danhsachbaidangmoinhat', $ds_top3_newest_bd);     
     }
 
     public function chitiettinmua($id)
     {
         $nguoidung = DB::table('users')->join('baidang', 'baidang.nd_ma','=','users.nd_ma')->where('bd_ma', $id)->first();      
         $baidang = Baidang::where("bd_ma",  $id)->first();
-        $bdlienquan=Baidang::where('sp_ma',$baidang->sp_ma)->take(4)->get();
         $danhsachloai = Loai::all();
         return view('frontend.pages.tin-details')
             ->with('baidang', $baidang)
             ->with('danhsachloai', $danhsachloai)
-            ->with('nguoidung',$nguoidung)
-            ->with('bdlienquan',$bdlienquan);
-         
-        
-  
-            
+            ->with('nguoidung',$nguoidung);
     }
     public function contact()
     {
@@ -263,9 +242,5 @@ class FrontendController extends Controller
             ->with('danhsachbaidangmoinhat', $ds_top3_newest_bd)
             ->with('danhsachsanpham', $ds_sanpham);
     }
-
-
-    
-
 
 }

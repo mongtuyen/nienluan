@@ -49,8 +49,8 @@ Route::get('/tinban', 'FrontendController@tinban')->name('frontend.tinban');
 Route::get('/lienhe', 'FrontendController@contact')->name('frontend.contact');
 
 
-Route::get('dangnhap','NguoidungController@getLogin');
-Route::post('dangnhap','NguoidungController@postLogin')->name('dangnhap.postLogin');
+Route::get('/dangnhap','NguoidungController@getLogin');
+Route::post('/dangnhap','NguoidungController@postLogin')->name('dangnhap.postLogin');
 Route::get('/dangxuat','NguoidungController@getLogout');
 Route::get('/dangky','NguoidungController@getRegister')->name('dangky.getRegister');
 Route::post('/dangky','NguoidungController@postRegister')->name('dangky.postRegister');
