@@ -34,6 +34,16 @@ class CommentController extends Controller
         Session::flash('alert-info', 'Bình luận thành công!');
         return back();
     }
+    public function getXoaDG($id){
+       
+
+
+        //$bl=Binhluan::find($id);
+        $gia = Daugia::where("dg_ma",  $id)->first();
+        $gia->delete();
+        Session::flash('alert-info', 'Xóa thành công!');
+         return redirect()->back();
+    }
     public function postGia($id, Request $request){
         $idbd=$id;
        // $user = User::find(Auth::user()->id);

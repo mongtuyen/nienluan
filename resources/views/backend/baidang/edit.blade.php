@@ -215,14 +215,15 @@ Hiệu chỉnh bài viết
                     {{'Được chọn'}}
                     @endif
                 </td>  
-                <td> <a href="#">Chọn</a></td>
-                <td><form method="post" action="#">
-                <input type="hidden" name="_method" value="PUT" />
+              
+                <td>
+                <form method="post" action="{{ route('xoadaugia', ['id' => $g->dg_ma]) }}">
+                        <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
                         
-                        <button type="submit" class="btn btn-sussess">Chọn</button></td>
-                </form>
-                </td>
+                        <button onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger">Xóa</button></td>
+               </form>
+               
             </tr>
         @endforeach
     </tbody>
