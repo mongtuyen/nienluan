@@ -3,7 +3,7 @@
 Đăng ký tài khoản
 @endsection
 @section('custom-css')
-<style type="text/css" media="screen">
+<!-- <style type="text/css" media="screen">
 .register-section{
 	width: 100%;
 	height: auto;
@@ -19,7 +19,7 @@
 }
 .error {color: red;}
 .valid {color: #28a745;}
-</style>
+</style> -->
 @endsection
 @section('main-content')
 <div class="container">
@@ -52,7 +52,7 @@
     <div class="box-body">
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="q_ma">Chức vụ</label>
+        <label for="q_ma"><b>Bạn là</b></label>
         <select name="q_ma" class="form-control">
             @foreach($danhsachquyen as $quyen)
                 @if(old('q_ma') == $quyen->q_ma)
@@ -64,45 +64,44 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="username">Tài khoản</label>
+        <label for="username"><b>Tài khoản</b></label>
         <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}">
     </div>
     <div class="form-group">
-        <label for="password">Mật khẩu</label>
+        <label for="password"><b>Mật khẩu</b></label>
         <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}">
     </div>
     <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Nhập lại mật khẩu') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
+        <label for="password-confirm" class="col-md-4 col-form-label text-md-right"><b>Nhập lại mật khẩu</b></label>
+        <div class="col-md-6">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+        </div>
+    </div>
     <div class="form-group">
-        <label for="nd_name">Họ tên</label>
+        <label for="nd_name"><b>Họ tên</b></label>
         <input type="text" class="form-control" id="nd_name" name="nd_name" value="{{ old('nd_name') }}">
     </div>
     <div class="form-group">
-        <label for="nd_gioiTinh">Giới tính</label>
+        <label for="nd_gioiTinh"><b>Giới tính</b></label>
     <select name="nd_gioiTinh" class="form-control">
         <option value="1" {{ old('nd_gioiTinh') == 1 ? "selected" : "" }}>Nam</option>
         <option value="2" {{ old('nd_gioiTinh') == 2 ? "selected" : "" }}>Nữ</option>
     </select>
     </div>
     <div class="form-group">
-        <label for="nd_email">Email</label>
+        <label for="nd_email"><b>Email</b></label>
         <input type="text" class="form-control" id="nd_email" name="nd_email" value="{{ old('nd_email') }}">
     </div>
     <div class="form-group">
-        <label for="nd_ngaySinh">Ngày sinh</label>
+        <label for="nd_ngaySinh"><b>Ngày sinh</b></label>
         <input type="text" class="form-control" id="nd_ngaySinh" name="nd_ngaySinh" value="{{ old('nd_ngaySinh') }}" data-mask-datetime>
     </div>
     <div class="form-group">
-        <label for="nd_diaChi">Địa chỉ</label>
+        <label for="nd_diaChi"><b>Địa chỉ</b></label>
         <input type="text" class="form-control" id="nd_diaChi" name="nd_diaChi" value="{{ old('nd_diaChi') }}">
     </div>
     <div class="form-group">
-        <label for="nd_dienThoai">Điện thoại<i></i></label>
+        <label for="nd_dienThoai"><b>Điện thoại</b><i></i></label>
         <input type="text" class="form-control" id="nd_dienThoai" name="nd_dienThoai" value="{{ old('nd_dienThoai') }}">
     </div>
     

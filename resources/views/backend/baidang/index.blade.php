@@ -55,8 +55,11 @@ Danh sách bài viết
         @foreach($danhsachbaidang as $baidang)
             <tr>
                 <td>{{ $baidang->bd_ma }}</td>
+                @if($baidang->bd_loai==2)
                 <td><img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" class="img-list" /></td>
-                
+                @else
+                <td><img src="{{asset('theme/farmie/img/core-img/logo1.png')}}" class="img-list" alt="" ></td>
+                @endif
                 <td>
                     @if($baidang->bd_loai==1)
                     {{'Tin mua'}}

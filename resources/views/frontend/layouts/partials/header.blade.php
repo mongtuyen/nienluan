@@ -13,12 +13,12 @@
               <div class="top-header-meta text-right">
              
 					@if(Auth::check())
-          <a href="nguoidung"><i class="fa fa-user"></i>  {{Auth::user()->nd_name}}</a>
-					<a href="mytin"></i>Tin của tôi </a>  &nbsp;&nbsp;&nbsp;
-          <a href="dangxuat"></i>  Đăng xuất</a>                       					
+          <a href="{{url('/')}}/nguoidung"><i class="fa fa-user"></i>  {{Auth::user()->nd_name}}</a>
+					<a href="{{url('/')}}/mytin"></i>Tin của tôi </a>  &nbsp;&nbsp;&nbsp;
+          <a href="{{url('/')}}/dangxuat"></i>  Đăng xuất</a>                       					
 					@else
-						<a href="dangnhap"><i class="fa fa-user"></i> Đăng nhập</a>
-						<a href="dangky">Đăng ký</a>
+						<a href="{{url('/')}}/dangnhap"><i class="fa fa-user"></i> Đăng nhập</a>
+						<a href="{{url('/')}}/dangky">Đăng ký</a>
 					@endif
          
 			  </div>

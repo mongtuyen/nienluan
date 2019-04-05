@@ -260,8 +260,8 @@ Chi tiết tin bán
 										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.5997505699343!2d105.99872531428231!3d10.04984897493264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a07026bf87db75%3A0xd5f7e94bd1d880d0!2zQ2jhu6MgVGFtIELDrG5o!5e0!3m2!1svi!2s!4v1553767635301" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 										</div>
 										@endif
-										<a href="#" class="btn famie-btn mt-4" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
-								
+										<!-- <a href="#" class="btn famie-btn mt-4" data-animation="bounceInDown" data-delay="600ms" style="animation-delay: 600ms; opacity: 1;">Liên hệ</a>
+								 -->
 									</ul>
 									
 								</div>
@@ -345,7 +345,7 @@ Chi tiết tin bán
 </div>
 
 										@if(Auth::check())
-											@if(Auth::user()->nd_ma!=$baidang->nd_ma && $baidang->status!=2)
+											@if(Auth::user()->nd_ma!=$baidang->nd_ma && $baidang->status!=2 && Auth::user()->quyen->q_ma!=3)
 										<!-- Add review --comment/{{$baidang->bd_ma}}-->
 									<br>
 										<form action="{{route('nhapgia', ['id' => $baidang->bd_ma])}}" method="post" class="w-full">

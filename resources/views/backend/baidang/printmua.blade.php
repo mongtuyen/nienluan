@@ -23,7 +23,7 @@ table {
                     Công ty TNHH Nông nghiệp sạch<br />
                     http://nongnghiepsach.com/<br />
                     035 766 1088<br />
-                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}" height="100px"/>
+                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}"  width="150px"/>
                 </td>
             </tr>
         </table>
@@ -40,9 +40,9 @@ table {
             </tr>
             <tr>
             <th>Mã</th>
-            <th>Sản phẩm</th>
+            <th>Loại sản phẩm</th>
             <th>Tiêu đề</th>
-            <th>Nội dung</th>
+            <th>Khối lượng</th>
             <th>Người đăng</th>          
             <th>Ngày đăng</th>
            
@@ -56,7 +56,7 @@ table {
                 @endif
                 @endforeach
                 <td align="left">{{ $baidang->bd_tieuDe }}</td>
-                <td align="left">{!! $baidang->bd_noiDung !!}</td>
+                <td align="left">{{ $baidang->bd_khoiLuong }}</td>
                 
                 @foreach ($danhsachnguoidung as $nd)
                 @if ($baidang->nd_ma==$nd->nd_ma)

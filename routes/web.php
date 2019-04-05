@@ -35,7 +35,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){//
 
     Route::delete('/xoa/{id}', 'CommentController@getXoa')->name('xoabinhluan');
     Route::delete('/xoadaugia/{id}', 'CommentController@getXoaDG')->name('xoadaugia');
-
+    Route::get('/baocao/baidang', 'BaoCaoController@baidang')->name('baocao.baidang');
+    Route::get('/baocao/baidang/data', 'BaoCaoController@baidangData')->name('baocao.baidangdata');
 });
 //Route::group(['prefix'=>'admin/comment','middleware'=>'adminLogin'],function(){//
     

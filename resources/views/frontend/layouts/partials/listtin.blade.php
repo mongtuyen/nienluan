@@ -56,7 +56,7 @@
 
       <div class="col-12 col-lg-6">
     
-          <h4>DANH SÁCH TIN MUA</h4>
+          <h4>TIN MUA</h4>
           <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)
@@ -83,7 +83,7 @@
     
 
        <div class="col-12 col-lg-6 mb-100">
-          <h4>DANH SÁCH TIN BÁN</h4>
+          <h4>TIN BÁN</h4>
           <hr>
           <!-- Single Blog Area -->
            @foreach($danhsachbaidang as $bd)

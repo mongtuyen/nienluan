@@ -1,12 +1,9 @@
 @extends('backend.layouts.index')
-
 @section('title')
-Tổng quan
+Báo cáo 
 @endsection
-
 @section('custom-css')
 @endsection
-
 @section('main-content')
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -17,26 +14,19 @@ Tổng quan
     </ul>
 </div>
 @endif
-<div class="info-box">
-    <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-        <div class="info-box-content">
-            <span class="info-box-text">New Members</span>
-            <span class="info-box-number">2,000</span>
-        </div>
-            <!-- /.info-box-content -->
-</div>
-
-<div class="col-md-8">
-    <p class="text-center">
-        <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-    </p>
-
-    <div class="chart">
-                    <!-- Sales Chart Canvas -->
-        <canvas id="salesChart" style="height: 121px; width: 473px;" width="473" height="121"></canvas>
+<form method="get" action="#" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <div class="form-group">
+        <label for="tuNgay">Từ ngày</label>
+        <input type="date" class="form-control" id="tuNgay" name="tuNgay">
     </div>
-                  <!-- /.chart-responsive -->
-</div>
+    <div class="form-group">
+        <label for="denNgay">Đến ngày</label>
+        <input type="date" class="form-control" id="denNgay" name="denNgay">
+    </div>
+    <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
+</form>
+<canvas id="chartOfobjChart" width="400" height="400"></canvas>
 @endsection
 @section('custom-scripts')
 <!-- Các script dành cho thư viện ChartJS -->
@@ -48,7 +38,7 @@ Tổng quan
         $("#btnLapBaoCao").click(function(e) { 
             e.preventDefault();
             $.ajax({
-                url: '{{ route('tongquan') }}',
+                url: '{{ route('baocao.baidangdata') }}',
                 type: "GET",
                 data: {
                     tuNgay: $('#tuNgay').val(),
@@ -59,7 +49,7 @@ Tổng quan
                     var myData = [];
                     $(response.data).each(function () {
                         myLabels.push((this.thoiGian));
-                        myData.push(this.tongThanhTien);
+                        myData.push(this.tongbaidang);
                     });
                     myData.push(0); // creates a '0' index on the graph
                     if (typeof $objChart !== "undefined") {
@@ -81,10 +71,11 @@ Tổng quan
                         options: {
                             legend: {
                                 display: false
+                                
                             },
                             title: {
                                 display: true,
-                                text: "Báo cáo đơn hàng"
+                                text: "Tổng bài đăng theo ngày"
                             },
                             responsive: true
                         }
@@ -94,6 +85,4 @@ Tổng quan
         });
     });
 </script>
-
-
-
+@endsection

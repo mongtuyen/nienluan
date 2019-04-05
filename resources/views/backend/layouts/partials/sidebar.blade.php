@@ -32,7 +32,7 @@
         <!-- <li class="treeview">
           <a href="{{ route('tongquan') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a>
         </li> -->
-        <li class="{{ Request::is('tongquan*') ? 'active' : '' }}"><a href="{{ route('tongquan') }}"><i class="fa fa-dashboard"></i>Tổng quan</a></li>
+        <li class="{{ Request::is('baocao.baidang*') ? 'active' : '' }}"><a href="{{ route('baocao.baidang') }}"><i class="fa fa-dashboard"></i>Tổng quan</a></li>
         
         <li class="treeview {{ Request::is('danhsachsanpham*') ? 'active menu-open' : '' }}">
           <a href="#"><i class="fa fa-edit"></i> <span>Quản lý nông sản</span>

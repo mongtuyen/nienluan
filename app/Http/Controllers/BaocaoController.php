@@ -16,39 +16,9 @@ class BaocaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function baidang()
     {
-        $date = getdate();
-        $ngay = $date['wday'];
-        $ngaydautuan = new DateTime(new Carbon);
-        switch ($ngay) {
-            case 0:
-                $ngaydautuan -> modify('-6 day');
-                break;
-            case 1:
-                $ngaydautuan = new DateTime(new Carbon);
-                break;
-            case 2:
-                $ngaydautuan -> modify('-1 day');
-                break;
-            case 3:
-                $ngaydautuan -> modify('-2 day');
-                break;
-
-            case 4:
-                $ngaydautuan -> modify('-3 day');
-                break;
-            case 5:
-                $ngaydautuan -> modify('-4 day');
-                break;
-            case 6:
-                $ngaydautuan -> modify('-5 day');
-                break;
-
-            default:
-                break;
-        }
-
+        
         return view('backend.reports.baocao');
     }
 
@@ -57,64 +27,24 @@ class BaocaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function baidangData(Request $request)
     {
-        //
+        $parameter = [
+            'tuNgay' => $request->tuNgay,
+            'denNgay' => $request->denNgay
+        ];
+        $data = DB::select('
+            SELECT date(bd.bd_ngayDang) as thoiGian
+                , COUNT(bd.bd_ma) as tongbaidang
+            FROM baidang bd
+            WHERE date(bd.bd_ngayDang) BETWEEN :tuNgay AND :denNgay
+            GROUP BY date(bd.bd_ngayDang)
+        ', $parameter);
+        return response()->json(array(
+            'code'  => 200,
+            'data' => $data,
+        ));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }

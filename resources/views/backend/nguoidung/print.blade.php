@@ -22,8 +22,8 @@ table {
                 <td class="companyInfo" align="center">
                     Công ty TNHH Nông nghiệp sạch<br />
                     http://nongnghiep.com/<br />
-                    (0292)3.888.999 # 01.222.888.999<br />
-                    <img src="{{ asset('storage/nongnghiep.jpg') }}" height="100px"/>
+                    0357660188<br />
+                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}"  width="150px"/>
                 </td>
             </tr>
         </table>

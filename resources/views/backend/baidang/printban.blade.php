@@ -23,7 +23,7 @@ table {
                     Công ty TNHH Nông nghiệp sạch<br />
                     http://nongnghiepsach.com/<br />
                     035 766 1088<br />
-                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}" height="100px"/>
+                    <img src="{{asset('theme/farmie/img/core-img/logo1.png')}}"  width="150px"/>
                 </td>
             </tr>
         </table>
