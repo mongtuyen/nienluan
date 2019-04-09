@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/admin/login', 'NguoidungController@getloginadmin')->name('adminlogin');
 Route::post('/admin/login', 'NguoidungController@postloginadmin');

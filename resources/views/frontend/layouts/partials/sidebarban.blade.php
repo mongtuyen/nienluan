@@ -14,7 +14,7 @@
     <br>
    
     <div class="single-widget-area">
-      <form action="usertimkiemloai" method="post" class="search-widget-form" role="search">
+      <form action="{{url('/')}}/usertimkiemloai" method="post" class="search-widget-form" role="search">
         <input type="hidden" name="_token" value="{{csrf_token()}}";>
         <input type="search" name="tukhoa" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
         <button type="submit"><i class="icon_search" aria-hidden="true"></i></button>
