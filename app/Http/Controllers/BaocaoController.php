@@ -45,6 +45,25 @@ class BaocaoController extends Controller
             'data' => $data,
         ));
     }
+    public function sanphamData(Request $request)
+    {
+        $parameter = [
+            'tuNgay' => $request->tuNgay,
+            'denNgay' => $request->denNgay
+        ];
+        $data = DB::select('
+            SELECT sp.sp_ten as sanpham
+                , COUNT(bd.bd_ma) as tongbaidang
+            FROM baidang bd
+            JOIN sanpham sp ON bd.sp_ma = sp.sp_ma
+            WHERE date(bd.bd_ngayDang) BETWEEN :tuNgay AND :denNgay
+            GROUP BY bd.sp_ma
 
+        ', $parameter);
+        return response()->json(array(
+            'code'  => 200,
+            'data' => $data,
+        ));
+    }
    
 }

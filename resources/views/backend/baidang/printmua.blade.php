@@ -30,7 +30,7 @@ table {
         <br />
         <br />
         <?php 
-        $tongSoTrang = ceil(count($danhsachbaidang)/5);
+        $tongSoTrang = ceil(count($danhsachbaidang)/10);
         ?>
         <h3 align="center">DANH SÁCH BÀI ĐĂNG TIN MUA</h3>
         <table border="1" align="center" cellpadding="5">
@@ -66,12 +66,12 @@ table {
                 <td align="left">{{ $baidang->bd_ngayDang }}</td>             
                 
             </tr>
-            @if (($loop->index + 1) % 5 == 0)
+            @if (($loop->index + 1) % 10 == 0)
             </table>
         <div class="page-break"></div>
         <table border="1" align="center" cellpadding="5">
             <tr>
-                <th colspan="6" align="center">Trang {{ 1 + floor(($loop->index + 1) / 5) }} / {{ $tongSoTrang }}</th>
+                <th colspan="6" align="center">Trang {{ 1 + floor(($loop->index + 1) / 10) }} / {{ $tongSoTrang }}</th>
             </tr>
             <tr>
             <th>Mã</th>

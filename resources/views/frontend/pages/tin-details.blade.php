@@ -102,7 +102,7 @@ Chi tiết tin mua
 						Ngày kết thúc: {{$baidang->bd_ngayHetHan}}
 					</p>
 					<p class="stext-102 cl3 p-t-23">
-						Địa chỉ :{{$baidang->nguoidung->nd_diaChi}} (chi tiết trên bản đồ)
+						Địa chỉ: {{$baidang->nguoidung->nd_diaChi}} 
 					</p>
 					<p >
 						
@@ -249,7 +249,7 @@ Chi tiết tin mua
 										</div>
 										@endforeach
 										@if(Auth::check())
-									
+											@if($baidang->status!=2)
 										<!-- Add review --comment/{{$baidang->bd_ma}}-->
 										<form action="{{route('comment', ['id' => $baidang->bd_ma])}}" method="post" class="w-full">
 											
@@ -268,6 +268,7 @@ Chi tiết tin mua
 												Gửi
 											</button>
 										</form>
+									@endif
 										@else
 										<h5 class="mtext-108 cl2 p-b-7">
 												Vui lòng đăng nhập để bình luận 

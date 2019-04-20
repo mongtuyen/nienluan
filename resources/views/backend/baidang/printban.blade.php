@@ -30,9 +30,9 @@ table {
         <br />
         <br />
         <?php 
-        $tongSoTrang = ceil(count($danhsachbaidang)/5);
+        $tongSoTrang = ceil(count($danhsachbaidang)/10);
         ?>
-        <h3 align="center">DANH SÁCH BÀI ĐĂNG TIN BÁN</h3>
+        <h3 align="center">DANH SÁCH BÀI ĐĂNG BÁN</h3>
         <table border="1" align="center" cellpadding="5">
             
             <tr>
@@ -43,7 +43,6 @@ table {
             <th>Sản phẩm</th>
             <th>Tiêu đề</th>
             <th>Hình</th>
-            <!-- <th>Nội dung</th> -->
             <th>Trạng thái sản phẩm</th>
             <th>Giá</th>
             <th>Khối lượng</th>           
@@ -61,9 +60,8 @@ table {
                 @endforeach
                 <td align="left">{{ $baidang->bd_tieuDe }}</td>
                 <td align="center">
-                    <img class="hinhSanPham" src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" height="50px" width="50px"/>
+                    <img src="{{ asset('storage/photos/' . $baidang->bd_hinh) }}" height="50px" width="50px"/>
                 </td>
-                <!-- <td align="left">{!! $baidang->bd_noiDung !!}</td> -->
                 <td align="left">
                     @if($baidang->bd_trangThaisp==1)
                     {{'Đã thu hoạch'}}
@@ -81,6 +79,26 @@ table {
                 
             </tr>
             
+            @if (($loop->index + 1) % 10 == 0)
+        </table>
+        <div class="page-break"></div>
+        <table border="1" align="center" cellpadding="10">
+            <tr>
+                <th colspan="10" align="center">Trang {{ 1 + floor(($loop->index + 1) / 10) }} / {{ $tongSoTrang }}</th>
+            </tr>
+            <tr>
+            <th>Mã</th>
+            <th>Sản phẩm</th>
+            <th>Tiêu đề</th>
+            <th>Hình</th>
+            <th>Trạng thái sản phẩm</th>
+            <th>Giá</th>
+            <th>Khối lượng</th>           
+            <th>Người đăng</th>          
+            <th>Ngày đăng</th>
+            </tr>
+            @endif
+
             @endforeach
         </table>
     </article>

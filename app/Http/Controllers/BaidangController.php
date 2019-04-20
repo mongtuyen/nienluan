@@ -244,7 +244,7 @@ class BaidangController extends Controller
     {
         $ds_sanpham = Sanpham::all();
         $ds_nguoidung    = User::all();
-        $ds_baidang    = Baidang::where('bd_loai','like',"1")->paginate(5);
+        $ds_baidang    = Baidang::where('bd_loai','like',"1")->get();
         
         $data = [
             'danhsachsanpham' => $ds_sanpham,
@@ -260,7 +260,7 @@ class BaidangController extends Controller
     {
         $ds_sanpham = Sanpham::all();
         $ds_nguoidung    = User::all();
-        $ds_baidang    = Baidang::where('bd_loai','like',"2")->paginate(5);
+        $ds_baidang    = Baidang::where('bd_loai','like',"2")->orderBy('bd_ngayDang')->get();
         
         $data = [
             'danhsachsanpham' => $ds_sanpham,
